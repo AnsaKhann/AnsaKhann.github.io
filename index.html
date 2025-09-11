@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Professional appliance repairs in London. Fast, reliable, and affordable service for washing machines, ovens, fridges, and more. Get a quote today!">
+  <meta name="keywords" content="appliance repair, London, washing machine, oven, fridge, dishwasher, same day service, emergency repair">
+  <meta property="og:title" content="Ask Appliance Repairs Ltd | London Appliance Repair Experts">
+  <meta property="og:description" content="Professional appliance repairs in London. Fast, reliable, and affordable service for washing machines, ovens, fridges, and more. Get a quote today!">
+  <meta property="og:image" content="images/og-image.jpg">
+  <meta property="og:url" content="https://askappliancerepairsltd.co.uk/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ask Appliance Repairs Ltd | London Appliance Repair Experts">
+  <meta name="twitter:description" content="Professional appliance repairs in London. Fast, reliable, and affordable service for washing machines, ovens, fridges, and more. Get a quote today!">
+  <meta name="twitter:image" content="images/twitter-image.jpg">
+  <link rel="canonical" href="https://askappliancerepairsltd.co.uk/home.html">
+  <title>Ask Appliance Repairs Ltd | London Appliance Repair Experts</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <img src="images/logo.png" alt="Ask Appliance Repairs Ltd Logo" style="height:60px;vertical-align:middle;">
+    <h1>Ask appliance repairs ltd</h1>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </nav>
+  </header>
+  <section class="hero">
+  <h1 id="hero-title" style="color:var(--primary-color);"></h1>
+  <p id="hero-subtitle" style="color:var(--primary-color);"></p>
+    <a href="https://find-and-update.company-information.service.gov.uk/company/16560507" target="_blank" style="color:#0d57cf;text-decoration:underline;">Company Info</a>
+  </section>
+  <main>
+    <section class="section">
+      <h2 id="areas-heading"></h2>
+      <div class="areas-list" id="areas-list"></div>
+    </section>
+    <section class="section">
+      <h2>Our Services</h2>
+      <img src="images/service.jpg" alt="Appliance Repair Service" style="width:100%;max-width:400px;border-radius:8px;">
+      <ul>
+        <li>Washing Machine Repairs</li>
+        <li>Oven & Cooker Repairs</li>
+        <li>Fridge & Freezer Repairs</li>
+        <li>Dishwasher Repairs</li>
+        <li>Same Day & Emergency Service</li>
+      </ul>
+    </section>
+  </main>
+  <button class="floating-quote-btn" type="button"></button>
+  <div class="quote-modal">
+    <label for="quote-text" style="font-weight:600;">Please explain the problem you are facing</label>
+    <textarea id="quote-text" rows="4" placeholder="Describe your appliance issue..."></textarea>
+    <button type="button" disabled></button>
+  </div>
+  <div class="cookie-consent">
+    <span id="cookie-message"></span>
+    <a href="privacy.html" style="color:#ffd700;text-decoration:underline;">Learn more</a>
+    <button type="button"></button>
+  </div>
+  <footer>
+    &copy; 2025 Ask appliance repairs ltd. All rights reserved.
+  </footer>
+  <script type="module">
+    import AppConstants from './AppConstants.js';
+    import './main.js';
+    // Set UI strings from constants
+    document.getElementById('hero-title').textContent = AppConstants.HERO_TITLE;
+    document.getElementById('hero-subtitle').textContent = AppConstants.HERO_SUBTITLE;
+    document.querySelector('.floating-quote-btn').textContent = AppConstants.GET_QUOTE_BUTTON;
+    document.querySelector('.quote-modal label').textContent = AppConstants.GET_QUOTE_PROMPT;
+    document.querySelector('.quote-modal button').textContent = AppConstants.SEND_BUTTON;
+    document.getElementById('areas-heading').textContent = AppConstants.AREAS_HEADING;
+    document.getElementById('cookie-message').textContent = AppConstants.COOKIE_MESSAGE;
+    document.querySelector('.cookie-consent button').textContent = AppConstants.COOKIE_ALLOW;
+  </script>
+</body>
+</html>
