@@ -1,10 +1,17 @@
 /* style.css - Main stylesheet for Ask Appliance Repairs Ltd */
 :root {
-  --primary-color: #0057b8;
+  --primary-color: #000066;
   --secondary-color: #f5f5f5;
   --text-color: #222;
   --button-color: #0057b8;
   --button-text-color: #fff;
+  --button-hover-color: #003a7a;
+  --cookie-bg: #222;
+  --cookie-text: #fff;
+  --accent-color: #ffd700;
+  --border-color: #ccc;
+  --disabled-color: #ccc;
+  --link-color: #0d57cf;
 }
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
@@ -15,7 +22,7 @@ body {
 }
 header {
   background: var(--primary-color);
-  color: #fff;
+  color: var(--button-text-color);
   padding: 1rem 0;
   text-align: center;
 }
@@ -27,19 +34,19 @@ nav {
   padding-bottom: 0.5rem;
 }
 nav a {
-  color: #fff;
+  color: var(--button-text-color);
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s;
 }
 nav a:hover {
-  color: #ffd700;
+  color: var(--accent-color, #ffd700);
 }
 .hero {
   background: url('images/hero.jpg') center/cover no-repeat;
   padding: 4rem 2rem;
   text-align: center;
-  color: #fff;
+  color: var(--button-text-color);
 }
 .hero h1 {
   font-size: 2.5rem;
@@ -51,7 +58,7 @@ nav a:hover {
 }
 .section {
   padding: 2rem;
-  background: #fff;
+  background: var(--secondary-color);
   margin: 2rem auto;
   max-width: 900px;
   border-radius: 8px;
@@ -65,7 +72,7 @@ nav a:hover {
 }
 .areas-list span {
   background: var(--primary-color);
-  color: #fff;
+  color: var(--button-text-color);
   padding: 0.4rem 0.8rem;
   border-radius: 4px;
   font-size: 1rem;
@@ -86,13 +93,13 @@ nav a:hover {
   transition: background 0.2s;
 }
 .floating-quote-btn:hover {
-  background: #003a7a;
+  background: var(--button-hover-color, #003a7a);
 }
 .quote-modal {
   position: fixed;
   right: 2rem;
   bottom: 5rem;
-  background: #fff;
+  background: var(--secondary-color);
   border-radius: 8px;
   box-shadow: 0 2px 16px rgba(0,0,0,0.15);
   padding: 1.5rem;
@@ -112,7 +119,7 @@ nav a:hover {
   font-size: 1rem;
   padding: 0.5rem;
   border-radius: 4px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color, #ccc);
 }
 .quote-modal button {
   background: var(--button-color);
@@ -125,7 +132,7 @@ nav a:hover {
   transition: background 0.2s;
 }
 .quote-modal button:disabled {
-  background: #ccc;
+  background: var(--disabled-color, #ccc);
   cursor: not-allowed;
 }
 .cookie-consent {
@@ -145,7 +152,7 @@ nav a:hover {
 }
 footer {
   background: var(--primary-color);
-  color: #fff;
+  color: var(--button-text-color);
   text-align: center;
   padding: 1rem 0;
   margin-top: 2rem;

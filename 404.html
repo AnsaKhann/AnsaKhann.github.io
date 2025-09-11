@@ -6,13 +6,13 @@
   <meta name="description" content="Page Not Found - Ask Appliance Repairs Ltd">
   <title>Page Not Found | Ask Appliance Repairs Ltd</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="canonical" href="https://askappliancerepairsltd.co.uk/404.html">
+  <link rel="canonical" href="https://askappliancerepairs.com/404.html">
 </head>
 <body class="not-found">
   <header>
-    <h1>Ask appliance repairs ltd</h1>
+    <h1 id="company-name">Ask appliance repairs ltd</h1>
     <nav>
-      <a href="home.html">Home</a>
+      <a href="index.html">Home</a>
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms of Service</a>
     </nav>
@@ -20,15 +20,18 @@
   <main class="section">
     <h2 id="notfound-title"></h2>
     <p id="notfound-message"></p>
-    <a href="home.html" class="floating-quote-btn" style="position:static;display:inline-block;">Go to Home Page</a>
+    <a href="index.html" class="floating-quote-btn" style="position:static;display:inline-block;" id="home-link">Go to Home Page</a>
   </main>
   <footer>
-    &copy; 2025 Ask appliance repairs ltd. All rights reserved.
+    &copy; 2025 <span id="footer-company-name">Ask appliance repairs ltd</span>. All rights reserved.
   </footer>
   <script type="module">
     import AppConstants from './AppConstants.js';
+    document.getElementById('company-name').textContent = AppConstants.COMPANY_NAME;
     document.getElementById('notfound-title').textContent = AppConstants.NOT_FOUND_TITLE;
     document.getElementById('notfound-message').textContent = AppConstants.NOT_FOUND_MESSAGE;
+    document.getElementById('home-link').textContent = AppConstants.NOT_FOUND_HOME;
+    document.getElementById('footer-company-name').textContent = AppConstants.COMPANY_NAME;
   </script>
 </body>
 </html>

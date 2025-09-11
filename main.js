@@ -116,6 +116,59 @@ function setupQuoteButton() {
   };
 }
 
+// Company Information
+function setCompanyInfo() {
+  // Set company name in header if not already set
+  const companyNameEl = document.getElementById('company-name');
+  if (companyNameEl && !companyNameEl.textContent.trim()) {
+    companyNameEl.textContent = AppConstants.COMPANY_NAME;
+  }
+  
+  // Set footer company name if not already set
+  const footerCompanyEl = document.getElementById('footer-company-name');
+  if (footerCompanyEl && !footerCompanyEl.textContent.trim()) {
+    footerCompanyEl.textContent = AppConstants.COMPANY_NAME;
+  }
+  
+  // Set company info link if not already set
+  const companyInfoLink = document.getElementById('company-info-link');
+  if (companyInfoLink && !companyInfoLink.href.includes(AppConstants.COMPANY_NUMBER)) {
+    companyInfoLink.href = AppConstants.COMPANY_INFO_URL;
+  }
+}
+
+// Set Image Sources from AppConstants
+function setImageSources() {
+  // Set logo image source
+  const logoImage = document.getElementById('logo-image');
+  if (logoImage) {
+    logoImage.src = AppConstants.LOGO_PATH;
+  }
+  
+  // Set service image source
+  const serviceImage = document.getElementById('service-image');
+  if (serviceImage) {
+    serviceImage.src = AppConstants.SERVICE_IMAGE;
+  }
+}
+
+// CSS Variables from AppConstants
+function setCSSVariables() {
+  const root = document.documentElement;
+  root.style.setProperty('--primary-color', AppConstants.PRIMARY_COLOR);
+  root.style.setProperty('--secondary-color', AppConstants.SECONDARY_COLOR);
+  root.style.setProperty('--text-color', AppConstants.TEXT_COLOR);
+  root.style.setProperty('--button-color', AppConstants.BUTTON_COLOR);
+  root.style.setProperty('--button-text-color', AppConstants.BUTTON_TEXT_COLOR);
+  root.style.setProperty('--button-hover-color', AppConstants.BUTTON_HOVER_COLOR);
+  root.style.setProperty('--cookie-bg', AppConstants.COOKIE_BG);
+  root.style.setProperty('--cookie-text', AppConstants.COOKIE_TEXT);
+  root.style.setProperty('--accent-color', AppConstants.ACCENT_COLOR);
+  root.style.setProperty('--border-color', AppConstants.BORDER_COLOR);
+  root.style.setProperty('--disabled-color', AppConstants.DISABLED_COLOR);
+  root.style.setProperty('--link-color', AppConstants.LINK_COLOR);
+}
+
 // 404 Page
 function setup404() {
   if (document.body.classList.contains('not-found')) {
@@ -125,7 +178,10 @@ function setup404() {
 
 // Init
 window.addEventListener('DOMContentLoaded', () => {
+  setCSSVariables();
   setSEOTags();
+  setCompanyInfo();
+  setImageSources();
   showCookieConsent();
   renderAreas();
   setupQuoteButton();

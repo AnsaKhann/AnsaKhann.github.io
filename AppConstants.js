@@ -7,16 +7,21 @@ const AppConstants = {
   COMPANY_NAME: "Ask appliance repairs ltd",
   COMPANY_NUMBER: "16560507",
   COMPANY_PHONE: "+44 7340 002079",
-  COMPANY_INFO_URL: "https://find-and-update.company-information.service.gov.uk/company/16560507",
+  COMPANY_INFO_URL: "https://askappliancerepairs.com/",
 
   // Colors
-  PRIMARY_COLOR: "#660033", // red
+  PRIMARY_COLOR: "#000066", // dark blue
   SECONDARY_COLOR: "#f5f5f5",
   TEXT_COLOR: "#222",
   BUTTON_COLOR: "#0057b8",
   BUTTON_TEXT_COLOR: "#fff",
+  BUTTON_HOVER_COLOR: "#003a7a",
   COOKIE_BG: "#222",
   COOKIE_TEXT: "#fff",
+  ACCENT_COLOR: "#ffd700",
+  BORDER_COLOR: "#ccc",
+  DISABLED_COLOR: "#ccc",
+  LINK_COLOR: "#0d57cf",
 
   // Images
   LOGO_PATH: "images/logo.png",
@@ -28,7 +33,7 @@ const AppConstants = {
   SEO_TITLE: "Ask Appliance Repairs Ltd | London Appliance Repair Experts",
   SEO_DESCRIPTION: "Professional appliance repairs in London. Fast, reliable, and affordable service for washing machines, ovens, fridges, and more. Get a quote today!",
   SEO_KEYWORDS: "appliance repair, London, washing machine, oven, fridge, dishwasher, same day service, emergency repair",
-  SEO_CANONICAL: "https://askappliancerepairsltd.co.uk/",
+  SEO_CANONICAL: "https://askappliancerepairs.com/",
   SEO_OG_IMAGE: "images/og-image.jpg",
   SEO_TWITTER_IMAGE: "images/twitter-image.jpg",
 

@@ -6,13 +6,13 @@
   <meta name="description" content="Terms of Service for Ask Appliance Repairs Ltd">
   <title>Terms of Service | Ask Appliance Repairs Ltd</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="canonical" href="https://askappliancerepairsltd.co.uk/terms.html">
+  <link rel="canonical" href="https://askappliancerepairs.com/terms.html">
 </head>
 <body>
   <header>
-    <h1>Ask appliance repairs ltd</h1>
+    <h1 id="company-name">Ask appliance repairs ltd</h1>
     <nav>
-      <a href="home.html">Home</a>
+      <a href="index.html">Home</a>
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms of Service</a>
     </nav>
@@ -22,12 +22,14 @@
     <p id="terms-content"></p>
   </main>
   <footer>
-    &copy; 2025 Ask appliance repairs ltd. All rights reserved.
+    &copy; 2025 <span id="footer-company-name">Ask appliance repairs ltd</span>. All rights reserved.
   </footer>
   <script type="module">
     import AppConstants from './AppConstants.js';
+    document.getElementById('company-name').textContent = AppConstants.COMPANY_NAME;
     document.getElementById('terms-title').textContent = AppConstants.TERMS_TITLE;
     document.getElementById('terms-content').textContent = AppConstants.TERMS_CONTENT;
+    document.getElementById('footer-company-name').textContent = AppConstants.COMPANY_NAME;
   </script>
 </body>
 </html>
