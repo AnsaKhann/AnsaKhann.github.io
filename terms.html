@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Terms of Service for Ask Appliance Repairs Ltd">
+  <title>Terms of Service | Ask Appliance Repairs Ltd</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="canonical" href="https://askappliancerepairsltd.co.uk/terms.html">
+</head>
+<body>
+  <header>
+    <h1>Ask appliance repairs ltd</h1>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </nav>
+  </header>
+  <main class="section">
+    <h2 id="terms-title"></h2>
+    <p id="terms-content"></p>
+  </main>
+  <footer>
+    &copy; 2025 Ask appliance repairs ltd. All rights reserved.
+  </footer>
+  <script type="module">
+    import AppConstants from './AppConstants.js';
+    document.getElementById('terms-title').textContent = AppConstants.TERMS_TITLE;
+    document.getElementById('terms-content').textContent = AppConstants.TERMS_CONTENT;
+  </script>
+</body>
+</html>

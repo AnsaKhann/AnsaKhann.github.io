@@ -1,0 +1,168 @@
+/* style.css - Main stylesheet for Ask Appliance Repairs Ltd */
+:root {
+  --primary-color: #0057b8;
+  --secondary-color: #f5f5f5;
+  --text-color: #222;
+  --button-color: #0057b8;
+  --button-text-color: #fff;
+}
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: var(--secondary-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+header {
+  background: var(--primary-color);
+  color: #fff;
+  padding: 1rem 0;
+  text-align: center;
+}
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  background: var(--primary-color);
+  padding-bottom: 0.5rem;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+nav a:hover {
+  color: #ffd700;
+}
+.hero {
+  background: url('images/hero.jpg') center/cover no-repeat;
+  padding: 4rem 2rem;
+  text-align: center;
+  color: #fff;
+}
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+.section {
+  padding: 2rem;
+  background: #fff;
+  margin: 2rem auto;
+  max-width: 900px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.areas-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.areas-list span {
+  background: var(--primary-color);
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+.floating-quote-btn {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  background: var(--button-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: 50px;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  cursor: pointer;
+  z-index: 1000;
+  transition: background 0.2s;
+}
+.floating-quote-btn:hover {
+  background: #003a7a;
+}
+.quote-modal {
+  position: fixed;
+  right: 2rem;
+  bottom: 5rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.15);
+  padding: 1.5rem;
+  width: 320px;
+  z-index: 1001;
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+}
+.quote-modal.active {
+  display: flex;
+}
+.quote-modal textarea {
+  width: 100%;
+  min-height: 80px;
+  resize: vertical;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+.quote-modal button {
+  background: var(--button-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: 4px;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.quote-modal button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+.cookie-consent {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: var(--cookie-bg, #222);
+  color: var(--cookie-text, #fff);
+  padding: 1rem;
+  text-align: center;
+  z-index: 2000;
+  display: none;
+}
+.cookie-consent.active {
+  display: block;
+}
+footer {
+  background: var(--primary-color);
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 2rem;
+}
+@media (max-width: 600px) {
+  .section {
+    padding: 1rem;
+    margin: 1rem;
+  }
+  .quote-modal {
+    width: 95vw;
+    right: 2.5vw;
+  }
+  .floating-quote-btn {
+    right: 1rem;
+    bottom: 1rem;
+    padding: 0.7rem 1.2rem;
+    font-size: 1rem;
+  }
+}
