@@ -10,7 +10,7 @@ const AppConstants = {
   COMPANY_INFO_URL: "https://find-and-update.company-information.service.gov.uk/company/16560507",
 
   // Colors
-  PRIMARY_COLOR: "#000959", // Blue
+  PRIMARY_COLOR: "#660033", // red
   SECONDARY_COLOR: "#f5f5f5",
   TEXT_COLOR: "#222",
   BUTTON_COLOR: "#0057b8",
