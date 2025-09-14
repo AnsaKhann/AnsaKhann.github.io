@@ -23,7 +23,7 @@ const AppConstants = {
         AUTHOR: "Ask Appliance Repairs Ltd",
         OG_TITLE: "Professional Appliance Repairs London | Ask Appliance Repairs Ltd",
         OG_DESCRIPTION: "Expert appliance repair services across London. Fast, reliable repairs for washing machines, dishwashers, ovens, and more.",
-        OG_IMAGE: "/images/og-image.jpg"
+        OG_IMAGE: "https://askappliancerepairs.com/images/og-image.jpg"
     },
     
     // Navigation Menu
@@ -41,7 +41,7 @@ const AppConstants = {
     HOMEPAGE: {
         HERO_TITLE: "Professional Appliance Repairs in London",
         HERO_SUBTITLE: "Fast, reliable, and affordable repair services for all your home appliances",
-        HERO_CTA: "Get Free Quote",
+        HERO_CTA: "Book a Repair",
         SERVICES_TITLE: "Our Services",
         SERVICES_SUBTITLE: "We repair all major household appliances",
         ABOUT_TITLE: "Why Choose Us?",
@@ -88,14 +88,14 @@ const AppConstants = {
     // Contact Information
     CONTACT: {
         PHONE: "+44 7340 002079",
-        EMAIL: "info@askappliancerepairs.co.uk",
+        EMAIL: "info@askappliancerepairs.com",
         ADDRESS: "London, United Kingdom",
         HOURS: "Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 4:00 PM<br>Sunday: Emergency calls only"
     },
     
     // Quote Modal
     QUOTE_MODAL: {
-        TITLE: "Get Your Free Quote",
+        TITLE: "Book a Repair",
         DESCRIPTION: "Please explain the problem you are facing",
         PLACEHOLDER: "Describe the issue with your appliance...",
         SEND_BUTTON: "Send via WhatsApp",

@@ -126,7 +126,7 @@ Replace placeholder images in the `/images/` directory:
 - **Company**: Ask Appliance Repairs Ltd
 - **Registration**: 16560507
 - **Phone**: +44 7340 002079
-- **Email**: info@askappliancerepairs.co.uk
+- **Email**: info@askappliancerepairs.com
 - **Service Area**: All London postcodes
 
 ## License
@@ -136,5 +136,5 @@ Replace placeholder images in the `/images/` directory:
 ## Support
 
 For technical support or questions about this website, please contact:
-- Email: info@askappliancerepairs.co.uk
+- Email: info@askappliancerepairs.com
 - Phone: +44 7340 002079
