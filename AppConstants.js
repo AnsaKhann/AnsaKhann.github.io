@@ -115,7 +115,7 @@ const AppConstants = {
     // Privacy Policy Content
     PRIVACY: {
         TITLE: "Privacy Policy",
-        LAST_UPDATED: "Last updated: December 2024",
+        LAST_UPDATED: "Last updated: September 2025",
         SECTIONS: {
             INTRODUCTION: "This Privacy Policy describes how Ask Appliance Repairs Ltd collects, uses, and protects your personal information.",
             DATA_COLLECTION: "We collect information you provide directly to us, such as when you contact us for services.",
@@ -131,7 +131,7 @@ const AppConstants = {
     // Terms of Service Content
     TERMS: {
         TITLE: "Terms of Service",
-        LAST_UPDATED: "Last updated: December 2024",
+        LAST_UPDATED: "Last updated: September 2025",
         SECTIONS: {
             ACCEPTANCE: "By using our services, you agree to be bound by these Terms of Service.",
             SERVICES: "We provide appliance repair services as described on our website.",

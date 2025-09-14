@@ -131,7 +131,7 @@ Replace placeholder images in the `/images/` directory:
 
 ## License
 
-© 2024 Ask Appliance Repairs Ltd. All rights reserved.
+© 2025 Ask Appliance Repairs Ltd. All rights reserved.
 
 ## Support
 
