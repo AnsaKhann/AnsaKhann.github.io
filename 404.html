@@ -1,37 +1,330 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Page Not Found - Ask Appliance Repairs Ltd">
-  <title>Page Not Found | Ask Appliance Repairs Ltd</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="canonical" href="https://askappliancerepairs.com/404.html">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- SEO Meta Tags -->
+    <title>Page Not Found | Ask Appliance Repairs Ltd</title>
+    <meta name="description" content="The page you are looking for could not be found. Return to Ask Appliance Repairs Ltd homepage for professional appliance repair services in London.">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "404 - Page Not Found",
+        "description": "The requested page could not be found",
+        "url": "https://askappliancerepairs.co.uk/404.html",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "Ask Appliance Repairs Ltd",
+            "url": "https://askappliancerepairs.co.uk"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Ask Appliance Repairs Ltd",
+            "url": "https://askappliancerepairs.co.uk"
+        }
+    }
+    </script>
 </head>
-<body class="not-found">
-  <header>
-    <h1 id="company-name">Ask appliance repairs ltd</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
-    </nav>
-  </header>
-  <main class="section">
-    <h2 id="notfound-title"></h2>
-    <p id="notfound-message"></p>
-    <a href="index.html" class="floating-quote-btn" style="position:static;display:inline-block;" id="home-link">Go to Home Page</a>
-  </main>
-  <footer>
-    &copy; 2025 <span id="footer-company-name">Ask appliance repairs ltd</span>. All rights reserved.
-  </footer>
-  <script type="module">
-    import AppConstants from './AppConstants.js';
-    document.getElementById('company-name').textContent = AppConstants.COMPANY_NAME;
-    document.getElementById('notfound-title').textContent = AppConstants.NOT_FOUND_TITLE;
-    document.getElementById('notfound-message').textContent = AppConstants.NOT_FOUND_MESSAGE;
-    document.getElementById('home-link').textContent = AppConstants.NOT_FOUND_HOME;
-    document.getElementById('footer-company-name').textContent = AppConstants.COMPANY_NAME;
-  </script>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-brand">
+                    <a href="/" class="logo">
+                        <img src="/images/logo.png" alt="Ask Appliance Repairs Ltd" class="logo-img">
+                        <span class="logo-text">Ask Appliance Repairs</span>
+                    </a>
+                </div>
+                <div class="nav-menu" id="nav-menu">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="/" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/#services" class="nav-link">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/#areas" class="nav-link">Areas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/#about" class="nav-link">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/#contact" class="nav-link">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav-toggle" id="nav-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main style="margin-top: 80px; min-height: calc(100vh - 160px); display: flex; align-items: center;">
+        <div class="container">
+            <div class="error-content">
+                <div class="error-illustration">
+                    <div class="error-number">404</div>
+                    <div class="error-icon">🔧</div>
+                </div>
+                
+                <h1 class="error-title">Page Not Found</h1>
+                <p class="error-message">Sorry, the page you are looking for does not exist or has been moved.</p>
+                
+                <div class="error-suggestions">
+                    <h3>Here are some helpful links:</h3>
+                    <div class="suggestion-links">
+                        <a href="/" class="btn btn-primary">Go to Homepage</a>
+                        <a href="/#services" class="btn btn-outline">Our Services</a>
+                        <a href="/#contact" class="btn btn-outline">Contact Us</a>
+                    </div>
+                </div>
+                
+                <div class="error-help">
+                    <h3>Need Help?</h3>
+                    <p>If you're looking for appliance repair services, we're here to help!</p>
+                    <div class="contact-quick">
+                        <p><strong>Phone:</strong> +44 7340 002079</p>
+                        <p><strong>Email:</strong> info@askappliancerepairs.co.uk</p>
+                    </div>
+                </div>
+                
+                <div class="popular-pages">
+                    <h3>Popular Pages</h3>
+                    <ul class="popular-links">
+                        <li><a href="/#services">Appliance Repair Services</a></li>
+                        <li><a href="/#areas">Areas We Cover in London</a></li>
+                        <li><a href="/#about">About Our Company</a></li>
+                        <li><a href="/privacy.html">Privacy Policy</a></li>
+                        <li><a href="/terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Ask Appliance Repairs Ltd</h3>
+                    <p>Professional appliance repair services across London</p>
+                    <p>Company Registration: 16560507</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/#services">Services</a></li>
+                        <li><a href="/#areas">Areas</a></li>
+                        <li><a href="/#about">About</a></li>
+                        <li><a href="/#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>Phone: +44 7340 002079</p>
+                    <p>Email: info@askappliancerepairs.co.uk</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Ask Appliance Repairs Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="AppConstants.js"></script>
+    <script src="main.js"></script>
+
+    <style>
+        .error-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .error-illustration {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .error-number {
+            font-size: 8rem;
+            font-weight: 700;
+            color: #000066;
+            line-height: 1;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 102, 0.1);
+        }
+
+        .error-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .error-title {
+            font-size: 2.5rem;
+            color: #000066;
+            margin-bottom: 1rem;
+        }
+
+        .error-message {
+            font-size: 1.2rem;
+            color: #666666;
+            margin-bottom: 2rem;
+        }
+
+        .error-suggestions {
+            margin-bottom: 3rem;
+        }
+
+        .error-suggestions h3 {
+            color: #000066;
+            margin-bottom: 1rem;
+        }
+
+        .suggestion-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .error-help {
+            background-color: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .error-help h3 {
+            color: #000066;
+            margin-bottom: 1rem;
+        }
+
+        .contact-quick {
+            margin-top: 1rem;
+        }
+
+        .contact-quick p {
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .popular-pages {
+            text-align: left;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .popular-pages h3 {
+            color: #000066;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .popular-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .popular-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .popular-links a {
+            color: #000066;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            display: block;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+        }
+
+        .popular-links a:hover {
+            background-color: #f0f0f0;
+        }
+
+        @media (max-width: 768px) {
+            .error-number {
+                font-size: 6rem;
+            }
+
+            .error-title {
+                font-size: 2rem;
+            }
+
+            .error-message {
+                font-size: 1.1rem;
+            }
+
+            .suggestion-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .suggestion-links .btn {
+                width: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .error-number {
+                font-size: 4rem;
+            }
+
+            .error-title {
+                font-size: 1.8rem;
+            }
+
+            .error-icon {
+                font-size: 3rem;
+            }
+        }
+    </style>
 </body>
 </html>
