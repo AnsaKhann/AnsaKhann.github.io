@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Disallow common non-content paths (none for this static site)
+
+Sitemap: https://askappliancerepairs.com/sitemap.xml
+Host: askappliancerepairs.com
+

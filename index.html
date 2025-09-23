@@ -37,12 +37,17 @@
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://askappliancerepairs.com">
+    <link rel="alternate" href="https://askappliancerepairs.com/" hreflang="en-gb">
+    <link rel="alternate" href="https://askappliancerepairs.com/" hreflang="x-default">
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    
+    <!-- Preload critical hero image for faster LCP -->
+    <link rel="preload" as="image" href="/images/hero-bg.jpg" fetchpriority="high">
     
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,39 +61,57 @@
     
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
-    {
+    [
+      {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": "Ask Appliance Repairs Ltd",
         "description": "Professional appliance repair services across London",
         "url": "https://askappliancerepairs.com",
+        "logo": "https://askappliancerepairs.com/images/logo.png",
         "telephone": "+44 7340 002079",
         "email": "info@askappliancerepairs.com",
         "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "London",
-            "addressCountry": "GB"
+          "@type": "PostalAddress",
+          "addressLocality": "London",
+          "addressCountry": "GB"
         },
         "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": "51.5074",
-            "longitude": "-0.1278"
-        },
-        "openingHours": "Mo-Fr 08:00-18:00,Sa 09:00-16:00",
-        "priceRange": "££",
-        "serviceArea": {
-            "@type": "GeoCircle",
-            "geoMidpoint": {
-                "@type": "GeoCoordinates",
-                "latitude": "51.5074",
-                "longitude": "-0.1278"
-            },
-            "geoRadius": "50000"
+          "@type": "GeoCoordinates",
+          "latitude": "51.5285262",
+          "longitude": "-0.2663997"
         },
         "sameAs": [
-            "https://find-and-update.company-information.service.gov.uk/company/16560507"
-        ]
-    }
+          "https://www.facebook.com/profile.php?id=61579752051611"
+        ],
+        "openingHours": "Mo-Fr 08:00-18:00,Sa 09:00-16:00",
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "08:00",
+            "closes": "18:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Saturday"],
+            "opens": "09:00",
+            "closes": "16:00"
+          }
+        ],
+        "priceRange": "££",
+        "areaServed": {
+          "@type": "City",
+          "name": "London"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Ask Appliance Repairs Ltd",
+        "url": "https://askappliancerepairs.com"
+      }
+    ]
     </script>
 </head>
 <body>
@@ -110,7 +133,7 @@
             <div class="container">
                 <div class="nav-brand">
                     <a href="/" class="logo">
-                        <img src="/images/logo.png" alt="Ask Appliance Repairs Ltd" class="logo-img">
+                        <img src="/images/logo.png" alt="Ask Appliance Repairs Ltd" class="logo-img" width="1024" height="1024" decoding="async">
                         <span class="logo-text">Ask Appliance Repairs</span>
                     </a>
                 </div>
@@ -171,6 +194,38 @@
                 <div class="services-grid" id="services-grid">
                     <!-- Services will be populated by JavaScript -->
                 </div>
+                <noscript>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <h3 class="service-title">Washing Machine Repairs</h3>
+                            <p class="service-description">Professional washing machine repairs and maintenance.</p>
+                        </div>
+                        <div class="service-card">
+                            <h3 class="service-title">Dishwasher Repairs</h3>
+                            <p class="service-description">Expert dishwasher repair services.</p>
+                        </div>
+                        <div class="service-card">
+                            <h3 class="service-title">Oven & Cooker Repairs</h3>
+                            <p class="service-description">Oven and cooker repair specialists.</p>
+                        </div>
+                        <div class="service-card">
+                            <h3 class="service-title">Fridge & Freezer Repairs</h3>
+                            <p class="service-description">Fridge and freezer repair services.</p>
+                        </div>
+                        <div class="service-card">
+                            <h3 class="service-title">Tumble Dryer Repairs</h3>
+                            <p class="service-description">Tumble dryer repair and maintenance.</p>
+                        </div>
+                        <div class="service-card">
+                            <h3 class="service-title">Microwave Repairs</h3>
+                            <p class="service-description">Microwave repair specialists.</p>
+                        </div>
+                        <div class="service-card">
+                            <h3 class="service-title">Hob & Cooktop Repairs</h3>
+                            <p class="service-description">Hob and cooktop repair services.</p>
+                        </div>
+                    </div>
+                </noscript>
             </div>
         </section>
 
@@ -185,6 +240,9 @@
                     <div class="postcodes-grid" id="postcodes-grid">
                         <!-- Postcodes will be populated by JavaScript -->
                     </div>
+                    <noscript>
+                        <p>We cover all London postcodes including E, N, NW, SE, SW, W, WC, and EC areas.</p>
+                    </noscript>
                 </div>
             </div>
         </section>
@@ -201,7 +259,7 @@
                         </div>
                     </div>
                     <div class="about-image">
-                        <img src="/images/about-image.jpg" alt="Professional appliance repair technician" class="about-img">
+                        <img src="/images/about-image.jpg" alt="Professional appliance repair technician" class="about-img" loading="lazy" decoding="async" width="1024" height="1024">
                     </div>
                 </div>
             </div>
@@ -218,11 +276,11 @@
                     <div class="contact-info">
                         <div class="contact-item">
                             <h3>Phone</h3>
-                            <p>+44 7340 002079</p>
+                            <p><a href="tel:+447340002079">+44 7340 002079</a></p>
                         </div>
                         <div class="contact-item">
                             <h3>Email</h3>
-                            <p>info@askappliancerepairs.com</p>
+                            <p><a href="mailto:info@askappliancerepairs.com">info@askappliancerepairs.com</a></p>
                         </div>
                         <div class="contact-item">
                             <h3>Service Hours</h3>
@@ -264,12 +322,14 @@
                 </div>
                 <div class="footer-section">
                     <h4>Contact Info</h4>
-                    <p>Phone: +44 7340 002079</p>
-                    <p>Email: info@askappliancerepairs.com</p>
+                    <p>Phone: <a href="tel:+447340002079">+44 7340 002079</a></p>
+                    <p>Email: <a href="mailto:info@askappliancerepairs.com">info@askappliancerepairs.com</a></p>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 Ask Appliance Repairs Ltd. All rights reserved.</p>
+            </br>
+                <p>Website developed by <a href="https://fintaxtech.co.uk">Fintaxtech Ltd.</a></p>
             </div>
         </div>
     </footer>
