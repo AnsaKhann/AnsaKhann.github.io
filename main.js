@@ -171,6 +171,9 @@ class AppView {
                 this.controller.openQuoteModal();
             });
         }
+
+        // Postcode search functionality
+        this.setupPostcodeSearch();
     }
 
     // Single Responsibility: Render services
@@ -392,6 +395,63 @@ class AppView {
             cookieBanner.style.display = 'none';
         }
     }
+
+    // Single Responsibility: Setup postcode search functionality
+    setupPostcodeSearch() {
+        const searchInput = document.getElementById('postcode-search');
+        const searchBtn = document.getElementById('postcode-search-btn');
+        const resultDiv = document.getElementById('postcode-result');
+
+        if (!searchInput || !searchBtn || !resultDiv) return;
+
+        // Search button click event
+        searchBtn.addEventListener('click', () => {
+            this.controller.searchPostcode();
+        });
+
+        // Enter key press event
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                this.controller.searchPostcode();
+            }
+        });
+
+        // Clear result when user starts typing
+        searchInput.addEventListener('input', () => {
+            this.clearPostcodeResult();
+        });
+    }
+
+    // Single Responsibility: Display postcode search result
+    showPostcodeResult(isCovered, postcode) {
+        const resultDiv = document.getElementById('postcode-result');
+        if (!resultDiv) return;
+
+        resultDiv.className = 'postcode-result';
+        
+        if (isCovered) {
+            resultDiv.classList.add('success');
+            resultDiv.innerHTML = `
+                <div class="result-icon">✓</div>
+                <div class="result-text">We cover your area</div>
+            `;
+        } else {
+            resultDiv.classList.add('error');
+            resultDiv.innerHTML = `
+                <div class="result-icon">✗</div>
+                <div class="result-text">Unfortunately, we do not cover your area</div>
+            `;
+        }
+    }
+
+    // Single Responsibility: Clear postcode search result
+    clearPostcodeResult() {
+        const resultDiv = document.getElementById('postcode-result');
+        if (resultDiv) {
+            resultDiv.innerHTML = '';
+            resultDiv.className = 'postcode-result';
+        }
+    }
 }
 
 // Controller - Business logic and coordination
@@ -531,6 +591,27 @@ class AppController {
             timestamp: new Date().toISOString()
         });
         this.view.hideCookieBanner();
+    }
+
+    // Single Responsibility: Search postcode
+    searchPostcode() {
+        const searchInput = document.getElementById('postcode-search');
+        if (!searchInput) return;
+
+        const userInput = searchInput.value.trim().toUpperCase();
+        
+        if (!userInput) {
+            alert('Please enter a postcode to search.');
+            return;
+        }
+
+        // Check if the input starts with any of the London postcodes
+        const isCovered = this.model.postcodes.some(postcode => 
+            userInput.startsWith(postcode)
+        );
+
+        // Display result
+        this.view.showPostcodeResult(isCovered, userInput);
     }
 }
 

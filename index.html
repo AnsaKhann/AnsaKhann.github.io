@@ -236,13 +236,12 @@
                     <h2 class="section-title" id="areas-title">Areas We Cover in London</h2>
                     <p class="section-subtitle" id="areas-subtitle">We provide services across all London postcodes</p>
                 </div>
-                <div class="postcodes-container">
-                    <div class="postcodes-grid" id="postcodes-grid">
-                        <!-- Postcodes will be populated by JavaScript -->
+                <div class="postcode-search-container">
+                    <div class="search-input-group">
+                        <input type="text" id="postcode-search" class="postcode-search-input" placeholder="Enter your area postcode" maxlength="10">
+                        <button id="postcode-search-btn" class="btn btn-primary postcode-search-btn">Search</button>
                     </div>
-                    <noscript>
-                        <p>We cover all London postcodes including E, N, NW, SE, SW, W, WC, and EC areas.</p>
-                    </noscript>
+                    <div id="postcode-result" class="postcode-result"></div>
                 </div>
             </div>
         </section>
