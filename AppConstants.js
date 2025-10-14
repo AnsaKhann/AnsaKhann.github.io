@@ -124,7 +124,6 @@ const AppConstants = {
             "Fully qualified engineers",
             "All work guaranteed",
             "Competitive pricing",
-            "No call-out charges for repairs"
         ]
     },
     
