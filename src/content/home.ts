@@ -84,7 +84,7 @@ export interface HomeContent {
 export const homeContent: HomeContent = {
   hero: {
     badge: "London & Surrey Domestic Appliance Specialists",
-    headline: "Fast, Reliable Appliance Repairs With Upfront Pricing",
+    headline: "Fast, Reliable Appliance Repairs With Pricing",
     highlightWord: "From £75",
     subheadline: "Five years of trusted domestic appliance repair across London. We diagnose and repair cookers, tumble dryers, washing machines, and dishwashers with clear, honest pricing.",
     primaryCta: "Book an Engineer",
@@ -122,7 +122,7 @@ export const homeContent: HomeContent = {
   ],
   pricingSection: {
     badge: "Transparent Pricing",
-    title: "Clear, Upfront Pricing for Your Appliance Repair",
+    title: "Clear Pricing for Your Appliance Repair",
     subtitle: "Inspired by honest local engineering. We quote clearly before any repair work commences, with no hidden call-out shocks.",
     diagnosticNote: "Every standard visit includes comprehensive on-site fault diagnosis and labour for approved repairs. If specialist parts are required, we provide an exact price before proceeding.",
     transparentPromise: "No hidden charges. Clear quotes before any work proceeds."
@@ -155,8 +155,8 @@ export const homeContent: HomeContent = {
       },
       {
         stepNumber: "02",
-        title: "Upfront Price & Arrival Slot",
-        description: "We provide an upfront quote starting from £75 and book a convenient arrival slot between 8:00 AM and 8:00 PM."
+        title: "Price & Arrival Slot",
+        description: "We provide a quote starting from £75 and book a convenient arrival slot between 8:00 AM and 8:00 PM."
       },
       {
         stepNumber: "03",
@@ -178,7 +178,7 @@ export const homeContent: HomeContent = {
     pillars: [
       {
         badge: "01",
-        title: "Transparent & Upfront",
+        title: "Transparent Price",
         description: "We explain costs before starting work. Starting from £75, with no hidden add-ons."
       },
       {

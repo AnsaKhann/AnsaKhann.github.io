@@ -30,7 +30,7 @@
 | 4 | Canonicals | Coherent absolute canonical per page | **PASS** | Verified `<link rel="canonical" href="https://askappliancerepairs.com">` |
 | 5 | Titles | Distinct descriptive title from content | **PASS** | "Ask Appliance Repairs Ltd \| Appliance Repairs London & Surrey from £75" |
 | 6 | Descriptions | Accurate page-specific description | **PASS** | Verified in `<meta name="description">` |
-| 7 | H1 | One clear semantic H1 per page | **PASS** | Single H1 in hero: "Fast, Reliable Appliance Repairs With Upfront Pricing From £75" |
+| 7 | H1 | One clear semantic H1 per page | **PASS** | Single H1 in hero: "Fast, Reliable Appliance Repairs With Pricing From £75" |
 | 8 | Heading hierarchy | Proper nesting H1 -> H2 -> H3 | **PASS** | Hero (H1) -> Sections (H2: Pricing, Services, Process, Coverage, About, Reviews, CTA) -> Cards (H3) |
 | 9 | Image alternatives | Meaningful alt for informative images | **PASS** | Logo and service images have descriptive alt attributes; decorative icons use `aria-hidden="true"` |
 | 10 | Structured data | Valid LocalBusiness JSON-LD schema matching visible text | **PASS** | Verified in HTML `<script type="application/ld+json">` with HomeAndConstructionBusiness schema |

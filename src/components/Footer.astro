@@ -29,6 +29,20 @@ import { brandAssets } from '../content/assets';
         <p class="footer-reg">
           {footerContent.registrationNotice}
         </p>
+
+        <a
+          href={businessInfo.facebookUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="footer-social-link"
+          aria-label={`Visit ${businessInfo.name} on Facebook (opens in a new tab)`}
+        >
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+            <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 6.025 4.388 11.018 10.125 11.927v-8.437H7.078v-3.49h3.047V9.413c0-3.026 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.931-1.956 1.887v2.264h3.328l-.532 3.49h-2.796V24C19.612 23.091 24 18.098 24 12.073z" />
+          </svg>
+          <span>{footerContent.facebookLinkText}</span>
+          <span aria-hidden="true">↗</span>
+        </a>
       </div>
 
       <!-- Column 2: Navigation Links -->
@@ -107,6 +121,18 @@ import { brandAssets } from '../content/assets';
       <p class="footer-copyright">
         {footerContent.copyright}
       </p>
+
+      <p class="footer-credit">
+        {footerContent.creatorLabel}{' '}
+        <a
+          href={footerContent.creatorUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="footer-legal-link"
+        >
+          {footerContent.creatorName}
+        </a>
+      </p>
     </div>
   </div>
 </footer>
@@ -168,6 +194,27 @@ import { brandAssets } from '../content/assets';
   .footer-reg {
     font-size: var(--font-size-xs);
     color: #9BB3C7;
+  }
+
+  .footer-social-link {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    gap: var(--space-2);
+    min-height: 44px;
+    color: var(--color-brand-mist);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    text-decoration: none;
+  }
+
+  .footer-social-link svg {
+    flex-shrink: 0;
+  }
+
+  .footer-social-link:hover {
+    color: var(--color-white);
+    text-decoration: underline;
   }
 
   .footer-heading {
@@ -258,7 +305,7 @@ import { brandAssets } from '../content/assets';
     text-decoration: underline;
   }
 
-  .footer-copyright {
+  .footer-copyright, .footer-credit {
     font-size: var(--font-size-xs);
     color: #9BB3C7;
   }

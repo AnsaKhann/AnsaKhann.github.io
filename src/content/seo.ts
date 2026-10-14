@@ -27,6 +27,7 @@ export function generateLocalBusinessSchema(): Record<string, unknown> {
     "name": businessInfo.name,
     "legalName": businessInfo.legalName,
     "url": "https://askappliancerepairs.com",
+    "sameAs": [businessInfo.facebookUrl],
     "telephone": businessInfo.phone,
     "email": businessInfo.email,
     "priceRange": "From £75",

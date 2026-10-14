@@ -7,6 +7,7 @@ export interface BusinessInfo {
   email: string;
   whatsappNumber: string;
   whatsappUrl: string;
+  facebookUrl: string;
   openingHours: string;
   openingHoursShort: string;
   openingHoursSchema: string[];
@@ -36,6 +37,10 @@ export interface FooterContent {
   registrationNotice: string;
   disclaimer: string;
   copyright: string;
+  facebookLinkText: string;
+  creatorLabel: string;
+  creatorName: string;
+  creatorUrl: string;
 }
 
 export interface QuoteModalContent {
@@ -76,6 +81,7 @@ export const businessInfo: BusinessInfo = {
   email: "info@askappliancerepairs.com",
   whatsappNumber: "447340002079",
   whatsappUrl: "https://wa.me/447340002079?text=Hello%2C%20I%20would%20like%20to%20enquire%20about%20an%20appliance%20repair.",
+  facebookUrl: "https://www.facebook.com/askappliancerepairs",
   openingHours: "Monday – Sunday: 8:00 AM – 8:00 PM",
   openingHoursShort: "8am – 8pm Every Day",
   openingHoursSchema: [
@@ -142,7 +148,11 @@ export const footerContent: FooterContent = {
   legalTitle: "Information & Compliance",
   registrationNotice: "Ask Appliance Repairs Ltd is registered in England & Wales (Company No. 16560507).",
   disclaimer: "All quotes provided upfront after comprehensive diagnostic inspection. Starting from £75. Parts charged separately where required.",
-  copyright: "© 2026 Ask Appliance Repairs Ltd. All rights reserved."
+  copyright: "© 2026 Ask Appliance Repairs Ltd. All rights reserved.",
+  facebookLinkText: "Follow us on Facebook",
+  creatorLabel: "Website Created By:",
+  creatorName: "FinTaxTech Ltd",
+  creatorUrl: "https://fintaxtech.co.uk/"
 };
 
 export const quoteModalContent: QuoteModalContent = {
