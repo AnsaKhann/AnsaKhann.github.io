@@ -1,0 +1,333 @@
+---
+import { homeContent } from '../content/home';
+import { businessInfo, coveredPostcodes } from '../content/site';
+---
+
+<section id="coverage" class="coverage-section" aria-labelledby="coverage-heading">
+  <div class="container">
+    <div class="coverage-wrapper">
+      <div class="coverage-intro">
+        <span class="section-badge">{homeContent.coverageSection.badge}</span>
+        <h2 id="coverage-heading" class="coverage-title">
+          {homeContent.coverageSection.title}
+        </h2>
+        <p class="coverage-subtitle">
+          {homeContent.coverageSection.subtitle}
+        </p>
+        <p class="coverage-areas-note">
+          {homeContent.coverageSection.popularAreasNotice}
+        </p>
+      </div>
+
+      <div class="coverage-card">
+        <form id="postcode-checker-form" class="checker-form" novalidate>
+          <label for="postcode-input" class="checker-label">
+            {homeContent.coverageSection.inputLabel}
+          </label>
+          <div class="checker-input-group">
+            <input
+              type="text"
+              id="postcode-input"
+              name="postcode"
+              class="checker-input"
+              placeholder={homeContent.coverageSection.inputPlaceholder}
+              maxlength="10"
+              autocomplete="postal-code"
+              required
+            />
+            <button type="submit" class="btn btn--primary checker-btn">
+              {homeContent.coverageSection.buttonText}
+            </button>
+          </div>
+        </form>
+
+        <div id="coverage-result" class="coverage-result" aria-live="polite">
+          <!-- Populated dynamically via client script -->
+        </div>
+
+        <div class="coverage-card__quick-list">
+          <span class="quick-list-label">Popular Districts Served:</span>
+          <div class="quick-badges">
+            <span class="area-pill">TW (Twickenham)</span>
+            <span class="area-pill">SW (South West)</span>
+            <span class="area-pill">KT (Kingston)</span>
+            <span class="area-pill">W (West London)</span>
+            <span class="area-pill">UB (Uxbridge)</span>
+            <span class="area-pill">SL (Slough)</span>
+            <span class="area-pill">HA (Harrow)</span>
+            <span class="area-pill">GU (Guildford)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Data bridge for client script -->
+<script define:vars={{ coveredPostcodes, whatsappUrl: businessInfo.whatsappUrl }}>
+  const form = document.getElementById('postcode-checker-form');
+  const input = document.getElementById('postcode-input');
+  const resultContainer = document.getElementById('coverage-result');
+
+  if (form && input && resultContainer) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const rawValue = input.value.trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
+
+      if (!rawValue || rawValue.length < 2) {
+        resultContainer.innerHTML = `
+          <div class="alert alert--warning">
+            <p>Please enter a valid postcode prefix (e.g. TW19, SW1A, KT1, W2).</p>
+          </div>
+        `;
+        return;
+      }
+
+      // Check outward prefix
+      const outward = rawValue.length > 4 ? rawValue.slice(0, -3) : rawValue;
+      const isDirectMatch = coveredPostcodes.includes(outward) || coveredPostcodes.includes(rawValue);
+      const district = rawValue.match(/^[A-Z]{1,2}/)?.[0] || '';
+      const hasDistrictMatch = coveredPostcodes.some(p => p.startsWith(district));
+
+      if (isDirectMatch || hasDistrictMatch) {
+        resultContainer.innerHTML = `
+          <div class="alert alert--success">
+            <div class="alert__icon">✓</div>
+            <div>
+              <p class="alert__title">Great news! We cover ${outward || rawValue}.</p>
+              <p class="alert__text">Our engineers operate in your area daily from 8:00 AM to 8:00 PM.</p>
+              <button type="button" class="btn btn--primary btn--sm open-quote-modal" data-postcode="${outward || rawValue}" style="margin-top: 8px;">
+                Book a Repair for ${outward || rawValue}
+              </button>
+            </div>
+          </div>
+        `;
+        // Attach listener to newly created button
+        const newBtn = resultContainer.querySelector('.open-quote-modal');
+        if (newBtn && window.openQuoteModalWithAppliance) {
+          newBtn.addEventListener('click', () => {
+            window.openQuoteModalWithAppliance('', outward || rawValue);
+          });
+        }
+      } else {
+        resultContainer.innerHTML = `
+          <div class="alert alert--info">
+            <div class="alert__icon">ℹ</div>
+            <div>
+              <p class="alert__title">${outward || rawValue} is outside our automated 20-mile boundary.</p>
+              <p class="alert__text">We sometimes accommodate nearby appointments. Message us on WhatsApp to check today's engineer route.</p>
+              <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" class="btn btn--whatsapp btn--sm" style="margin-top: 8px; display: inline-flex;">
+                Ask via WhatsApp
+              </a>
+            </div>
+          </div>
+        `;
+      }
+    });
+  }
+</script>
+
+<style>
+  .coverage-section {
+    padding: var(--space-16) 0;
+    background-color: var(--color-bg-page);
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  @media (min-width: 1024px) {
+    .coverage-section {
+      padding: var(--space-20) 0;
+    }
+  }
+
+  .coverage-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .coverage-wrapper {
+      grid-template-columns: 1fr 1.1fr;
+      gap: var(--space-12);
+    }
+  }
+
+  .coverage-intro {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .section-badge {
+    display: inline-block;
+    padding: var(--space-1) var(--space-3);
+    background-color: var(--color-brand-teal-light);
+    color: var(--color-brand-teal);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    align-self: flex-start;
+  }
+
+  .coverage-title {
+    font-size: var(--font-size-2xl);
+    color: var(--color-brand-navy);
+  }
+
+  @media (min-width: 768px) {
+    .coverage-title {
+      font-size: var(--font-size-3xl);
+    }
+  }
+
+  .coverage-subtitle {
+    font-size: var(--font-size-md);
+    color: var(--color-text-muted);
+  }
+
+  .coverage-areas-note {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    border-left: 3px solid var(--color-brand-teal);
+    padding-left: var(--space-3);
+    line-height: var(--line-height-normal);
+  }
+
+  /* Card */
+  .coverage-card {
+    background-color: var(--color-brand-mist);
+    border: 1px solid var(--color-brand-mist-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  @media (min-width: 768px) {
+    .coverage-card {
+      padding: var(--space-8);
+    }
+  }
+
+  .checker-label {
+    display: block;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-brand-navy);
+    margin-bottom: var(--space-2);
+  }
+
+  .checker-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  @media (min-width: 640px) {
+    .checker-input-group {
+      flex-direction: row;
+    }
+  }
+
+  .checker-input {
+    flex-grow: 1;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-base);
+    text-transform: uppercase;
+    background-color: var(--color-white);
+  }
+
+  .checker-btn {
+    flex-shrink: 0;
+  }
+
+  /* Alerts */
+  .coverage-result:empty {
+    display: none;
+  }
+
+  .alert {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+  }
+
+  .alert--success {
+    background-color: #E6F7ED;
+    border: 1px solid #99E2B4;
+    color: #105932;
+  }
+
+  .alert--info {
+    background-color: #EBF5FB;
+    border: 1px solid #AED6F1;
+    color: #1B4F72;
+  }
+
+  .alert--warning {
+    background-color: #FEF9E7;
+    border: 1px solid #F9E79F;
+    color: #7D6608;
+  }
+
+  .alert__icon {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-lg);
+  }
+
+  .alert__title {
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 2px;
+  }
+
+  .alert__text {
+    line-height: var(--line-height-snug);
+  }
+
+  .btn--sm {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--font-size-xs);
+  }
+
+  /* Quick List */
+  .coverage-card__quick-list {
+    border-top: 1px solid var(--color-border-subtle);
+    padding-top: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .quick-list-label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-brand-navy);
+  }
+
+  .quick-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .area-pill {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border-subtle);
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-xs);
+    color: var(--color-brand-navy);
+    font-weight: var(--font-weight-medium);
+  }
+</style>

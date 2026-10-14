@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { businessInfo } from '../content/site';
+
+const termsSeo = {
+  title: "Terms of Service | Ask Appliance Repairs Ltd",
+  description: "Terms and conditions of service for domestic appliance repairs by Ask Appliance Repairs Ltd.",
+  canonicalUrl: "https://askappliancerepairs.com/terms",
+  noindex: true
+};
+---
+
+<BaseLayout seo={termsSeo}>
+  <section class="legal-page">
+    <div class="container legal-container">
+      <span class="section-badge">Terms</span>
+      <h1 class="legal-title">Terms of Service</h1>
+      <p class="legal-meta">Last updated: October 2026 • Ask Appliance Repairs Ltd</p>
+
+      <div class="legal-content">
+        <h2>1. Service Scope</h2>
+        <p>
+          Ask Appliance Repairs Ltd provides on-site domestic appliance diagnostic and repair services across London and Surrey for cookers, tumble dryers, washing machines, dishwashers, and related domestic appliances.
+        </p>
+
+        <h2>2. Quotations & Pricing</h2>
+        <p>
+          Standard diagnostics start from £75. Upon inspecting the appliance on-site, our engineer will diagnose the fault and provide a clear quotation before any repair work commences. Labour for standard approved repairs is included in the agreed quote; specialist replacement parts are itemised and charged separately where required.
+        </p>
+
+        <h2>3. Engineer Visits & Access</h2>
+        <p>
+          Customer appointments are arranged within agreed arrival windows between 8:00 AM and 8:00 PM. An adult must be present at the property to grant access to the appliance and utility isolation valves/switches.
+        </p>
+
+        <h2>4. Warranty on Workmanship</h2>
+        <p>
+          All repair labour carried out by Ask Appliance Repairs Ltd is backed by a standard workmanship warranty covering the specific fault diagnosed and fixed. Newly supplied replacement parts carry manufacturer-specified warranties.
+        </p>
+
+        <h2>5. Cancellations</h2>
+        <p>
+          If you need to reschedule or cancel your visit, please provide notice via telephone or WhatsApp at least 24 hours prior to the appointment.
+        </p>
+
+        <h2>6. Company Details</h2>
+        <p>
+          <strong>Ask Appliance Repairs Ltd</strong><br />
+          Company Registration: {businessInfo.registrationNumber} (England & Wales)<br />
+          Email: <a href={`mailto:${businessInfo.email}`}>{businessInfo.email}</a><br />
+          Telephone: {businessInfo.phoneFormatted}
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal-page {
+    padding: var(--space-16) 0 var(--space-20);
+    background-color: var(--color-bg-page);
+  }
+
+  .legal-container {
+    max-width: var(--container-narrow-width);
+  }
+
+  .section-badge {
+    display: inline-block;
+    padding: var(--space-1) var(--space-3);
+    background-color: var(--color-brand-teal-light);
+    color: var(--color-brand-teal);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-3);
+  }
+
+  .legal-title {
+    font-size: var(--font-size-3xl);
+    color: var(--color-brand-navy);
+    margin-bottom: var(--space-2);
+  }
+
+  .legal-meta {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-8);
+    border-bottom: 1px solid var(--color-border-subtle);
+    padding-bottom: var(--space-4);
+  }
+
+  .legal-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    font-size: var(--font-size-base);
+    color: var(--color-brand-navy);
+    line-height: var(--line-height-loose);
+  }
+
+  .legal-content h2 {
+    font-size: var(--font-size-lg);
+    color: var(--color-brand-navy);
+    margin-top: var(--space-4);
+  }
+</style>

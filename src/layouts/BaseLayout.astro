@@ -1,0 +1,104 @@
+---
+import '../styles/tokens.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import QuoteModal from '../components/QuoteModal.astro';
+import CookieBanner from '../components/CookieBanner.astro';
+import FloatingContact from '../components/FloatingContact.astro';
+import { defaultSeo, generateLocalBusinessSchema, type PageSeo } from '../content/seo';
+import { businessInfo } from '../content/site';
+
+interface Props {
+  seo?: Partial<PageSeo>;
+}
+
+const { seo = {} } = Astro.props;
+const currentSeo: PageSeo = {
+  ...defaultSeo,
+  ...seo
+};
+
+const jsonLd = JSON.stringify(generateLocalBusinessSchema());
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary SEO -->
+    <title>{currentSeo.title}</title>
+    <meta name="description" content={currentSeo.description} />
+    <link rel="canonical" href={currentSeo.canonicalUrl} />
+    {currentSeo.noindex && <meta name="robots" content="noindex, nofollow" />}
+    {!currentSeo.noindex && <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />}
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={currentSeo.ogType} />
+    <meta property="og:url" content={currentSeo.canonicalUrl} />
+    <meta property="og:title" content={currentSeo.title} />
+    <meta property="og:description" content={currentSeo.description} />
+    <meta property="og:image" content={currentSeo.ogImage} />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:site_name" content={businessInfo.name} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={currentSeo.title} />
+    <meta name="twitter:description" content={currentSeo.description} />
+    <meta name="twitter:image" content={currentSeo.ogImage} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="theme-color" content="#01233F" />
+
+    <!-- Google Fonts: Manrope (Approved Brand Typeface) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json" set:html={jsonLd} />
+  </head>
+  <body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <Header />
+
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <Footer />
+
+    <!-- Global Interactive Components -->
+    <QuoteModal />
+    <FloatingContact />
+    <CookieBanner />
+  </body>
+</html>
+
+<style>
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: var(--space-4);
+    background: var(--color-brand-navy);
+    color: var(--color-white);
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--radius-sm);
+    z-index: 99999;
+    text-decoration: none;
+    font-weight: var(--font-weight-bold);
+    transition: top var(--transition-fast);
+  }
+
+  .skip-link:focus {
+    top: var(--space-4);
+  }
+</style>

@@ -1,0 +1,265 @@
+---
+import { businessInfo, footerContent } from '../content/site';
+import { mainNavItems, legalNavItems } from '../content/pages';
+import { brandAssets } from '../content/assets';
+---
+
+<footer class="site-footer">
+  <div class="container footer-container">
+    <div class="footer-grid">
+      <!-- Column 1: Logo & Company Registration -->
+      <div class="footer-col footer-col--brand">
+        <!-- Brand Spec Compliant: White Holding Panel for Logo on Dark Background -->
+        <div class="footer-logo-panel">
+          <img
+            src={brandAssets.logo.src}
+            alt={brandAssets.logo.alt}
+            width="320"
+            height="133"
+            class="footer-logo"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+
+        <p class="footer-summary">
+          {footerContent.companySummary}
+        </p>
+
+        <p class="footer-reg">
+          {footerContent.registrationNotice}
+        </p>
+      </div>
+
+      <!-- Column 2: Navigation Links -->
+      <div class="footer-col">
+        <h3 class="footer-heading">{footerContent.servicesTitle}</h3>
+        <ul class="footer-links">
+          {mainNavItems.map((item) => (
+            <li>
+              <a href={item.href} class="footer-link">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Column 3: Hours & Coverage -->
+      <div class="footer-col">
+        <h3 class="footer-heading">{footerContent.areasTitle}</h3>
+        <p class="footer-text">
+          <strong>Operating Hours:</strong><br />
+          {businessInfo.openingHours}
+        </p>
+        <p class="footer-text">
+          <strong>Primary Coverage:</strong><br />
+          {businessInfo.serviceArea}
+        </p>
+        <p class="footer-subtext">
+          Covering TW, UB, HA, SL, KT, GU, SW, W, NW, N, WC, EC, E, SE postcodes.
+        </p>
+      </div>
+
+      <!-- Column 4: Contact -->
+      <div class="footer-col">
+        <h3 class="footer-heading">{footerContent.contactTitle}</h3>
+        <p class="footer-contact-item">
+          <strong>Direct Phone:</strong><br />
+          <a href={`tel:${businessInfo.phone}`} class="footer-link">
+            {businessInfo.phoneFormatted}
+          </a>
+        </p>
+        <p class="footer-contact-item">
+          <strong>Email Enquiries:</strong><br />
+          <a href={`mailto:${businessInfo.email}`} class="footer-link">
+            {businessInfo.email}
+          </a>
+        </p>
+        <p class="footer-contact-item">
+          <strong>WhatsApp:</strong><br />
+          <a
+            href={businessInfo.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer-whatsapp-link"
+          >
+            Chat with Engineer Directly →
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Bottom Legal Bar -->
+    <div class="footer-bottom">
+      <p class="footer-disclaimer">
+        {footerContent.disclaimer}
+      </p>
+
+      <div class="footer-legal-links">
+        {legalNavItems.map((item) => (
+          <a href={item.href} class="footer-legal-link">
+            {item.label}
+          </a>
+        ))}
+      </div>
+
+      <p class="footer-copyright">
+        {footerContent.copyright}
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background-color: var(--color-brand-navy);
+    color: var(--color-white);
+    padding: var(--space-16) 0 var(--space-8);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+    margin-bottom: var(--space-12);
+  }
+
+  @media (min-width: 640px) {
+    .footer-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .footer-grid {
+      grid-template-columns: 1.4fr 0.8fr 1fr 1fr;
+    }
+  }
+
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  /* White holding panel for logo per brand spec */
+  .footer-logo-panel {
+    background-color: var(--color-white);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    display: inline-block;
+    max-width: 280px;
+    margin-bottom: var(--space-2);
+  }
+
+  .footer-logo {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .footer-summary {
+    font-size: var(--font-size-sm);
+    color: var(--color-brand-mist);
+    line-height: var(--line-height-normal);
+  }
+
+  .footer-reg {
+    font-size: var(--font-size-xs);
+    color: #9BB3C7;
+  }
+
+  .footer-heading {
+    font-size: var(--font-size-base);
+    color: var(--color-white);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-2);
+    border-bottom: 2px solid var(--color-brand-teal);
+    padding-bottom: var(--space-2);
+    display: inline-block;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .footer-link {
+    color: var(--color-brand-mist);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    transition: color var(--transition-fast);
+  }
+
+  .footer-link:hover {
+    color: var(--color-white);
+    text-decoration: underline;
+  }
+
+  .footer-whatsapp-link {
+    color: #48E59B;
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .footer-whatsapp-link:hover {
+    color: #6CF5B5;
+    text-decoration: underline;
+  }
+
+  .footer-text, .footer-contact-item {
+    font-size: var(--font-size-sm);
+    color: var(--color-brand-mist);
+    line-height: var(--line-height-normal);
+  }
+
+  .footer-subtext {
+    font-size: var(--font-size-xs);
+    color: #9BB3C7;
+    line-height: var(--line-height-snug);
+  }
+
+  /* Bottom Bar */
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: var(--space-8);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-disclaimer {
+    font-size: var(--font-size-xs);
+    color: #9BB3C7;
+    max-width: 800px;
+  }
+
+  .footer-legal-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    justify-content: center;
+  }
+
+  .footer-legal-link {
+    color: var(--color-brand-mist);
+    font-size: var(--font-size-xs);
+    text-decoration: none;
+  }
+
+  .footer-legal-link:hover {
+    color: var(--color-white);
+    text-decoration: underline;
+  }
+
+  .footer-copyright {
+    font-size: var(--font-size-xs);
+    color: #9BB3C7;
+  }
+</style>

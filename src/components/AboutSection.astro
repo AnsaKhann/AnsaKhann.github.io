@@ -1,0 +1,226 @@
+---
+import { homeContent } from '../content/home';
+import { brandAssets } from '../content/assets';
+---
+
+<section id="about" class="about-section" aria-labelledby="about-heading">
+  <div class="container">
+    <div class="about-grid">
+      <!-- Left Photo with Brand Accents -->
+      <div class="about-media">
+        <div class="about-image-frame">
+          <img
+            src={brandAssets.aboutPhoto.src}
+            alt={brandAssets.aboutPhoto.alt}
+            width="800"
+            height="600"
+            class="about-img"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="about-experience-badge">
+          <span class="experience-years">5+</span>
+          <span class="experience-text">Years of Domestic Appliance Engineering</span>
+        </div>
+      </div>
+
+      <!-- Right Text Content -->
+      <div class="about-content">
+        <span class="section-badge">{homeContent.aboutSection.badge}</span>
+        <h2 id="about-heading" class="about-title">
+          {homeContent.aboutSection.title}
+        </h2>
+        <p class="about-lead">
+          {homeContent.aboutSection.leadParagraph}
+        </p>
+        <p class="about-body">
+          {homeContent.aboutSection.bodyParagraph}
+        </p>
+
+        <!-- 3 Value Pillars -->
+        <div class="about-pillars">
+          {homeContent.aboutSection.pillars.map((pillar) => (
+            <div class="pillar-item">
+              <span class="pillar-badge">{pillar.badge}</span>
+              <div>
+                <h3 class="pillar-title">{pillar.title}</h3>
+                <p class="pillar-desc">{pillar.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div>
+          <button
+            type="button"
+            class="btn btn--primary open-quote-modal"
+            data-appliance=""
+          >
+            {homeContent.aboutSection.ctaText}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-section {
+    padding: var(--space-16) 0;
+    background-color: var(--color-bg-page);
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  @media (min-width: 1024px) {
+    .about-section {
+      padding: var(--space-20) 0;
+    }
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .about-grid {
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: var(--space-12);
+    }
+  }
+
+  /* Media */
+  .about-media {
+    position: relative;
+  }
+
+  .about-image-frame {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    background-color: var(--color-brand-mist);
+    border: 1px solid var(--color-border-subtle);
+  }
+
+  .about-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
+
+  .about-experience-badge {
+    position: absolute;
+    bottom: -20px;
+    right: 20px;
+    background-color: var(--color-brand-navy);
+    color: var(--color-white);
+    padding: var(--space-4) var(--space-5);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    box-shadow: var(--shadow-lg);
+    border: 2px solid var(--color-white);
+  }
+
+  .experience-years {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-brand-teal);
+    line-height: 1;
+  }
+
+  .experience-text {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    max-width: 140px;
+    line-height: 1.3;
+  }
+
+  /* Content */
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .section-badge {
+    display: inline-block;
+    padding: var(--space-1) var(--space-3);
+    background-color: var(--color-brand-teal-light);
+    color: var(--color-brand-teal);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    align-self: flex-start;
+  }
+
+  .about-title {
+    font-size: var(--font-size-2xl);
+    color: var(--color-brand-navy);
+  }
+
+  @media (min-width: 768px) {
+    .about-title {
+      font-size: var(--font-size-3xl);
+    }
+  }
+
+  .about-lead {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-brand-navy);
+    line-height: var(--line-height-normal);
+  }
+
+  .about-body {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    line-height: var(--line-height-normal);
+  }
+
+  .about-pillars {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin: var(--space-2) 0;
+  }
+
+  .pillar-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    background-color: var(--color-brand-mist);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+  }
+
+  .pillar-badge {
+    background-color: var(--color-brand-teal);
+    color: var(--color-white);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .pillar-title {
+    font-size: var(--font-size-sm);
+    color: var(--color-brand-navy);
+    margin-bottom: 2px;
+  }
+
+  .pillar-desc {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    line-height: 1.4;
+  }
+</style>

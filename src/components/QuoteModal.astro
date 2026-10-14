@@ -1,0 +1,330 @@
+---
+import { quoteModalContent, businessInfo } from '../content/site';
+import { pricingPlans } from '../content/services';
+---
+
+<div
+  id="quote-modal"
+  class="modal-backdrop"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modal-title"
+  aria-hidden="true"
+>
+  <div class="modal-card">
+    <div class="modal-header">
+      <div>
+        <h3 id="modal-title" class="modal-title">{quoteModalContent.title}</h3>
+        <p class="modal-subtitle">{quoteModalContent.subtitle}</p>
+      </div>
+      <button
+        type="button"
+        class="modal-close"
+        id="modal-close-btn"
+        aria-label={quoteModalContent.closeAriaLabel}
+      >
+        ✕
+      </button>
+    </div>
+
+    <form id="quote-modal-form" class="modal-form">
+      <div class="form-group">
+        <label for="modal-appliance" class="form-label">{quoteModalContent.applianceLabel} *</label>
+        <select id="modal-appliance" name="appliance" class="form-select" required>
+          <option value="" disabled selected>{quoteModalContent.appliancePlaceholder}</option>
+          {pricingPlans.map((plan) => (
+            <option value={plan.applianceCategory}>{plan.applianceCategory} (From {plan.priceFrom})</option>
+          ))}
+          <option value="Fridge & Freezer">Fridge & Freezer (From £75)</option>
+          <option value="Electric / Induction Hob">Electric / Induction Hob (From £75)</option>
+          <option value="Other Appliance">Other Domestic Appliance</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="modal-fault" class="form-label">{quoteModalContent.faultLabel} *</label>
+        <textarea
+          id="modal-fault"
+          name="fault"
+          class="form-textarea"
+          rows="3"
+          placeholder={quoteModalContent.faultPlaceholder}
+          required
+        ></textarea>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="modal-postcode" class="form-label">{quoteModalContent.postcodeLabel} *</label>
+          <input
+            type="text"
+            id="modal-postcode"
+            name="postcode"
+            class="form-input"
+            placeholder={quoteModalContent.postcodePlaceholder}
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="modal-phone" class="form-label">{quoteModalContent.phoneLabel}</label>
+          <input
+            type="tel"
+            id="modal-phone"
+            name="phone"
+            class="form-input"
+            placeholder={quoteModalContent.phonePlaceholder}
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="modal-name" class="form-label">{quoteModalContent.nameLabel}</label>
+        <input
+          type="text"
+          id="modal-name"
+          name="name"
+          class="form-input"
+          placeholder={quoteModalContent.namePlaceholder}
+        />
+      </div>
+
+      <p class="modal-note">
+        {quoteModalContent.illustrativeNote}
+      </p>
+
+      <div class="modal-actions">
+        <button type="submit" class="btn btn--whatsapp btn--full">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+            <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.53 7.35C9.35 7.35 9.06 7.42 8.81 7.69C8.56 7.96 7.87 8.61 7.87 9.92C7.87 11.23 8.83 12.5 8.96 12.67C9.09 12.85 10.82 15.5 13.48 16.65C14.11 16.92 14.61 17.09 15 17.21C15.63 17.41 16.21 17.38 16.66 17.31C17.17 17.23 18.23 16.67 18.45 16.03C18.67 15.4 18.67 14.86 18.6 14.75C18.53 14.63 18.35 14.56 18.08 14.43C17.8 14.29 16.48 13.64 16.23 13.55C15.98 13.46 15.8 13.41 15.62 13.68C15.44 13.95 14.93 14.56 14.78 14.74C14.62 14.91 14.47 14.94 14.19 14.8C13.92 14.67 13.04 14.38 12 13.45C11.19 12.73 10.64 11.84 10.49 11.57C10.33 11.3 10.47 11.15 10.61 11.02C10.73 10.9 10.88 10.71 11.02 10.55C11.16 10.39 11.2 10.27 11.29 10.09C11.38 9.91 11.34 9.76 11.27 9.62C11.2 9.49 10.66 8.16 10.44 7.62C10.22 7.1 10 7.17 9.84 7.16C9.69 7.15 9.53 7.35 9.53 7.35Z"/>
+          </svg>
+          <span>{quoteModalContent.submitWhatsAppText}</span>
+        </button>
+
+        <a href={`tel:${businessInfo.phone}`} class="btn btn--outline btn--full">
+          {quoteModalContent.submitCallText} ({businessInfo.phoneFormatted})
+        </a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  declare global {
+    interface Window {
+      openQuoteModalWithAppliance: (applianceName: string, postcode?: string) => void;
+    }
+  }
+
+  const modal = document.getElementById('quote-modal');
+  const closeBtn = document.getElementById('modal-close-btn');
+  const form = document.getElementById('quote-modal-form') as HTMLFormElement | null;
+  const applianceSelect = document.getElementById('modal-appliance') as HTMLSelectElement | null;
+  const postcodeInput = document.getElementById('modal-postcode') as HTMLInputElement | null;
+
+  // Global helper for opening modal
+  window.openQuoteModalWithAppliance = (applianceName: string, postcode = '') => {
+    if (!modal) return;
+    if (applianceSelect && applianceName) {
+      // Find matching option
+      for (const opt of applianceSelect.options) {
+        if (opt.value.toLowerCase().includes(applianceName.toLowerCase())) {
+          opt.selected = true;
+          break;
+        }
+      }
+    }
+    if (postcodeInput && postcode) {
+      postcodeInput.value = postcode;
+    }
+    modal.classList.add('is-active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+
+  // Wire buttons with .open-quote-modal
+  document.addEventListener('click', (e) => {
+    const target = (e.target as HTMLElement).closest('.open-quote-modal') as HTMLElement | null;
+    if (target) {
+      e.preventDefault();
+      const appliance = target.getAttribute('data-appliance') || '';
+      const postcode = target.getAttribute('data-postcode') || '';
+      window.openQuoteModalWithAppliance(appliance, postcode);
+    }
+  });
+
+  const closeModal = () => {
+    if (!modal) return;
+    modal.classList.remove('is-active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal && modal.classList.contains('is-active')) {
+      closeModal();
+    }
+  });
+
+  // Handle WhatsApp submission
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const appliance = formData.get('appliance') || 'Appliance';
+      const fault = formData.get('fault') || '';
+      const postcode = formData.get('postcode') || '';
+      const name = formData.get('name') || '';
+      const phone = formData.get('phone') || '';
+
+      const text = `Hello Ask Appliance Repairs, I'd like to book a repair:\n- Appliance: ${appliance}\n- Issue: ${fault}\n- Postcode: ${postcode}${name ? `\n- Name: ${name}` : ''}${phone ? `\n- Contact: ${phone}` : ''}`;
+      const url = `https://wa.me/447340002079?text=${encodeURIComponent(text)}`;
+      
+      window.open(url, '_blank');
+      closeModal();
+    });
+  }
+</script>
+
+<style>
+  .modal-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(1, 35, 63, 0.65);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4);
+  }
+
+  .modal-backdrop.is-active {
+    display: flex;
+  }
+
+  .modal-card {
+    background-color: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    width: 100%;
+    max-width: 540px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    border: 1px solid var(--color-border-subtle);
+  }
+
+  @media (min-width: 640px) {
+    .modal-card {
+      padding: var(--space-8);
+    }
+  }
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-4);
+    border-bottom: 1px solid var(--color-border-subtle);
+    padding-bottom: var(--space-3);
+  }
+
+  .modal-title {
+    font-size: var(--font-size-xl);
+    color: var(--color-brand-navy);
+  }
+
+  .modal-subtitle {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+  }
+
+  .modal-close {
+    background: transparent;
+    border: none;
+    font-size: var(--font-size-lg);
+    cursor: pointer;
+    color: var(--color-text-muted);
+    padding: var(--space-1);
+    line-height: 1;
+    border-radius: var(--radius-sm);
+  }
+
+  .modal-close:hover {
+    color: var(--color-brand-navy);
+  }
+
+  .modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+  }
+
+  @media (max-width: 480px) {
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .form-label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-brand-navy);
+  }
+
+  .form-input, .form-select, .form-textarea {
+    width: 100%;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    background-color: var(--color-white);
+    color: var(--color-text-body);
+  }
+
+  .form-textarea {
+    resize: vertical;
+  }
+
+  .modal-note {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    background-color: var(--color-brand-mist);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-sm);
+    line-height: var(--line-height-snug);
+  }
+
+  .modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+  }
+</style>

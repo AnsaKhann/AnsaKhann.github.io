@@ -1,0 +1,339 @@
+---
+import { homeContent } from '../content/home';
+import { businessInfo } from '../content/site';
+import { pricingPlans } from '../content/services';
+---
+
+<section class="hero-section" aria-labelledby="hero-title">
+  <div class="container hero-container">
+    <div class="hero-content">
+      <!-- Location / Sector Badge -->
+      <div class="hero-badge">
+        <span class="hero-badge__dot" aria-hidden="true"></span>
+        <span>{homeContent.hero.badge}</span>
+      </div>
+
+      <!-- Main Semantic H1 -->
+      <h1 id="hero-title" class="hero-title">
+        {homeContent.hero.headline}{' '}
+        <span class="hero-title__highlight">{homeContent.hero.highlightWord}</span>
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="hero-subtitle">
+        {homeContent.hero.subheadline}
+      </p>
+
+      <!-- Trust Checkmarks -->
+      <ul class="hero-bullets" aria-label="Key repair benefits">
+        {homeContent.hero.trustBullets.map((bullet) => (
+          <li class="hero-bullet">
+            <svg class="hero-bullet__icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
+            <span>{bullet}</span>
+          </li>
+        ))}
+      </ul>
+
+      <!-- Action Buttons -->
+      <div class="hero-actions">
+        <button
+          type="button"
+          class="btn btn--primary btn--lg open-quote-modal"
+          data-appliance=""
+        >
+          {homeContent.hero.primaryCta}
+        </button>
+
+        <a
+          href={businessInfo.whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn--whatsapp btn--lg"
+        >
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+            <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.53 7.35C9.35 7.35 9.06 7.42 8.81 7.69C8.56 7.96 7.87 8.61 7.87 9.92C7.87 11.23 8.83 12.5 8.96 12.67C9.09 12.85 10.82 15.5 13.48 16.65C14.11 16.92 14.61 17.09 15 17.21C15.63 17.41 16.21 17.38 16.66 17.31C17.17 17.23 18.23 16.67 18.45 16.03C18.67 15.4 18.67 14.86 18.6 14.75C18.53 14.63 18.35 14.56 18.08 14.43C17.8 14.29 16.48 13.64 16.23 13.55C15.98 13.46 15.8 13.41 15.62 13.68C15.44 13.95 14.93 14.56 14.78 14.74C14.62 14.91 14.47 14.94 14.19 14.8C13.92 14.67 13.04 14.38 12 13.45C11.19 12.73 10.64 11.84 10.49 11.57C10.33 11.3 10.47 11.15 10.61 11.02C10.73 10.9 10.88 10.71 11.02 10.55C11.16 10.39 11.2 10.27 11.29 10.09C11.38 9.91 11.34 9.76 11.27 9.62C11.2 9.49 10.66 8.16 10.44 7.62C10.22 7.1 10 7.17 9.84 7.16C9.69 7.15 9.53 7.35 9.53 7.35Z"/>
+          </svg>
+          <span>{homeContent.hero.secondaryCta}</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right Side Hero Appliance Spotlight Card -->
+    <div class="hero-card">
+      <div class="hero-card__header">
+        <span class="hero-card__tag">Transparent Pricing</span>
+        <h2 class="hero-card__title">Priority Repairs Starting from £75</h2>
+        <p class="hero-card__desc">Choose your appliance for instant upfront diagnostic details:</p>
+      </div>
+
+      <div class="hero-card__grid">
+        {pricingPlans.map((plan) => (
+          <button
+            type="button"
+            class="hero-appliance-item open-quote-modal"
+            data-appliance={plan.applianceCategory}
+          >
+            <div class="hero-appliance-item__icon-wrap">
+              <img
+                src={plan.icon.src}
+                alt=""
+                width="36"
+                height="36"
+                aria-hidden="true"
+              />
+            </div>
+            <div class="hero-appliance-item__info">
+              <span class="hero-appliance-item__name">{plan.applianceCategory}</span>
+              <span class="hero-appliance-item__price">From {plan.priceFrom}</span>
+            </div>
+            <span class="hero-appliance-item__arrow" aria-hidden="true">→</span>
+          </button>
+        ))}
+      </div>
+
+      <div class="hero-card__footer">
+        <p>✓ All quotes provided upfront before any work proceeds.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    background: linear-gradient(180deg, var(--color-brand-mist) 0%, #FFFFFF 100%);
+    padding: var(--space-12) 0 var(--space-16);
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  @media (min-width: 1024px) {
+    .hero-section {
+      padding: var(--space-16) 0 var(--space-20);
+    }
+  }
+
+  .hero-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-container {
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: var(--space-12);
+    }
+  }
+
+  /* Left Content */
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-brand-mist-border);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-brand-navy);
+    box-shadow: var(--shadow-sm);
+    align-self: flex-start;
+  }
+
+  .hero-badge__dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-brand-teal);
+    border-radius: var(--radius-full);
+  }
+
+  .hero-title {
+    font-size: var(--font-size-3xl);
+    line-height: var(--line-height-tight);
+    color: var(--color-brand-navy);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: -0.02em;
+  }
+
+  @media (min-width: 768px) {
+    .hero-title {
+      font-size: var(--font-size-4xl);
+    }
+  }
+
+  .hero-title__highlight {
+    color: var(--color-brand-teal);
+    display: inline-block;
+  }
+
+  .hero-subtitle {
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-normal);
+    color: var(--color-text-muted);
+    max-width: 580px;
+  }
+
+  /* Bullets */
+  .hero-bullets {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+    list-style: none;
+    margin: var(--space-2) 0;
+  }
+
+  @media (min-width: 640px) {
+    .hero-bullets {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .hero-bullet {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-brand-navy);
+  }
+
+  .hero-bullet__icon {
+    width: 20px;
+    height: 20px;
+    color: var(--color-brand-teal);
+    flex-shrink: 0;
+  }
+
+  /* Action Buttons */
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-2);
+  }
+
+  .btn--lg {
+    padding: var(--space-4) var(--space-8);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+  }
+
+  /* Right Card */
+  .hero-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-brand-mist-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  @media (min-width: 768px) {
+    .hero-card {
+      padding: var(--space-8);
+    }
+  }
+
+  .hero-card__header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .hero-card__tag {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-brand-teal);
+  }
+
+  .hero-card__title {
+    font-size: var(--font-size-xl);
+    color: var(--color-brand-navy);
+  }
+
+  .hero-card__desc {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+  }
+
+  .hero-card__grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .hero-appliance-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-3) var(--space-4);
+    background-color: var(--color-brand-mist);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    text-align: left;
+    transition: all var(--transition-fast);
+  }
+
+  .hero-appliance-item:hover {
+    background-color: var(--color-brand-teal-surface);
+    border-color: var(--color-brand-teal);
+    transform: translateX(4px);
+  }
+
+  .hero-appliance-item__icon-wrap {
+    width: 44px;
+    height: 44px;
+    background-color: var(--color-white);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .hero-appliance-item__info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-appliance-item__name {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-brand-navy);
+    font-size: var(--font-size-sm);
+  }
+
+  .hero-appliance-item__price {
+    font-size: var(--font-size-xs);
+    color: var(--color-brand-teal);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .hero-appliance-item__arrow {
+    color: var(--color-brand-teal);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-md);
+  }
+
+  .hero-card__footer {
+    border-top: 1px solid var(--color-border-subtle);
+    padding-top: var(--space-3);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+  }
+</style>

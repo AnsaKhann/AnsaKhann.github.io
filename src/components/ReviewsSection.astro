@@ -1,0 +1,115 @@
+---
+import { homeContent } from '../content/home';
+---
+
+<section class="reviews-section" aria-labelledby="reviews-heading">
+  <div class="container">
+    <div class="reviews-header">
+      <span class="section-badge">{homeContent.reviewsSection.badge}</span>
+      <h2 id="reviews-heading" class="reviews-title">
+        {homeContent.reviewsSection.title}
+      </h2>
+      <p class="reviews-subtitle">
+        {homeContent.reviewsSection.subtitle}
+      </p>
+    </div>
+
+    <!-- Transparent Trust Notice (No Invented Reviews) -->
+    <div class="reviews-placeholder-card">
+      <div class="reviews-placeholder-card__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/>
+        </svg>
+      </div>
+      <h3 class="reviews-placeholder-card__title">Google Maps Customer Reviews</h3>
+      <p class="reviews-placeholder-card__text">
+        {homeContent.reviewsSection.notice}
+      </p>
+      <p class="reviews-placeholder-card__subtext">
+        {homeContent.reviewsSection.googleMapsNotice}
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .reviews-section {
+    padding: var(--space-16) 0;
+    background-color: var(--color-brand-mist);
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .reviews-header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto var(--space-10);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .section-badge {
+    display: inline-block;
+    padding: var(--space-1) var(--space-3);
+    background-color: var(--color-white);
+    color: var(--color-brand-teal);
+    border: 1px solid var(--color-brand-mist-border);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .reviews-title {
+    font-size: var(--font-size-2xl);
+    color: var(--color-brand-navy);
+  }
+
+  @media (min-width: 768px) {
+    .reviews-title {
+      font-size: var(--font-size-3xl);
+    }
+  }
+
+  .reviews-subtitle {
+    font-size: var(--font-size-md);
+    color: var(--color-text-muted);
+  }
+
+  .reviews-placeholder-card {
+    max-width: 680px;
+    margin: 0 auto;
+    background-color: var(--color-white);
+    border: 2px dashed var(--color-brand-mist-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .reviews-placeholder-card__icon {
+    color: var(--color-brand-teal);
+  }
+
+  .reviews-placeholder-card__title {
+    font-size: var(--font-size-lg);
+    color: var(--color-brand-navy);
+  }
+
+  .reviews-placeholder-card__text {
+    font-size: var(--font-size-sm);
+    color: var(--color-brand-navy);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .reviews-placeholder-card__subtext {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+  }
+</style>

@@ -1,0 +1,108 @@
+---
+import { homeContent } from '../content/home';
+import { businessInfo } from '../content/site';
+---
+
+<section class="cta-banner" aria-labelledby="cta-banner-title">
+  <div class="container cta-banner__container">
+    <div class="cta-banner__content">
+      <span class="cta-banner__hours">{homeContent.ctaBanner.hoursNotice}</span>
+      <h2 id="cta-banner-title" class="cta-banner__title">
+        {homeContent.ctaBanner.title}
+      </h2>
+      <p class="cta-banner__subtitle">
+        {homeContent.ctaBanner.subtitle}
+      </p>
+    </div>
+
+    <div class="cta-banner__actions">
+      <button
+        type="button"
+        class="btn btn--primary btn--lg open-quote-modal"
+        data-appliance=""
+      >
+        {homeContent.ctaBanner.primaryCta}
+      </button>
+
+      <a
+        href={businessInfo.whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn--whatsapp btn--lg"
+      >
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+          <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.53 7.35C9.35 7.35 9.06 7.42 8.81 7.69C8.56 7.96 7.87 8.61 7.87 9.92C7.87 11.23 8.83 12.5 8.96 12.67C9.09 12.85 10.82 15.5 13.48 16.65C14.11 16.92 14.61 17.09 15 17.21C15.63 17.41 16.21 17.38 16.66 17.31C17.17 17.23 18.23 16.67 18.45 16.03C18.67 15.4 18.67 14.86 18.6 14.75C18.53 14.63 18.35 14.56 18.08 14.43C17.8 14.29 16.48 13.64 16.23 13.55C15.98 13.46 15.8 13.41 15.62 13.68C15.44 13.95 14.93 14.56 14.78 14.74C14.62 14.91 14.47 14.94 14.19 14.8C13.92 14.67 13.04 14.38 12 13.45C11.19 12.73 10.64 11.84 10.49 11.57C10.33 11.3 10.47 11.15 10.61 11.02C10.73 10.9 10.88 10.71 11.02 10.55C11.16 10.39 11.2 10.27 11.29 10.09C11.38 9.91 11.34 9.76 11.27 9.62C11.2 9.49 10.66 8.16 10.44 7.62C10.22 7.1 10 7.17 9.84 7.16C9.69 7.15 9.53 7.35 9.53 7.35Z"/>
+        </svg>
+        <span>{homeContent.ctaBanner.secondaryCta}</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-banner {
+    background-color: var(--color-brand-navy);
+    color: var(--color-white);
+    padding: var(--space-12) 0;
+  }
+
+  @media (min-width: 1024px) {
+    .cta-banner {
+      padding: var(--space-16) 0;
+    }
+  }
+
+  .cta-banner__container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    align-items: flex-start;
+  }
+
+  @media (min-width: 1024px) {
+    .cta-banner__container {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  .cta-banner__content {
+    max-width: 680px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .cta-banner__hours {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: #48E59B;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .cta-banner__title {
+    font-size: var(--font-size-2xl);
+    color: var(--color-white);
+  }
+
+  @media (min-width: 768px) {
+    .cta-banner__title {
+      font-size: var(--font-size-3xl);
+    }
+  }
+
+  .cta-banner__subtitle {
+    font-size: var(--font-size-md);
+    color: var(--color-brand-mist);
+    line-height: var(--line-height-normal);
+  }
+
+  .cta-banner__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    flex-shrink: 0;
+  }
+</style>
