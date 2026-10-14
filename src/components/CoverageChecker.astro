@@ -1,6 +1,6 @@
 ---
 import { homeContent } from '../content/home';
-import { businessInfo, coveredPostcodes } from '../content/site';
+import { businessInfo } from '../content/site';
 ---
 
 <section id="coverage" class="coverage-section" aria-labelledby="coverage-heading">
@@ -41,7 +41,7 @@ import { businessInfo, coveredPostcodes } from '../content/site';
           </div>
         </form>
 
-        <div id="coverage-result" class="coverage-result" aria-live="polite">
+        <div id="coverage-result" class="coverage-result" data-whatsapp-url={businessInfo.whatsappUrl} aria-live="polite">
           <!-- Populated dynamically via client script -->
         </div>
 
@@ -63,65 +63,38 @@ import { businessInfo, coveredPostcodes } from '../content/site';
   </div>
 </section>
 
-<!-- Data bridge for client script -->
-<script define:vars={{ coveredPostcodes, whatsappUrl: businessInfo.whatsappUrl }}>
+<script>
+  import { checkPostcodeCoverage } from '../lib/postcode';
   const form = document.getElementById('postcode-checker-form');
-  const input = document.getElementById('postcode-input');
+  const input = document.getElementById('postcode-input') as HTMLInputElement | null;
   const resultContainer = document.getElementById('coverage-result');
-
   if (form && input && resultContainer) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const rawValue = input.value.trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
-
-      if (!rawValue || rawValue.length < 2) {
-        resultContainer.innerHTML = `
-          <div class="alert alert--warning">
-            <p>Please enter a valid postcode prefix (e.g. TW19, SW1A, KT1, W2).</p>
-          </div>
-        `;
-        return;
-      }
-
-      // Check outward prefix
-      const outward = rawValue.length > 4 ? rawValue.slice(0, -3) : rawValue;
-      const isDirectMatch = coveredPostcodes.includes(outward) || coveredPostcodes.includes(rawValue);
-      const district = rawValue.match(/^[A-Z]{1,2}/)?.[0] || '';
-      const hasDistrictMatch = coveredPostcodes.some(p => p.startsWith(district));
-
-      if (isDirectMatch || hasDistrictMatch) {
+      const result = checkPostcodeCoverage(input.value);
+      input.setAttribute('aria-invalid', String(!result.isValidFormat));
+      // Only a validated alphanumeric outward code is inserted into HTML.
+      if (!result.isValidFormat) {
+        resultContainer.innerHTML = `<div class="alert alert--warning"><p>${result.feedbackMessage}</p></div>`;
+      } else if (result.isCovered) {
         resultContainer.innerHTML = `
           <div class="alert alert--success">
-            <div class="alert__icon">✓</div>
-            <div>
-              <p class="alert__title">Great news! We cover ${outward || rawValue}.</p>
-              <p class="alert__text">Our engineers operate in your area daily from 8:00 AM to 8:00 PM.</p>
-              <button type="button" class="btn btn--primary btn--sm open-quote-modal" data-postcode="${outward || rawValue}" style="margin-top: 8px;">
-                Book a Repair for ${outward || rawValue}
-              </button>
+            <span class="alert__icon" aria-hidden="true">✓</span>
+            <div><p class="alert__title">${result.feedbackMessage}</p>
+              <p class="alert__text">Contact us to arrange a visit between 8:00 AM and 8:00 PM.</p>
+              <button type="button" class="btn btn--primary btn--sm open-quote-modal" data-postcode="${result.cleanInput}">Book a Repair for ${result.matchedArea}</button>
             </div>
-          </div>
-        `;
-        // Attach listener to newly created button
-        const newBtn = resultContainer.querySelector('.open-quote-modal');
-        if (newBtn && window.openQuoteModalWithAppliance) {
-          newBtn.addEventListener('click', () => {
-            window.openQuoteModalWithAppliance('', outward || rawValue);
-          });
-        }
+          </div>`;
       } else {
         resultContainer.innerHTML = `
           <div class="alert alert--info">
-            <div class="alert__icon">ℹ</div>
-            <div>
-              <p class="alert__title">${outward || rawValue} is outside our automated 20-mile boundary.</p>
-              <p class="alert__text">We sometimes accommodate nearby appointments. Message us on WhatsApp to check today's engineer route.</p>
-              <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" class="btn btn--whatsapp btn--sm" style="margin-top: 8px; display: inline-flex;">
-                Ask via WhatsApp
-              </a>
+            <span class="alert__icon" aria-hidden="true">ℹ</span>
+            <div><p class="alert__title">${result.feedbackMessage}</p>
+              <p class="alert__text">Message us on WhatsApp to check whether an engineer can visit your area.</p>
+              <a class="btn btn--whatsapp btn--sm" target="_blank" rel="noopener noreferrer">Ask via WhatsApp</a>
             </div>
-          </div>
-        `;
+          </div>`;
+        resultContainer.querySelector('a')?.setAttribute('href', resultContainer.dataset.whatsappUrl || '');
       }
     });
   }
@@ -254,7 +227,7 @@ import { businessInfo, coveredPostcodes } from '../content/site';
     display: none;
   }
 
-  .alert {
+  .coverage-result :global(.alert) {
     display: flex;
     align-items: flex-start;
     gap: var(--space-3);
@@ -263,41 +236,42 @@ import { businessInfo, coveredPostcodes } from '../content/site';
     font-size: var(--font-size-sm);
   }
 
-  .alert--success {
+  .coverage-result :global(.alert--success) {
     background-color: #E6F7ED;
     border: 1px solid #99E2B4;
     color: #105932;
   }
 
-  .alert--info {
+  .coverage-result :global(.alert--info) {
     background-color: #EBF5FB;
     border: 1px solid #AED6F1;
     color: #1B4F72;
   }
 
-  .alert--warning {
+  .coverage-result :global(.alert--warning) {
     background-color: #FEF9E7;
     border: 1px solid #F9E79F;
     color: #7D6608;
   }
 
-  .alert__icon {
+  .coverage-result :global(.alert__icon) {
     font-weight: var(--font-weight-bold);
     font-size: var(--font-size-lg);
   }
 
-  .alert__title {
+  .coverage-result :global(.alert__title) {
     font-weight: var(--font-weight-bold);
     margin-bottom: 2px;
   }
 
-  .alert__text {
+  .coverage-result :global(.alert__text) {
     line-height: var(--line-height-snug);
   }
 
-  .btn--sm {
+  .coverage-result :global(.btn--sm) {
     padding: var(--space-2) var(--space-4);
     font-size: var(--font-size-xs);
+    margin-top: var(--space-3);
   }
 
   /* Quick List */

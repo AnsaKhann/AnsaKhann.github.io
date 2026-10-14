@@ -161,7 +161,7 @@ export const quoteModalContent: QuoteModalContent = {
   submitWhatsAppText: "Send via WhatsApp",
   submitCallText: "Call Us Instead",
   closeAriaLabel: "Close repair enquiry modal",
-  illustrativeNote: "Demonstration booking modal. Sends your details securely via WhatsApp to discuss availability.",
+  illustrativeNote: "Opens WhatsApp with your repair details. Send the message there to request a quote; your visit is confirmed once we agree a time.",
   successTitle: "Enquiry Prepared",
   successMessage: "Click below to send your pre-filled repair enquiry directly to our WhatsApp service desk."
 };

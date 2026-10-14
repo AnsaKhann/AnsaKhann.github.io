@@ -8,73 +8,35 @@ export interface PostcodeCheckResult {
   feedbackMessage: string;
 }
 
-/**
- * Normalises an input postcode string into uppercase alphanumeric characters.
- */
 export function normalisePostcode(raw: string): string {
-  return raw.trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
+  return raw.trim().toUpperCase().replace(/\s+/g, '');
 }
 
-/**
- * Extracts the outward code prefix from a normalized postcode or partial string.
- * Example: 'TW197NG' -> 'TW19', 'SW1A1AA' -> 'SW1A', 'KT1' -> 'KT1'
- */
+// Accept an outward code or a complete UK postcode, including SW1A and EC1A.
+const postcodePattern = /^([A-Z]{1,2}\d[\dA-Z]?)(?:\d[A-Z]{2})?$/;
+
 export function extractOutwardPrefix(clean: string): string {
-  // If input is short (e.g. "TW19", "SW1"), return as-is
-  if (clean.length <= 4) {
-    return clean;
-  }
-  // Standard UK outward code is everything before the final 3 characters (inward code)
-  return clean.slice(0, -3);
+  return clean.match(postcodePattern)?.[1] ?? '';
 }
 
-/**
- * Checks whether a user-submitted postcode falls within the Ask Appliance Repairs service area.
- */
 export function checkPostcodeCoverage(input: string): PostcodeCheckResult {
   const clean = normalisePostcode(input);
-
-  if (!clean || clean.length < 2) {
-    return {
-      isValidFormat: false,
-      isCovered: false,
-      cleanInput: input,
-      feedbackMessage: "Please enter a valid UK postcode prefix (e.g. TW19, SW1A, KT1)."
-    };
-  }
-
   const outward = extractOutwardPrefix(clean);
-
-  // Exact match on outward code
-  const exactMatch = coveredPostcodes.find((prefix) => prefix === outward || prefix === clean);
-  if (exactMatch) {
+  if (!outward) {
     return {
-      isValidFormat: true,
-      isCovered: true,
-      cleanInput: clean,
-      matchedArea: exactMatch,
-      feedbackMessage: `Great news! We provide full domestic repair coverage in ${exactMatch}.`
+      isValidFormat: false, isCovered: false, cleanInput: clean,
+      feedbackMessage: 'Please enter a UK postcode or prefix (e.g. TW19, SW1A, KT1 or TW19 7NG).'
     };
   }
 
-  // Check prefix match (e.g. user typed "TW" or "SW")
-  const areaLetters = clean.match(/^[A-Z]{1,2}/)?.[0] || '';
-  const hasAreaPresence = coveredPostcodes.some((p) => p.startsWith(areaLetters));
-
-  if (hasAreaPresence) {
-    return {
-      isValidFormat: true,
-      isCovered: true,
-      cleanInput: clean,
-      matchedArea: clean,
-      feedbackMessage: `Good news! We cover areas in the ${areaLetters} postal district. Contact us to schedule an engineer visit.`
-    };
-  }
-
+  // Letter subdivisions such as SW1A and N1C belong to SW1 and N1.
+  // An unlisted numbered district such as TW99 must not match the whole TW area.
+  const district = outward.replace(/([0-9])[A-Z]$/, '$1');
+  const isCovered = coveredPostcodes.includes(outward) || coveredPostcodes.includes(district);
   return {
-    isValidFormat: true,
-    isCovered: false,
-    cleanInput: clean,
-    feedbackMessage: `${clean} is just outside our primary 20-mile automated coverage. Send us a quick WhatsApp message to see if an engineer is nearby!`
+    isValidFormat: true, isCovered, cleanInput: clean, matchedArea: outward,
+    feedbackMessage: isCovered
+      ? `Great news! We cover ${outward}.`
+      : `${outward} is not in our listed service area. Contact us to check availability.`
   };
 }

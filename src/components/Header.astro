@@ -133,24 +133,30 @@ import { brandAssets } from '../content/assets';
   const drawer = document.getElementById('mobile-drawer');
 
   if (toggleBtn && drawer) {
+    const openLabel = toggleBtn.getAttribute("aria-label") || "Open navigation menu";
+    const setOpen = (open: boolean) => {
+      toggleBtn.setAttribute("aria-expanded", String(open));
+      toggleBtn.setAttribute("aria-label", open ? "Close navigation menu" : openLabel);
+      drawer.setAttribute("aria-hidden", String(!open));
+      drawer.classList.toggle("is-open", open);
+      toggleBtn.classList.toggle("is-active", open);
+    };
     toggleBtn.addEventListener('click', () => {
       const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
-      toggleBtn.setAttribute('aria-expanded', String(!isExpanded));
-      drawer.setAttribute('aria-hidden', String(isExpanded));
-      drawer.classList.toggle('is-open', !isExpanded);
-      toggleBtn.classList.toggle('is-active', !isExpanded);
+      setOpen(!isExpanded);
     });
 
-    // Close on navigation click
-    const drawerLinks = drawer.querySelectorAll('a');
-    drawerLinks.forEach((link) => {
-      link.addEventListener('click', () => {
-        toggleBtn.setAttribute('aria-expanded', 'false');
-        drawer.setAttribute('aria-hidden', 'true');
-        drawer.classList.remove('is-open');
-        toggleBtn.classList.remove('is-active');
-      });
+    drawer.querySelectorAll('a, .open-quote-modal').forEach((control) => {
+      control.addEventListener('click', () => setOpen(false));
     });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawer.classList.contains('is-open')) {
+        setOpen(false);
+        toggleBtn.focus();
+      }
+    });
+    const desktop = window.matchMedia('(min-width: 1200px)');
+    desktop.addEventListener('change', () => { if (desktop.matches) setOpen(false); });
   }
 </script>
 
@@ -247,7 +253,7 @@ import { brandAssets } from '../content/assets';
   .nav-bar__logo {
     width: auto;
     max-height: 64px;
-    max-width: 330px;
+    max-width: 270px;
     object-fit: contain;
   }
 
@@ -266,7 +272,7 @@ import { brandAssets } from '../content/assets';
     display: none;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1200px) {
     .nav-bar__nav {
       display: block;
     }
@@ -275,7 +281,7 @@ import { brandAssets } from '../content/assets';
   .nav-bar__list {
     display: flex;
     align-items: center;
-    gap: var(--space-6);
+    gap: var(--space-4);
     list-style: none;
   }
 
@@ -351,12 +357,12 @@ import { brandAssets } from '../content/assets';
   }
 
   .btn--whatsapp {
-    background-color: #25D366;
+    background-color: #147D3E;
     color: var(--color-white);
   }
 
   .btn--whatsapp:hover {
-    background-color: #20BA5A;
+    background-color: #106633;
     color: var(--color-white);
   }
 
@@ -369,8 +375,8 @@ import { brandAssets } from '../content/assets';
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     background: transparent;
     border: 1px solid var(--color-border-subtle);
     border-radius: var(--radius-sm);
@@ -378,7 +384,7 @@ import { brandAssets } from '../content/assets';
     cursor: pointer;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1200px) {
     .mobile-toggle {
       display: none;
     }
@@ -417,6 +423,8 @@ import { brandAssets } from '../content/assets';
   }
 
   .mobile-drawer__content {
+    max-height: calc(100dvh - 120px);
+    overflow-y: auto;
     padding: var(--space-6) var(--space-4);
     display: flex;
     flex-direction: column;
@@ -458,5 +466,10 @@ import { brandAssets } from '../content/assets';
     display: flex;
     flex-direction: column;
     gap: var(--space-1);
+  }
+  @media (max-width: 479px) {
+    .nav-bar__actions > .open-quote-modal { display: none; }
+    .top-bar__inner { flex-wrap: wrap; justify-content: center; gap: var(--space-1); }
+    .nav-bar__logo { max-width: 220px; }
   }
 </style>

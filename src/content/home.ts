@@ -1,3 +1,6 @@
+import { businessInfo } from './site';
+import { reviewSources } from './reviews';
+
 export interface ProcessStep {
   stepNumber: string;
   title: string;
@@ -24,6 +27,7 @@ export interface HomeContent {
     value: string;
     label: string;
     sublabel: string;
+    href?: string;
   }>;
   pricingSection: {
     badge: string;
@@ -66,8 +70,7 @@ export interface HomeContent {
     badge: string;
     title: string;
     subtitle: string;
-    notice: string;
-    googleMapsNotice: string;
+    selectedTitle: string;
   };
   ctaBanner: {
     title: string;
@@ -95,24 +98,26 @@ export const homeContent: HomeContent = {
   },
   stats: [
     {
-      value: "10+",
-      label: "Years Experience",
-      sublabel: "Experienced local engineers"
+      value: "Nearly 5,000",
+      label: "Happy customers",
+      sublabel: "Trusted for domestic appliance repairs"
     },
     {
-      value: "£75",
-      label: "Starting Price",
-      sublabel: "Clear upfront quotes"
+      value: "200+",
+      label: "Reviews on Checkatrade",
+      sublabel: "Read our Usmans Repairs profile →",
+      href: reviewSources.checkatrade.url
     },
     {
-      value: "8am – 8pm",
-      label: "Every Day",
-      sublabel: "7 days a week service"
+      value: `${reviewSources.google.rating}/5`,
+      label: "Google customer rating",
+      sublabel: `Based on ${reviewSources.google.count} reviews →`,
+      href: reviewSources.google.url
     },
     {
-      value: "20+",
-      label: "London Postcodes",
-      sublabel: "Wide local coverage"
+      value: `${businessInfo.experienceYears} years`,
+      label: "Engineering experience",
+      sublabel: "Local, approachable appliance specialists"
     }
   ],
   pricingSection: {
@@ -130,8 +135,8 @@ export const homeContent: HomeContent = {
   coverageSection: {
     badge: "Local Coverage",
     title: "Check If We Cover Your Postcode",
-    subtitle: "We serve households across Greater London and Surrey within a 20-mile radius. Enter your postcode prefix below to confirm coverage.",
-    inputLabel: "Enter your postcode prefix",
+    subtitle: "We serve households across Greater London and Surrey and nearby areas. Enter your postcode or prefix below to check our listed service districts.",
+    inputLabel: "Enter your postcode or prefix",
     inputPlaceholder: "e.g. TW19, SW1A, KT1, W2, UB8...",
     buttonText: "Check Coverage",
     coverageConfirmedText: "Good news! We provide appliance repair coverage in",
@@ -191,10 +196,9 @@ export const homeContent: HomeContent = {
   },
   reviewsSection: {
     badge: "Customer Feedback",
-    title: "Built on Local Trust and Service",
-    subtitle: "We believe in honest work and building lasting relationships with local homeowners.",
-    notice: "Live Google Maps review integration is in progress as part of our full launch.",
-    googleMapsNotice: "5 years of domestic engineering service across London & Surrey communities."
+    title: "Trusted by Thousands of Happy Customers",
+    subtitle: "Real feedback from customers who trust us to get their appliances working again.",
+    selectedTitle: "Selected five-star Google reviews"
   },
   ctaBanner: {
     title: "Have an Appliance That Needs Repairing Today?",

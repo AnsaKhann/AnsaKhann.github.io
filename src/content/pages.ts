@@ -8,12 +8,13 @@ export interface NavItem {
 
 export const routes = {
   home: "/",
-  services: "#services",
-  pricing: "#pricing",
-  howItWorks: "#how-it-works",
-  coverage: "#coverage",
-  about: "#about",
-  contact: "#contact",
+  services: "/#services",
+  pricing: "/#pricing",
+  howItWorks: "/#how-it-works",
+  coverage: "/#coverage",
+  about: "/#about",
+  reviews: "/#reviews",
+  contact: "/#contact",
   privacy: "/privacy",
   terms: "/terms",
   llms: "/llms.txt"
@@ -40,7 +41,7 @@ export const mainNavItems: NavItem[] = [
   },
   {
     id: "nav-coverage",
-    label: "Coverage Checker",
+    label: "Coverage",
     href: routes.coverage,
     ariaLabel: "Check your London postcode coverage"
   },
@@ -49,6 +50,12 @@ export const mainNavItems: NavItem[] = [
     label: "About Us",
     href: routes.about,
     ariaLabel: "About Ask Appliance Repairs Ltd"
+  },
+  {
+    id: "nav-reviews",
+    label: "Reviews",
+    href: routes.reviews,
+    ariaLabel: "Read customer reviews"
   },
   {
     id: "nav-contact",

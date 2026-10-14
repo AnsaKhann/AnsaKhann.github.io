@@ -58,3 +58,38 @@
   - `http://127.0.0.1:4321/sitemap.xml` -> HTTP 200
   - `http://127.0.0.1:4321/privacy` -> HTTP 200
   - `http://127.0.0.1:4321/terms` -> HTTP 200
+
+
+## Website update verification — 14 October 2026
+
+User-requested customer trust and review updates are complete in the local Astro source.
+
+- Added “Nearly 5,000 happy customers” (owner-supplied milestone) and linked Checkatrade and Google trust highlights.
+- Checked the live Checkatrade profile: Usmans Repairs, 206 reviews; the website uses the requested durable “Over 200 reviews” wording.
+- Checked the linked Ask Appliance Repairs Ltd Google profile: 4.9/5 from 53 reviews. Added three selected five-star excerpts with real author names and source links. Reviews are manually maintained, not a live API feed.
+- Replaced the feedback placeholder and added Reviews navigation.
+- Fixed homepage anchor links from privacy, terms and 404 pages, and the missing Contact destination.
+- Fixed all six service booking buttons to select the corresponding appliance. Coverage bookings preserve the full entered postcode.
+- Added native dialog keyboard handling and improved mobile navigation closing behavior.
+- Reused the postcode domain helper in the actual checker, removed broad postal-area acceptance, and corrected styles for generated result alerts.
+- Verified coverage accepts TW19 7NG, SW1A 1AA, EC1A 1BB and KT1; TW99 and B1 prompt an availability enquiry; 1234, T!W19 and TW prompt validation feedback.
+- Checked responsive layouts at 320px, 390px, 768px and 1200px; no horizontal overflow was found.
+- Added the missing public robots.txt, linked existing icon variants, improved WhatsApp button contrast and completed the four primary appliance offers in structured data.
+- Verified four built pages: working internal links/anchors, existing images, one H1 each and valid JSON-LD with four priced appliance offers.
+- Build and Astro diagnostics passed with zero errors, warnings or hints. Built preview routes /, /privacy, /terms, /robots.txt, /sitemap.xml and /llms.txt returned HTTP 200.
+- Built preview booking controls and review cards verified in-browser with no console errors.
+
+Preview indexing safeguards remain enabled. Production publication and a live review API feed were not part of this update.
+
+
+## Brand image refresh — 14 October 2026
+
+- Reviewed every asset in public/images against the supplied Ask Appliance Repairs Ltd brand specification.
+- Retained the checksum-identical approved primary logo and duplicate logo file.
+- Generated seven coordinated navy/teal outline appliance icons with transparent backgrounds.
+- Replaced the previous stock-style repair-person and workshop images with AI-generated appliance-focused visuals. Updated the About image alternative text.
+- Rebuilt the social sharing image at 1200 × 630 with the unchanged approved logo and Manrope.
+- Replaced all favicon and touch-icon sizes with opaque white-background versions; updated both ICO locations and cache-versioned page icon links.
+- Verified favicon opacity, six ICO sizes, image dimensions, original logo checksum, built asset URLs, asset board appearance and the refreshed browser preview.
+- Astro check and build passed with zero errors, warnings or hints.
+- Source prompts and editable social layout saved in assets/. Original bitmap assets are backed up in the chat workspace.

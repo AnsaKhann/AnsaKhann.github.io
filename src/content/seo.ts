@@ -1,4 +1,5 @@
 import { businessInfo } from './site';
+import { pricingPlans } from './services';
 
 export interface PageSeo {
   title: string;
@@ -14,7 +15,7 @@ export const defaultSeo: PageSeo = {
   description: "Prompt, reliable domestic appliance repairs in London & Surrey. Washing machines, cookers, tumble dryers & dishwashers. Transparent pricing from £75. Open 8am–8pm daily.",
   canonicalUrl: "https://askappliancerepairs.com",
   ogType: "website",
-  ogImage: "https://askappliancerepairs.com/images/og-image.jpg",
+  ogImage: "https://askappliancerepairs.com/images/og-image.jpg?v=brand-20261014",
   // Demo stage retains intentional indexing exclusion per seo-checklist.md
   noindex: true
 };
@@ -61,47 +62,19 @@ export function generateLocalBusinessSchema(): Record<string, unknown> {
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Appliance Repair Services",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Cooker & Oven Repair",
-            "description": "Comprehensive fault diagnosis and repair for domestic cookers and ovens."
-          },
-          "priceSpecification": {
-            "@type": "PriceSpecification",
-            "price": "75",
-            "priceCurrency": "GBP"
-          }
+      "itemListElement": pricingPlans.map((plan) => ({
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": plan.name,
+          "description": plan.description
         },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Tumble Dryer Repair",
-            "description": "Repair service for vented, condenser, and heat-pump tumble dryers."
-          },
-          "priceSpecification": {
-            "@type": "PriceSpecification",
-            "price": "75",
-            "priceCurrency": "GBP"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Washing Machine Repair",
-            "description": "Expert repair for freestanding and integrated washing machines."
-          },
-          "priceSpecification": {
-            "@type": "PriceSpecification",
-            "price": "75",
-            "priceCurrency": "GBP"
-          }
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": plan.priceNumeric,
+          "priceCurrency": "GBP"
         }
-      ]
+      }))
     }
   };
 }

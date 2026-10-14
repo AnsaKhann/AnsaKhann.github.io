@@ -26,6 +26,7 @@ export interface ServiceDetail {
   id: string;
   title: string;
   priorityOrder: number;
+  applianceCategory: string;
   iconKey: keyof typeof serviceIcons;
   summary: string;
   commonFaults: string[];
@@ -132,6 +133,7 @@ export const servicesList: ServiceDetail[] = [
     id: "service-cooker",
     title: "Cooker & Oven Repairs",
     priorityOrder: 1,
+    applianceCategory: "Cookers & Ovens",
     iconKey: "cooker",
     priceFrom: "From £75",
     summary: "From uneven heating and faulty elements to thermostat issues and broken door seals, we restore your oven or cooker quickly.",
@@ -148,6 +150,7 @@ export const servicesList: ServiceDetail[] = [
     id: "service-tumble-dryer",
     title: "Tumble Dryer Repairs",
     priorityOrder: 2,
+    applianceCategory: "Tumble Dryers",
     iconKey: "tumbleDryer",
     priceFrom: "From £75",
     summary: "Reliable repairs for vented, condenser, and heat-pump tumble dryers experiencing drum, belt, or heating problems.",
@@ -164,6 +167,7 @@ export const servicesList: ServiceDetail[] = [
     id: "service-washing-machine",
     title: "Washing Machine Repairs",
     priorityOrder: 3,
+    applianceCategory: "Washing Machines",
     iconKey: "washingMachine",
     priceFrom: "From £75",
     summary: "Comprehensive diagnostics for washing machines that fail to drain, won't spin, leak water, or stop mid-cycle.",
@@ -180,6 +184,7 @@ export const servicesList: ServiceDetail[] = [
     id: "service-dishwasher",
     title: "Dishwasher Repairs",
     priorityOrder: 4,
+    applianceCategory: "Dishwashers",
     iconKey: "dishwasher",
     priceFrom: "From £75",
     summary: "Fast troubleshooting for freestanding and integrated dishwashers that leave dishes dirty, leak, or fail to drain.",
@@ -196,6 +201,7 @@ export const servicesList: ServiceDetail[] = [
     id: "service-fridge",
     title: "Fridge & Freezer Repairs",
     priorityOrder: 5,
+    applianceCategory: "Fridge & Freezer",
     iconKey: "fridge",
     priceFrom: "From £75",
     summary: "Diagnostic checks for domestic refrigeration units failing to maintain proper cooling temperature.",
@@ -211,9 +217,10 @@ export const servicesList: ServiceDetail[] = [
     id: "service-hob",
     title: "Hob & Cooktop Repairs",
     priorityOrder: 6,
+    applianceCategory: "Electric / Induction Hob",
     iconKey: "hob",
     priceFrom: "From £75",
-    summary: "Repairs for ceramic, electric, and induction hobs that won't heat, display error symbols, or fail to ignite.",
+    summary: "Repairs for ceramic, electric, and induction hobs that won't heat, display error symbols, or have unresponsive controls.",
     commonFaults: [
       "Induction zones flashing error codes",
       "Hotplate elements failing to heat up",

@@ -3,7 +3,7 @@ import { quoteModalContent, businessInfo } from '../content/site';
 import { pricingPlans } from '../content/services';
 ---
 
-<div
+<dialog
   id="quote-modal"
   class="modal-backdrop"
   role="dialog"
@@ -59,6 +59,7 @@ import { pricingPlans } from '../content/services';
           <input
             type="text"
             id="modal-postcode"
+            autocomplete="postal-code"
             name="postcode"
             class="form-input"
             placeholder={quoteModalContent.postcodePlaceholder}
@@ -70,6 +71,7 @@ import { pricingPlans } from '../content/services';
           <input
             type="tel"
             id="modal-phone"
+            autocomplete="tel"
             name="phone"
             class="form-input"
             placeholder={quoteModalContent.phonePlaceholder}
@@ -82,6 +84,7 @@ import { pricingPlans } from '../content/services';
         <input
           type="text"
           id="modal-name"
+          autocomplete="name"
           name="name"
           class="form-input"
           placeholder={quoteModalContent.namePlaceholder}
@@ -106,7 +109,7 @@ import { pricingPlans } from '../content/services';
       </div>
     </form>
   </div>
-</div>
+</dialog>
 
 <script>
   declare global {
@@ -115,7 +118,8 @@ import { pricingPlans } from '../content/services';
     }
   }
 
-  const modal = document.getElementById('quote-modal');
+  const modal = document.getElementById('quote-modal') as HTMLDialogElement | null;
+  let previousFocus: HTMLElement | null = null;
   const closeBtn = document.getElementById('modal-close-btn');
   const form = document.getElementById('quote-modal-form') as HTMLFormElement | null;
   const applianceSelect = document.getElementById('modal-appliance') as HTMLSelectElement | null;
@@ -124,20 +128,13 @@ import { pricingPlans } from '../content/services';
   // Global helper for opening modal
   window.openQuoteModalWithAppliance = (applianceName: string, postcode = '') => {
     if (!modal) return;
-    if (applianceSelect && applianceName) {
-      // Find matching option
-      for (const opt of applianceSelect.options) {
-        if (opt.value.toLowerCase().includes(applianceName.toLowerCase())) {
-          opt.selected = true;
-          break;
-        }
-      }
-    }
-    if (postcodeInput && postcode) {
-      postcodeInput.value = postcode;
-    }
+    previousFocus = document.activeElement as HTMLElement | null;
+    if (applianceSelect) applianceSelect.value = applianceName;
+    if (postcodeInput) postcodeInput.value = postcode;
     modal.classList.add('is-active');
     modal.setAttribute('aria-hidden', 'false');
+    if (!modal.open) modal.showModal();
+    applianceSelect?.focus();
     document.body.style.overflow = 'hidden';
   };
 
@@ -156,22 +153,23 @@ import { pricingPlans } from '../content/services';
     if (!modal) return;
     modal.classList.remove('is-active');
     modal.setAttribute('aria-hidden', 'true');
+    modal.close();
+    if (previousFocus?.getClientRects().length) previousFocus.focus();
+    else document.getElementById("mobile-menu-toggle")?.focus();
     document.body.style.overflow = '';
   };
 
   if (closeBtn) closeBtn.addEventListener('click', closeModal);
 
   if (modal) {
+    modal.addEventListener('cancel', (e) => {
+      e.preventDefault();
+      closeModal();
+    });
     modal.addEventListener('click', (e) => {
       if (e.target === modal) closeModal();
     });
   }
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal && modal.classList.contains('is-active')) {
-      closeModal();
-    }
-  });
 
   // Handle WhatsApp submission
   if (form) {
@@ -187,7 +185,7 @@ import { pricingPlans } from '../content/services';
       const text = `Hello Ask Appliance Repairs, I'd like to book a repair:\n- Appliance: ${appliance}\n- Issue: ${fault}\n- Postcode: ${postcode}${name ? `\n- Name: ${name}` : ''}${phone ? `\n- Contact: ${phone}` : ''}`;
       const url = `https://wa.me/447340002079?text=${encodeURIComponent(text)}`;
       
-      window.open(url, '_blank');
+      window.open(url, '_blank', 'noopener,noreferrer');
       closeModal();
     });
   }
@@ -196,11 +194,15 @@ import { pricingPlans } from '../content/services';
 <style>
   .modal-backdrop {
     display: none;
+    margin: 0;
+    border: 0;
+    max-width: none;
+    max-height: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     background-color: rgba(1, 35, 63, 0.65);
     backdrop-filter: blur(4px);
     z-index: 9999;
@@ -219,7 +221,7 @@ import { pricingPlans } from '../content/services';
     box-shadow: var(--shadow-lg);
     width: 100%;
     max-width: 540px;
-    max-height: 90vh;
+    max-height: calc(100dvh - 2 * var(--space-4));
     overflow-y: auto;
     padding: var(--space-6);
     display: flex;

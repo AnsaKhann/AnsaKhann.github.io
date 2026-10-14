@@ -38,7 +38,7 @@
 
 ## Known Limitations & Demo Boundaries
 
-1. **Google Reviews Integration:** Brief requested Google reviews integration; per scope.md, live Maps API/widget integration is planned for the full build once API credentials or Google Place ID is provided. A compliant reputation placeholder is shown on the demo.
+1. **Google Reviews:** The placeholder has been replaced with three sourced five-star review excerpts, the verified 4.9/5 Google rating (53 reviews, checked 14 October 2026), and links to both supplied review profiles. Counts and excerpts are maintained manually; a live API/widget feed is not configured.
 2. **Booking Backend:** Form submits directly to WhatsApp with pre-filled machine, fault, and postcode details. Direct backend API/webhook delivery (e.g. Email/Slack/ServiceM8) is deferred to the full build.
 3. **Dedicated Subpages:** Subpages (`/services/cooker-repair`, `/about`, `/blog`, etc.) are linked to homepage sections or reserved for the full-build sitemap.
 

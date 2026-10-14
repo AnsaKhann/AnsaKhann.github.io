@@ -1,115 +1,74 @@
 ---
 import { homeContent } from '../content/home';
+import { googleReviews, reviewSources } from '../content/reviews';
 ---
 
-<section class="reviews-section" aria-labelledby="reviews-heading">
+<section id="reviews" class="reviews-section" aria-labelledby="reviews-heading">
   <div class="container">
     <div class="reviews-header">
       <span class="section-badge">{homeContent.reviewsSection.badge}</span>
-      <h2 id="reviews-heading" class="reviews-title">
-        {homeContent.reviewsSection.title}
-      </h2>
-      <p class="reviews-subtitle">
-        {homeContent.reviewsSection.subtitle}
-      </p>
+      <h2 id="reviews-heading">{homeContent.reviewsSection.title}</h2>
+      <p>{homeContent.reviewsSection.subtitle}</p>
     </div>
 
-    <!-- Transparent Trust Notice (No Invented Reviews) -->
-    <div class="reviews-placeholder-card">
-      <div class="reviews-placeholder-card__icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
-          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/>
-        </svg>
-      </div>
-      <h3 class="reviews-placeholder-card__title">Google Maps Customer Reviews</h3>
-      <p class="reviews-placeholder-card__text">
-        {homeContent.reviewsSection.notice}
-      </p>
-      <p class="reviews-placeholder-card__subtext">
-        {homeContent.reviewsSection.googleMapsNotice}
-      </p>
+    <div class="review-sources">
+      <a class="source-card" href={reviewSources.google.url} target="_blank" rel="noopener noreferrer">
+        <span class="source-label">Google customer reviews</span>
+        <span class="source-rating">{reviewSources.google.rating}<span class="rating-scale"> / 5</span></span>
+        <span>Based on {reviewSources.google.count} Google reviews</span>
+        <span class="source-link">Read all Google reviews <span aria-hidden="true">↗</span></span>
+      </a>
+      <a class="source-card" href={reviewSources.checkatrade.url} target="_blank" rel="noopener noreferrer">
+        <span class="source-label">Checkatrade</span>
+        <strong class="checkatrade-headline">{reviewSources.checkatrade.headline}</strong>
+        <span>Our {reviewSources.checkatrade.profileName} profile</span>
+        <span class="source-link">Read Checkatrade reviews <span aria-hidden="true">↗</span></span>
+      </a>
     </div>
+
+    <h3 class="selected-heading">{homeContent.reviewsSection.selectedTitle}</h3>
+    <div class="reviews-grid">
+      {googleReviews.map((review) => (
+        <figure class="review-card">
+          <div class="review-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote><p>“{review.excerpt}”</p></blockquote>
+          <figcaption>
+            <span class="review-avatar" aria-hidden="true">{review.initials}</span>
+            <span><strong>{review.author}</strong><span class="review-service">{review.service} · Google review excerpt</span></span>
+          </figcaption>
+          <a class="review-original" href={reviewSources.google.url} target="_blank" rel="noopener noreferrer" aria-label={`Read ${review.author}'s review on Google Maps`}>Read on Google <span aria-hidden="true">↗</span></a>
+        </figure>
+      ))}
+    </div>
+    <p class="review-note">Selected excerpts from Google Maps. Rating and review count checked on {reviewSources.checkedOn}; these may change.</p>
   </div>
 </section>
 
 <style>
-  .reviews-section {
-    padding: var(--space-16) 0;
-    background-color: var(--color-brand-mist);
-    border-bottom: 1px solid var(--color-border-subtle);
-  }
-
-  .reviews-header {
-    text-align: center;
-    max-width: 720px;
-    margin: 0 auto var(--space-10);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-3);
-  }
-
-  .section-badge {
-    display: inline-block;
-    padding: var(--space-1) var(--space-3);
-    background-color: var(--color-white);
-    color: var(--color-brand-teal);
-    border: 1px solid var(--color-brand-mist-border);
-    border-radius: var(--radius-full);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-bold);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .reviews-title {
-    font-size: var(--font-size-2xl);
-    color: var(--color-brand-navy);
-  }
-
-  @media (min-width: 768px) {
-    .reviews-title {
-      font-size: var(--font-size-3xl);
-    }
-  }
-
-  .reviews-subtitle {
-    font-size: var(--font-size-md);
-    color: var(--color-text-muted);
-  }
-
-  .reviews-placeholder-card {
-    max-width: 680px;
-    margin: 0 auto;
-    background-color: var(--color-white);
-    border: 2px dashed var(--color-brand-mist-border);
-    border-radius: var(--radius-lg);
-    padding: var(--space-8);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-3);
-    box-shadow: var(--shadow-sm);
-  }
-
-  .reviews-placeholder-card__icon {
-    color: var(--color-brand-teal);
-  }
-
-  .reviews-placeholder-card__title {
-    font-size: var(--font-size-lg);
-    color: var(--color-brand-navy);
-  }
-
-  .reviews-placeholder-card__text {
-    font-size: var(--font-size-sm);
-    color: var(--color-brand-navy);
-    font-weight: var(--font-weight-medium);
-  }
-
-  .reviews-placeholder-card__subtext {
-    font-size: var(--font-size-xs);
-    color: var(--color-text-muted);
-  }
+  .reviews-section { padding: var(--space-16) 0; background: var(--color-brand-mist); border-bottom: 1px solid var(--color-border-subtle); }
+  .reviews-header { text-align: center; max-width: 720px; margin: 0 auto var(--space-8); display: flex; flex-direction: column; align-items: center; gap: var(--space-3); }
+  .section-badge { padding: var(--space-1) var(--space-3); background: var(--color-white); color: var(--color-brand-teal); border: 1px solid var(--color-brand-mist-border); border-radius: var(--radius-full); font-size: var(--font-size-xs); font-weight: var(--font-weight-bold); text-transform: uppercase; letter-spacing: .05em; }
+  h2 { font-size: var(--font-size-2xl); }
+  .reviews-header p { font-size: var(--font-size-md); color: var(--color-text-muted); }
+  .review-sources { display: grid; grid-template-columns: 1fr; gap: var(--space-4); margin-bottom: var(--space-10); }
+  .source-card { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-6); background: var(--color-white); border: 1px solid var(--color-brand-mist-border); border-radius: var(--radius-lg); text-decoration: none; color: var(--color-text-muted); box-shadow: var(--shadow-sm); }
+  .source-card:hover { border-color: var(--color-brand-teal); }
+  .source-label { color: var(--color-brand-navy); font-weight: var(--font-weight-bold); }
+  .source-rating { font-size: var(--font-size-4xl); font-weight: var(--font-weight-bold); line-height: var(--line-height-tight); color: var(--color-brand-navy); }
+  .rating-scale { font-size: var(--font-size-lg); color: var(--color-text-muted); }
+  .checkatrade-headline { font-size: var(--font-size-xl); line-height: var(--line-height-snug); color: var(--color-brand-navy); }
+  .source-link { color: var(--color-brand-teal); font-weight: var(--font-weight-bold); font-size: var(--font-size-sm); margin-top: auto; padding-top: var(--space-2); }
+  .selected-heading { text-align: center; font-size: var(--font-size-lg); margin-bottom: var(--space-5); }
+  .reviews-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-5); }
+  .review-card { min-width: 0; display: flex; flex-direction: column; gap: var(--space-5); background: var(--color-white); border: 1px solid var(--color-brand-mist-border); border-radius: var(--radius-lg); padding: var(--space-6); box-shadow: var(--shadow-sm); }
+  .review-stars { color: #946200; font-size: var(--font-size-xl); letter-spacing: 3px; }
+  blockquote { font-size: var(--font-size-md); font-weight: var(--font-weight-medium); flex-grow: 1; }
+  figcaption { display: flex; align-items: center; gap: var(--space-3); }
+  figcaption strong { font-size: var(--font-size-sm); }
+  .review-avatar { flex-shrink: 0; display: grid; place-items: center; width: 40px; height: 40px; border-radius: var(--radius-full); background: var(--color-brand-teal-light); color: var(--color-brand-teal); font-size: var(--font-size-sm); font-weight: var(--font-weight-bold); }
+  .review-service { display: block; font-size: var(--font-size-xs); color: var(--color-text-muted); }
+  .review-original { align-self: flex-start; font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); }
+  .review-note { text-align: center; margin-top: var(--space-6); color: var(--color-text-muted); font-size: var(--font-size-xs); }
+  @media (min-width: 640px) { .review-sources { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 768px) { h2 { font-size: var(--font-size-3xl); } .reviews-grid { grid-template-columns: repeat(3, 1fr); } }
 </style>
