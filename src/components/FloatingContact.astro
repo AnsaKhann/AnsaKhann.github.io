@@ -1,0 +1,66 @@
+---
+import { businessInfo } from '../content/site';
+---
+
+<div class="floating-contact" aria-label="Quick contact actions">
+  <a
+    href={businessInfo.whatsappUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="floating-btn floating-btn--whatsapp"
+    aria-label="Chat directly on WhatsApp with an engineer"
+  >
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.53 7.35C9.35 7.35 9.06 7.42 8.81 7.69C8.56 7.96 7.87 8.61 7.87 9.92C7.87 11.23 8.83 12.5 8.96 12.67C9.09 12.85 10.82 15.5 13.48 16.65C14.11 16.92 14.61 17.09 15 17.21C15.63 17.41 16.21 17.38 16.66 17.31C17.17 17.23 18.23 16.67 18.45 16.03C18.67 15.4 18.67 14.86 18.6 14.75C18.53 14.63 18.35 14.56 18.08 14.43C17.8 14.29 16.48 13.64 16.23 13.55C15.98 13.46 15.8 13.41 15.62 13.68C15.44 13.95 14.93 14.56 14.78 14.74C14.62 14.91 14.47 14.94 14.19 14.8C13.92 14.67 13.04 14.38 12 13.45C11.19 12.73 10.64 11.84 10.49 11.57C10.33 11.3 10.47 11.15 10.61 11.02C10.73 10.9 10.88 10.71 11.02 10.55C11.16 10.39 11.2 10.27 11.29 10.09C11.38 9.91 11.34 9.76 11.27 9.62C11.2 9.49 10.66 8.16 10.44 7.62C10.22 7.1 10 7.17 9.84 7.16C9.69 7.15 9.53 7.35 9.53 7.35Z"/>
+    </svg>
+    <span class="floating-btn__text">WhatsApp Quote</span>
+  </a>
+</div>
+
+<style>
+  .floating-contact {
+    position: fixed;
+    bottom: var(--space-6);
+    right: var(--space-6);
+    z-index: 8000;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .floating-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    box-shadow: var(--shadow-lg);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .floating-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+  }
+
+  .floating-btn--whatsapp {
+    background-color: #147D3E;
+    color: var(--color-white);
+  }
+
+  @media (max-width: 640px) {
+    .floating-btn__text {
+      display: none;
+    }
+    .floating-btn {
+      padding: var(--space-3);
+      border-radius: var(--radius-full);
+      width: 48px;
+      height: 48px;
+      justify-content: center;
+    }
+  }
+</style>

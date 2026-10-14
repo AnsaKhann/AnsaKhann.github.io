@@ -1,0 +1,475 @@
+---
+import { businessInfo, headerContent } from '../content/site';
+import { mainNavItems, routes } from '../content/pages';
+import { brandAssets } from '../content/assets';
+---
+
+<header class="site-header">
+  <!-- Top Utility Bar -->
+  <div class="top-bar">
+    <div class="container top-bar__inner">
+      <div class="top-bar__status">
+        <span class="status-indicator" aria-hidden="true"></span>
+        <span class="status-text">{headerContent.hoursNotice}</span>
+      </div>
+      <div class="top-bar__contact">
+        <a href={`tel:${businessInfo.phone}`} class="top-bar__link" aria-label={headerContent.phoneAriaLabel}>
+          <svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="currentColor">
+            <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-2.2 2.2a15.053 15.053 0 0 1-6.59-6.59l2.2-2.21a.96.96 0 0 0 .25-1.01A11.36 11.36 0 0 1 8.57 3.9c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.52c0-.55-.45-1-.99-1z"/>
+          </svg>
+          <span class="top-bar__number">{businessInfo.phoneFormatted}</span>
+        </a>
+        <a href={businessInfo.whatsappUrl} target="_blank" rel="noopener noreferrer" class="top-bar__link top-bar__whatsapp" aria-label={headerContent.whatsappAriaLabel}>
+          <svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="currentColor">
+            <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.53 7.35C9.35 7.35 9.06 7.42 8.81 7.69C8.56 7.96 7.87 8.61 7.87 9.92C7.87 11.23 8.83 12.5 8.96 12.67C9.09 12.85 10.82 15.5 13.48 16.65C14.11 16.92 14.61 17.09 15 17.21C15.63 17.41 16.21 17.38 16.66 17.31C17.17 17.23 18.23 16.67 18.45 16.03C18.67 15.4 18.67 14.86 18.6 14.75C18.53 14.63 18.35 14.56 18.08 14.43C17.8 14.29 16.48 13.64 16.23 13.55C15.98 13.46 15.8 13.41 15.62 13.68C15.44 13.95 14.93 14.56 14.78 14.74C14.62 14.91 14.47 14.94 14.19 14.8C13.92 14.67 13.04 14.38 12 13.45C11.19 12.73 10.64 11.84 10.49 11.57C10.33 11.3 10.47 11.15 10.61 11.02C10.73 10.9 10.88 10.71 11.02 10.55C11.16 10.39 11.2 10.27 11.29 10.09C11.38 9.91 11.34 9.76 11.27 9.62C11.2 9.49 10.66 8.16 10.44 7.62C10.22 7.1 10 7.17 9.84 7.16C9.69 7.15 9.53 7.35 9.53 7.35Z"/>
+          </svg>
+          <span>WhatsApp Us</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Bar -->
+  <div class="nav-bar">
+    <div class="container nav-bar__inner">
+      <!-- Primary Logo on White Holding Background -->
+      <a href={routes.home} class="nav-bar__logo-link" aria-label="Ask Appliance Repairs Ltd - Homepage">
+        <img
+          src={brandAssets.logo.src}
+          alt={brandAssets.logo.alt}
+          width="373"
+          height="155"
+          class="nav-bar__logo"
+          loading="eager"
+          decoding="async"
+        />
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-bar__nav" aria-label="Main Navigation">
+        <ul class="nav-bar__list">
+          {mainNavItems.map((item) => (
+            <li class="nav-bar__item">
+              <a href={item.href} class="nav-bar__link" aria-label={item.ariaLabel}>
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <!-- Desktop Action CTA -->
+      <div class="nav-bar__actions">
+        <button
+          type="button"
+          class="btn btn--primary open-quote-modal"
+          data-appliance=""
+          aria-haspopup="dialog"
+        >
+          {headerContent.bookCtaText}
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button
+          type="button"
+          class="mobile-toggle"
+          id="mobile-menu-toggle"
+          aria-expanded="false"
+          aria-controls="mobile-drawer"
+          aria-label={headerContent.menuOpenAria}
+        >
+          <span class="mobile-toggle__bar"></span>
+          <span class="mobile-toggle__bar"></span>
+          <span class="mobile-toggle__bar"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobile-drawer" class="mobile-drawer" aria-hidden="true">
+    <div class="mobile-drawer__content">
+      <nav aria-label="Mobile Navigation">
+        <ul class="mobile-drawer__list">
+          {mainNavItems.map((item) => (
+            <li class="mobile-drawer__item">
+              <a href={item.href} class="mobile-drawer__link">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div class="mobile-drawer__actions">
+        <button
+          type="button"
+          class="btn btn--primary btn--full open-quote-modal"
+          data-appliance=""
+        >
+          {headerContent.bookCtaText}
+        </button>
+
+        <a href={`tel:${businessInfo.phone}`} class="btn btn--outline btn--full">
+          Call {businessInfo.phoneFormatted}
+        </a>
+
+        <a href={businessInfo.whatsappUrl} target="_blank" rel="noopener noreferrer" class="btn btn--whatsapp btn--full">
+          Chat on WhatsApp
+        </a>
+      </div>
+
+      <div class="mobile-drawer__footer">
+        <p><strong>Opening Hours:</strong> {businessInfo.openingHoursShort}</p>
+        <p>Company No. {businessInfo.registrationNumber}</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Mobile drawer interaction
+  const toggleBtn = document.getElementById('mobile-menu-toggle');
+  const drawer = document.getElementById('mobile-drawer');
+
+  if (toggleBtn && drawer) {
+    const openLabel = toggleBtn.getAttribute("aria-label") || "Open navigation menu";
+    const setOpen = (open: boolean) => {
+      toggleBtn.setAttribute("aria-expanded", String(open));
+      toggleBtn.setAttribute("aria-label", open ? "Close navigation menu" : openLabel);
+      drawer.setAttribute("aria-hidden", String(!open));
+      drawer.classList.toggle("is-open", open);
+      toggleBtn.classList.toggle("is-active", open);
+    };
+    toggleBtn.addEventListener('click', () => {
+      const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+      setOpen(!isExpanded);
+    });
+
+    drawer.querySelectorAll('a, .open-quote-modal').forEach((control) => {
+      control.addEventListener('click', () => setOpen(false));
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawer.classList.contains('is-open')) {
+        setOpen(false);
+        toggleBtn.focus();
+      }
+    });
+    const desktop = window.matchMedia('(min-width: 1200px)');
+    desktop.addEventListener('change', () => { if (desktop.matches) setOpen(false); });
+  }
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* Top Bar */
+  .top-bar {
+    background-color: var(--color-brand-navy);
+    color: var(--color-white);
+    font-size: var(--font-size-xs);
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .top-bar__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .top-bar__status {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .status-indicator {
+    width: 8px;
+    height: 8px;
+    background-color: #00D084;
+    border-radius: var(--radius-full);
+    display: inline-block;
+  }
+
+  .top-bar__contact {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .top-bar__link {
+    color: var(--color-white);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .top-bar__link:hover {
+    color: var(--color-brand-mist);
+    text-decoration: underline;
+  }
+
+  .top-bar__whatsapp {
+    color: #48E59B;
+  }
+
+  .top-bar__whatsapp:hover {
+    color: #6CF5B5;
+  }
+
+  /* Nav Bar */
+  .nav-bar {
+    background-color: var(--color-white);
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .nav-bar__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 84px;
+    gap: var(--space-4);
+  }
+
+  .nav-bar__logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: var(--space-1) 0;
+  }
+
+  /* Logo specifications: minimum visible artwork >= 320px on desktop */
+  .nav-bar__logo {
+    width: auto;
+    max-height: 64px;
+    max-width: 270px;
+    object-fit: contain;
+  }
+
+  @media (max-width: 768px) {
+    .nav-bar__inner {
+      height: 72px;
+    }
+    .nav-bar__logo {
+      max-height: 52px;
+      max-width: 250px;
+    }
+  }
+
+  /* Desktop Nav */
+  .nav-bar__nav {
+    display: none;
+  }
+
+  @media (min-width: 1200px) {
+    .nav-bar__nav {
+      display: block;
+    }
+  }
+
+  .nav-bar__list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    list-style: none;
+  }
+
+  .nav-bar__link {
+    color: var(--color-brand-navy);
+    text-decoration: none;
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-sm);
+    padding: var(--space-2) 0;
+    position: relative;
+    transition: color var(--transition-fast);
+  }
+
+  .nav-bar__link:hover {
+    color: var(--color-brand-teal);
+  }
+
+  .nav-bar__link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-brand-teal);
+    transition: width var(--transition-normal);
+  }
+
+  .nav-bar__link:hover::after {
+    width: 100%;
+  }
+
+  /* Actions */
+  .nav-bar__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all var(--transition-fast);
+  }
+
+  .btn--primary {
+    background-color: var(--color-brand-teal);
+    color: var(--color-white);
+  }
+
+  .btn--primary:hover {
+    background-color: var(--color-brand-teal-hover);
+    color: var(--color-white);
+  }
+
+  .btn--outline {
+    background-color: transparent;
+    border-color: var(--color-brand-navy);
+    color: var(--color-brand-navy);
+  }
+
+  .btn--outline:hover {
+    background-color: var(--color-brand-mist);
+  }
+
+  .btn--whatsapp {
+    background-color: #147D3E;
+    color: var(--color-white);
+  }
+
+  .btn--whatsapp:hover {
+    background-color: #106633;
+    color: var(--color-white);
+  }
+
+  .btn--full {
+    width: 100%;
+  }
+
+  /* Mobile Toggle */
+  .mobile-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 8px;
+    cursor: pointer;
+  }
+
+  @media (min-width: 1200px) {
+    .mobile-toggle {
+      display: none;
+    }
+  }
+
+  .mobile-toggle__bar {
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-brand-navy);
+    border-radius: 2px;
+    transition: transform var(--transition-fast), opacity var(--transition-fast);
+  }
+
+  .mobile-toggle.is-active .mobile-toggle__bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .mobile-toggle.is-active .mobile-toggle__bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-toggle.is-active .mobile-toggle__bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Mobile Drawer */
+  .mobile-drawer {
+    display: none;
+    background-color: var(--color-white);
+    border-bottom: 2px solid var(--color-brand-teal);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .mobile-drawer.is-open {
+    display: block;
+  }
+
+  .mobile-drawer__content {
+    max-height: calc(100dvh - 120px);
+    overflow-y: auto;
+    padding: var(--space-6) var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .mobile-drawer__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .mobile-drawer__link {
+    display: block;
+    padding: var(--space-3) 0;
+    color: var(--color-brand-navy);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-semibold);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .mobile-drawer__link:hover {
+    color: var(--color-brand-teal);
+  }
+
+  .mobile-drawer__actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .mobile-drawer__footer {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    border-top: 1px solid var(--color-border-subtle);
+    padding-top: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+  @media (max-width: 479px) {
+    .nav-bar__actions > .open-quote-modal { display: none; }
+    .top-bar__inner { flex-wrap: wrap; justify-content: center; gap: var(--space-1); }
+    .nav-bar__logo { max-width: 220px; }
+  }
+</style>

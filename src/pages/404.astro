@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { routes } from '../content/pages';
+import { businessInfo } from '../content/site';
+
+const errorSeo = {
+  title: "Page Not Found (404) | Ask Appliance Repairs Ltd",
+  description: "Sorry, the page you requested could not be found.",
+  canonicalUrl: "https://askappliancerepairs.com/404",
+  noindex: true
+};
+---
+
+<BaseLayout seo={errorSeo}>
+  <section class="error-page">
+    <div class="container error-container">
+      <span class="error-code">404</span>
+      <h1 class="error-title">Page Not Found</h1>
+      <p class="error-text">
+        Sorry, we couldn't find the page you were looking for. It might have been moved or removed.
+      </p>
+      <div class="error-actions">
+        <a href={routes.home} class="btn btn--primary">
+          Return to Homepage
+        </a>
+        <a href={`tel:${businessInfo.phone}`} class="btn btn--outline">
+          Call {businessInfo.phoneFormatted}
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .error-page {
+    padding: var(--space-20) 0;
+    text-align: center;
+    background-color: var(--color-bg-page);
+  }
+
+  .error-container {
+    max-width: 540px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .error-code {
+    font-size: 5rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-brand-teal);
+    line-height: 1;
+  }
+
+  .error-title {
+    font-size: var(--font-size-2xl);
+    color: var(--color-brand-navy);
+  }
+
+  .error-text {
+    font-size: var(--font-size-md);
+    color: var(--color-text-muted);
+  }
+
+  .error-actions {
+    display: flex;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+</style>

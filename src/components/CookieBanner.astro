@@ -1,0 +1,95 @@
+---
+import { cookieConsentContent } from '../content/site';
+import { routes } from '../content/pages';
+---
+
+<div id="cookie-banner" class="cookie-banner" role="region" aria-label={cookieConsentContent.title} style="display: none;">
+  <div class="container cookie-banner__inner">
+    <div class="cookie-banner__text">
+      <strong class="cookie-banner__title">{cookieConsentContent.title}:</strong>
+      <span>{cookieConsentContent.message}</span>
+      <a href={routes.privacy} class="cookie-banner__link">{cookieConsentContent.policyLinkText}</a>
+    </div>
+    <div class="cookie-banner__actions">
+      <button type="button" id="cookie-accept" class="btn btn--primary btn--sm">
+        {cookieConsentContent.acceptText}
+      </button>
+      <button type="button" id="cookie-decline" class="btn btn--outline btn--sm">
+        {cookieConsentContent.declineText}
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const banner = document.getElementById('cookie-banner');
+  const acceptBtn = document.getElementById('cookie-accept');
+  const declineBtn = document.getElementById('cookie-decline');
+
+  if (banner && !localStorage.getItem('ask_appliance_cookies_choice')) {
+    banner.style.display = 'block';
+  }
+
+  const dismissCookie = (choice: string) => {
+    localStorage.setItem('ask_appliance_cookies_choice', choice);
+    if (banner) banner.style.display = 'none';
+  };
+
+  if (acceptBtn) acceptBtn.addEventListener('click', () => dismissCookie('accepted'));
+  if (declineBtn) declineBtn.addEventListener('click', () => dismissCookie('declined'));
+</script>
+
+<style>
+  .cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-white);
+    border-top: 2px solid var(--color-brand-teal);
+    box-shadow: var(--shadow-lg);
+    z-index: 9000;
+    padding: var(--space-4) 0;
+  }
+
+  .cookie-banner__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    align-items: flex-start;
+  }
+
+  @media (min-width: 768px) {
+    .cookie-banner__inner {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  .cookie-banner__text {
+    font-size: var(--font-size-xs);
+    color: var(--color-brand-navy);
+    line-height: var(--line-height-normal);
+  }
+
+  .cookie-banner__title {
+    margin-right: var(--space-1);
+  }
+
+  .cookie-banner__link {
+    color: var(--color-brand-teal);
+    margin-left: var(--space-1);
+  }
+
+  .cookie-banner__actions {
+    display: flex;
+    gap: var(--space-2);
+    flex-shrink: 0;
+  }
+
+  .btn--sm {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--font-size-xs);
+  }
+</style>

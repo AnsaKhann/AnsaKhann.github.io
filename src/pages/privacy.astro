@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { businessInfo } from '../content/site';
+
+const privacySeo = {
+  title: "Privacy Policy | Ask Appliance Repairs Ltd",
+  description: "Privacy Policy and data protection compliance information for Ask Appliance Repairs Ltd.",
+  canonicalUrl: "https://askappliancerepairs.com/privacy",
+  noindex: true
+};
+---
+
+<BaseLayout seo={privacySeo}>
+  <section class="legal-page">
+    <div class="container legal-container">
+      <span class="section-badge">Compliance</span>
+      <h1 class="legal-title">Privacy Policy</h1>
+      <p class="legal-meta">Last updated: October 2026 • Ask Appliance Repairs Ltd</p>
+
+      <div class="legal-content">
+        <h2>1. Overview</h2>
+        <p>
+          Ask Appliance Repairs Ltd ("we", "our", or "us"), Company Registration No. {businessInfo.registrationNumber}, is committed to protecting and respecting your privacy in accordance with the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018.
+        </p>
+
+        <h2>2. Information We Collect</h2>
+        <p>
+          When you request a domestic appliance repair quote or book an engineer visit via phone, WhatsApp, or our online enquiry form, we collect:
+        </p>
+        <ul>
+          <li>Your name and contact telephone number.</li>
+          <li>Your service address and postal code for engineer dispatch.</li>
+          <li>Details regarding your faulty domestic appliance (make, model, symptom).</li>
+        </ul>
+
+        <h2>3. How We Use Your Information</h2>
+        <p>
+          We use this data solely to:
+        </p>
+        <ul>
+          <li>Provide diagnostic advice and repair estimates.</li>
+          <li>Dispatch an engineer to your property.</li>
+          <li>Send service updates and communicate regarding parts availability.</li>
+          <li>Comply with statutory accounting and tax obligations.</li>
+        </ul>
+
+        <h2>4. Data Sharing & Security</h2>
+        <p>
+          We never sell, rent, or trade your personal information to third parties. Data is only shared with our directly contracted repair engineers to perform scheduled service visits.
+        </p>
+
+        <h2>5. Your Rights</h2>
+        <p>
+          Under UK data protection law, you have the right to request access to, rectification of, or erasure of your personal data. To exercise these rights, please contact us at <a href={`mailto:${businessInfo.email}`}>{businessInfo.email}</a>.
+        </p>
+
+        <h2>6. Contact Us</h2>
+        <p>
+          If you have questions about this policy, contact our Data Protection lead at:<br />
+          <strong>Ask Appliance Repairs Ltd</strong><br />
+          Email: <a href={`mailto:${businessInfo.email}`}>{businessInfo.email}</a><br />
+          Phone: {businessInfo.phoneFormatted}
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal-page {
+    padding: var(--space-16) 0 var(--space-20);
+    background-color: var(--color-bg-page);
+  }
+
+  .legal-container {
+    max-width: var(--container-narrow-width);
+  }
+
+  .section-badge {
+    display: inline-block;
+    padding: var(--space-1) var(--space-3);
+    background-color: var(--color-brand-teal-light);
+    color: var(--color-brand-teal);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-3);
+  }
+
+  .legal-title {
+    font-size: var(--font-size-3xl);
+    color: var(--color-brand-navy);
+    margin-bottom: var(--space-2);
+  }
+
+  .legal-meta {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-8);
+    border-bottom: 1px solid var(--color-border-subtle);
+    padding-bottom: var(--space-4);
+  }
+
+  .legal-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    font-size: var(--font-size-base);
+    color: var(--color-brand-navy);
+    line-height: var(--line-height-loose);
+  }
+
+  .legal-content h2 {
+    font-size: var(--font-size-lg);
+    color: var(--color-brand-navy);
+    margin-top: var(--space-4);
+  }
+
+  .legal-content ul {
+    padding-left: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+</style>

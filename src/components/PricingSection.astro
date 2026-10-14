@@ -1,0 +1,342 @@
+---
+import { homeContent } from '../content/home';
+import { pricingPlans } from '../content/services';
+import { businessInfo } from '../content/site';
+---
+
+<section id="pricing" class="pricing-section" aria-labelledby="pricing-heading">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="pricing-header">
+      <span class="section-badge">{homeContent.pricingSection.badge}</span>
+      <h2 id="pricing-heading" class="pricing-title">
+        {homeContent.pricingSection.title}
+      </h2>
+      <p class="pricing-subtitle">
+        {homeContent.pricingSection.subtitle}
+      </p>
+    </div>
+
+    <!-- Pricing Cards Grid (Modeled after Reference Site with Brand Styling) -->
+    <div class="pricing-grid">
+      {pricingPlans.map((plan) => (
+        <div class={`pricing-card ${plan.highlighted ? 'pricing-card--highlighted' : ''}`}>
+          {plan.badge && (
+            <span class="pricing-card__badge">{plan.badge}</span>
+          )}
+
+          <div class="pricing-card__top">
+            <div class="pricing-card__icon-box">
+              <img
+                src={plan.icon.src}
+                alt=""
+                width="48"
+                height="48"
+                aria-hidden="true"
+              />
+            </div>
+            
+            <div class="pricing-card__heading">
+              <span class="pricing-card__from">FROM</span>
+              <div class="pricing-card__price">{plan.priceFrom}</div>
+              <h3 class="pricing-card__name">{plan.applianceCategory}</h3>
+            </div>
+          </div>
+
+          <p class="pricing-card__description">
+            {plan.description}
+          </p>
+
+          <div class="pricing-card__divider" aria-hidden="true"></div>
+
+          <!-- Feature Inclusions Checklist -->
+          <ul class="pricing-card__features" aria-label={`Inclusions for ${plan.name}`}>
+            {plan.inclusions.map((feature) => (
+              <li class="pricing-card__feature-item">
+                <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+
+          <!-- Call to Action -->
+          <div class="pricing-card__action">
+            <button
+              type="button"
+              class={`btn ${plan.highlighted ? 'btn--primary' : 'btn--outline'} btn--full open-quote-modal`}
+              data-appliance={plan.applianceCategory}
+            >
+              {plan.ctaText}
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Reassuring Diagnostic Policy Box -->
+    <div class="pricing-notice-box">
+      <div class="pricing-notice-box__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+      </div>
+      <div class="pricing-notice-box__content">
+        <h4 class="pricing-notice-box__title">{homeContent.pricingSection.transparentPromise}</h4>
+        <p class="pricing-notice-box__text">
+          {homeContent.pricingSection.diagnosticNote}
+        </p>
+      </div>
+      <div class="pricing-notice-box__action">
+        <a href={businessInfo.whatsappUrl} target="_blank" rel="noopener noreferrer" class="btn btn--whatsapp">
+          Ask via WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pricing-section {
+    padding: var(--space-16) 0;
+    background-color: var(--color-bg-page);
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  @media (min-width: 1024px) {
+    .pricing-section {
+      padding: var(--space-20) 0;
+    }
+  }
+
+  /* Header */
+  .pricing-header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto var(--space-12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .section-badge {
+    display: inline-block;
+    padding: var(--space-1) var(--space-3);
+    background-color: var(--color-brand-teal-light);
+    color: var(--color-brand-teal);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .pricing-title {
+    font-size: var(--font-size-2xl);
+    color: var(--color-brand-navy);
+  }
+
+  @media (min-width: 768px) {
+    .pricing-title {
+      font-size: var(--font-size-3xl);
+    }
+  }
+
+  .pricing-subtitle {
+    font-size: var(--font-size-md);
+    color: var(--color-text-muted);
+  }
+
+  /* Grid */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    margin-bottom: var(--space-12);
+  }
+
+  @media (min-width: 640px) {
+    .pricing-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .pricing-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  /* Card */
+  .pricing-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-brand-mist-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-brand-teal);
+  }
+
+  .pricing-card--highlighted {
+    border-color: var(--color-brand-teal);
+    background-color: #FAFCFC;
+    box-shadow: var(--shadow-md);
+  }
+
+  .pricing-card__badge {
+    position: absolute;
+    top: -12px;
+    right: var(--space-6);
+    background-color: var(--color-brand-teal);
+    color: var(--color-white);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+  }
+
+  .pricing-card__top {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+  }
+
+  .pricing-card__icon-box {
+    width: 60px;
+    height: 60px;
+    background-color: var(--color-brand-mist);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .pricing-card__heading {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pricing-card__from {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .pricing-card__price {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-brand-navy);
+    line-height: 1;
+    margin: var(--space-1) 0;
+  }
+
+  .pricing-card__name {
+    font-size: var(--font-size-base);
+    color: var(--color-brand-teal);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .pricing-card__description {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    line-height: var(--line-height-normal);
+    min-height: 48px;
+  }
+
+  .pricing-card__divider {
+    height: 1px;
+    background-color: var(--color-border-subtle);
+    margin: var(--space-4) 0;
+  }
+
+  .pricing-card__features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-bottom: var(--space-6);
+    flex-grow: 1;
+  }
+
+  .pricing-card__feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    font-size: var(--font-size-xs);
+    color: var(--color-brand-navy);
+    line-height: var(--line-height-snug);
+  }
+
+  .check-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--color-brand-teal);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .pricing-card__action {
+    margin-top: auto;
+  }
+
+  /* Notice Box */
+  .pricing-notice-box {
+    background-color: var(--color-brand-mist);
+    border: 1px solid var(--color-brand-mist-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    align-items: flex-start;
+  }
+
+  @media (min-width: 768px) {
+    .pricing-notice-box {
+      flex-direction: row;
+      align-items: center;
+      padding: var(--space-6) var(--space-8);
+      gap: var(--space-6);
+    }
+  }
+
+  .pricing-notice-box__icon {
+    color: var(--color-brand-teal);
+    flex-shrink: 0;
+  }
+
+  .pricing-notice-box__content {
+    flex-grow: 1;
+  }
+
+  .pricing-notice-box__title {
+    font-size: var(--font-size-base);
+    color: var(--color-brand-navy);
+    margin-bottom: var(--space-1);
+  }
+
+  .pricing-notice-box__text {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+  }
+
+  .pricing-notice-box__action {
+    flex-shrink: 0;
+  }
+</style>

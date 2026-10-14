@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import TrustStats from '../components/TrustStats.astro';
+import PricingSection from '../components/PricingSection.astro';
+import ServicesSection from '../components/ServicesSection.astro';
+import ProcessSection from '../components/ProcessSection.astro';
+import CoverageChecker from '../components/CoverageChecker.astro';
+import AboutSection from '../components/AboutSection.astro';
+import ReviewsSection from '../components/ReviewsSection.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import { defaultSeo } from '../content/seo';
+---
+
+<BaseLayout seo={defaultSeo}>
+  <Hero />
+  <TrustStats />
+  <PricingSection />
+  <ServicesSection />
+  <ProcessSection />
+  <CoverageChecker />
+  <AboutSection />
+  <ReviewsSection />
+  <CtaBanner />
+</BaseLayout>
