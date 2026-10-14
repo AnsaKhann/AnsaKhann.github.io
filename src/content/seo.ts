@@ -16,8 +16,7 @@ export const defaultSeo: PageSeo = {
   canonicalUrl: "https://askappliancerepairs.com",
   ogType: "website",
   ogImage: "https://askappliancerepairs.com/images/og-image.jpg?v=brand-20261014",
-  // Demo stage retains intentional indexing exclusion per seo-checklist.md
-  noindex: true
+  noindex: false
 };
 
 export function generateLocalBusinessSchema(): Record<string, unknown> {

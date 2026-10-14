@@ -19,7 +19,7 @@ pnpm build
 pnpm preview
 ```
 
-Deploy the contents of `dist/` using the existing hosting workflow. The source still has preview `noindex` metadata; review this when authorising a production release.
+Deploy the contents of `dist/` using the GitHub Pages workflow. The homepage, privacy policy and terms pages allow search indexing; the 404 page remains excluded.
 
 ## Content
 
