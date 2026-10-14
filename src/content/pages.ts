@@ -15,6 +15,7 @@ export const routes = {
   about: "/#about",
   reviews: "/#reviews",
   contact: "/#contact",
+  blog: "/blog",
   privacy: "/privacy",
   terms: "/terms",
   llms: "/llms.txt"
@@ -56,6 +57,12 @@ export const mainNavItems: NavItem[] = [
     label: "Reviews",
     href: routes.reviews,
     ariaLabel: "Read customer reviews"
+  },
+  {
+    id: "nav-blog",
+    label: "Blog",
+    href: routes.blog,
+    ariaLabel: "Read appliance advice from our engineers"
   },
   {
     id: "nav-contact",

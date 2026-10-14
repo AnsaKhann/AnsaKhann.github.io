@@ -1,0 +1,90 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import ArticleMetadata from '../components/blog/ArticleMetadata.astro';
+import BlogCTA from '../components/blog/BlogCTA.astro';
+import { blogCopy } from '../content/blog';
+import { businessInfo } from '../content/site';
+import { postURL, siteUrl } from '../lib/blog-posts';
+import '../styles/blog.css';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { data } = post;
+const canonicalUrl = `${siteUrl}${postURL(post)}`;
+const imageUrl = data.image ? new URL(data.image, siteUrl).href : undefined;
+
+const seo = {
+  title: `${data.seoTitle ?? data.title} | ${businessInfo.name}`,
+  description: data.description,
+  canonicalUrl,
+  ogType: 'article',
+  ...(imageUrl && { ogImage: imageUrl })
+};
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: data.title,
+    description: data.description,
+    datePublished: data.pubDate.toISOString(),
+    dateModified: (data.updatedDate ?? data.pubDate).toISOString(),
+    mainEntityOfPage: canonicalUrl,
+    url: canonicalUrl,
+    articleSection: data.category,
+    keywords: data.tags.join(', '),
+    ...(imageUrl && { image: imageUrl }),
+    author: { '@type': 'Organization', name: data.author, url: siteUrl },
+    publisher: { '@id': `${siteUrl}/#organization` }
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+      { '@type': 'ListItem', position: 2, name: blogCopy.label, item: `${siteUrl}/blog` },
+      { '@type': 'ListItem', position: 3, name: data.title, item: canonicalUrl }
+    ]
+  }
+];
+---
+
+<BaseLayout seo={seo} article={data} structuredData={structuredData}>
+  <article class="blog-article">
+    <div class="container blog-article__container">
+      <nav class="blog-breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><a href="/blog">{blogCopy.label}</a></li>
+          <li aria-current="page">{data.title}</li>
+        </ol>
+      </nav>
+
+      <header class="blog-article__header">
+        <h1 class="blog-article__title">{data.title}</h1>
+        <p class="blog-article__lead">{data.description}</p>
+        <ArticleMetadata data={data} />
+        {data.image && data.imageAlt && (
+          <img src={data.image} alt={data.imageAlt} class="blog-article__image" loading="eager" decoding="async" />
+        )}
+      </header>
+
+      <div class="blog-prose"><slot /></div>
+
+      <footer class="blog-article__footer">
+        {data.tags.length > 0 && (
+          <p class="blog-article__tags">{blogCopy.tags}: {data.tags.join(' · ')}</p>
+        )}
+        <BlogCTA />
+        <nav class="blog-article__nav" aria-label="Blog navigation">
+          <a href="/blog">← {blogCopy.back}</a>
+          <a href="/rss.xml">{blogCopy.rss}</a>
+        </nav>
+      </footer>
+    </div>
+  </article>
+</BaseLayout>

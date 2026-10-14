@@ -1,0 +1,57 @@
+---
+import { blogCopy } from '../../content/blog';
+import { businessInfo } from '../../content/site';
+---
+
+<aside class="blog-cta" aria-labelledby="blog-cta-title">
+  <h2 id="blog-cta-title" class="blog-cta__title">{blogCopy.cta.title}</h2>
+  <p class="blog-cta__text">{blogCopy.cta.description}</p>
+  <div class="blog-cta__actions">
+    <button type="button" class="btn btn--primary open-quote-modal" data-appliance="">
+      {blogCopy.cta.primary}
+    </button>
+    <a href={businessInfo.whatsappUrl} target="_blank" rel="noopener noreferrer" class="btn btn--whatsapp">
+      {blogCopy.cta.secondary}
+    </a>
+    <a href={`tel:${businessInfo.phone}`} class="btn btn--outline">
+      Call {businessInfo.phoneFormatted}
+    </a>
+  </div>
+</aside>
+
+<style>
+  .blog-cta {
+    padding: var(--space-8);
+    background-color: var(--color-brand-teal-surface);
+    border: 1px solid var(--color-brand-mist-border);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .blog-cta__title {
+    font-size: var(--font-size-xl);
+  }
+
+  .blog-cta__text {
+    color: var(--color-text-muted);
+  }
+
+  .blog-cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-2);
+  }
+
+  @media (max-width: 479px) {
+    .blog-cta {
+      padding: var(--space-6);
+    }
+
+    .blog-cta__actions > * {
+      width: 100%;
+    }
+  }
+</style>

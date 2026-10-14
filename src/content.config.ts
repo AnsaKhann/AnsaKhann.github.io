@@ -1,0 +1,18 @@
+import { defineCollection } from 'astro:content';
+import { glob } from 'astro/loaders';
+import { blogFields, validUpdatedDate } from './lib/blog-schema';
+
+const blog = defineCollection({
+  // Keep each file as its own entry so duplicate slugs fail the build instead of overwriting a post.
+  loader: glob({
+    pattern: '**/*.md',
+    base: './src/content/blog',
+    generateId: ({ entry }) => entry.replace(/\.md$/, '')
+  }),
+  schema: blogFields.refine(validUpdatedDate, {
+    message: 'updatedDate must not precede pubDate',
+    path: ['updatedDate']
+  })
+});
+
+export const collections = { blog };

@@ -12,6 +12,7 @@
     "check": "astro check"
   },
   "dependencies": {
+    "@astrojs/rss": "^4.0.19",
     "astro": "^5.4.2"
   },
   "devDependencies": {

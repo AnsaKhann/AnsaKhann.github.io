@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleList from '../../components/blog/ArticleList.astro';
+import BlogCTA from '../../components/blog/BlogCTA.astro';
+import { blogCopy } from '../../content/blog';
+import { getPublishedPosts } from '../../lib/blog';
+import { postURL, siteUrl } from '../../lib/blog-posts';
+
+const posts = await getPublishedPosts();
+
+const blogSeo = {
+  title: blogCopy.seoTitle,
+  description: blogCopy.description,
+  canonicalUrl: `${siteUrl}/blog`
+};
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: blogCopy.feedTitle,
+    description: blogCopy.description,
+    url: `${siteUrl}/blog`,
+    publisher: { '@id': `${siteUrl}/#organization` },
+    blogPost: posts.map((post) => ({
+      '@type': 'BlogPosting',
+      headline: post.data.title,
+      url: `${siteUrl}${postURL(post)}`,
+      datePublished: post.data.pubDate.toISOString()
+    }))
+  }
+];
+---
+
+<BaseLayout seo={blogSeo} structuredData={structuredData}>
+  <section class="blog-index">
+    <div class="container">
+      <header class="blog-index__intro">
+        <span class="section-badge">{blogCopy.label}</span>
+        <h1 class="blog-index__title">{blogCopy.title}</h1>
+        <p class="blog-index__lead">{blogCopy.description}</p>
+        <p><a href="/rss.xml">{blogCopy.rss}</a></p>
+      </header>
+
+      <ArticleList posts={posts} />
+
+      <div class="blog-index__cta">
+        <BlogCTA />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .blog-index {
+    padding: var(--space-16) 0 var(--space-20);
+    background-color: var(--color-bg-subtle);
+  }
+
+  .blog-index__intro {
+    max-width: 720px;
+    margin-bottom: var(--space-10);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    align-items: flex-start;
+  }
+
+  .section-badge {
+    display: inline-block;
+    padding: var(--space-1) var(--space-3);
+    background-color: var(--color-brand-teal-light);
+    color: var(--color-brand-teal);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .blog-index__title {
+    font-size: var(--font-size-3xl);
+    line-height: var(--line-height-tight);
+  }
+
+  .blog-index__lead {
+    font-size: var(--font-size-md);
+    color: var(--color-text-muted);
+  }
+
+  .blog-index__cta {
+    margin-top: var(--space-12);
+  }
+</style>

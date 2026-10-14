@@ -1,0 +1,35 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import ArticleCard from './ArticleCard.astro';
+import { blogCopy } from '../../content/blog';
+
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+  heading?: 'h2' | 'h3';
+}
+
+const { posts, heading } = Astro.props;
+---
+
+{posts.length === 0 ? (
+  <p class="article-list__empty">{blogCopy.empty}</p>
+) : (
+  <ul class="article-list">
+    {posts.map((post) => (
+      <li><ArticleCard post={post} heading={heading} /></li>
+    ))}
+  </ul>
+)}
+
+<style>
+  .article-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+    gap: var(--space-6);
+  }
+
+  .article-list__empty {
+    color: var(--color-text-muted);
+  }
+</style>

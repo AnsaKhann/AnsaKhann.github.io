@@ -1,0 +1,76 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import ArticleMetadata from './ArticleMetadata.astro';
+import { blogCopy } from '../../content/blog';
+import { postURL } from '../../lib/blog-posts';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  heading?: 'h2' | 'h3';
+}
+
+const { post, heading: Heading = 'h2' } = Astro.props;
+const titleId = `article-${post.id}`;
+---
+
+<article class="article-card">
+  <a href={postURL(post)} class="article-card__link" aria-labelledby={titleId}>
+    {post.data.image && post.data.imageAlt && (
+      <img src={post.data.image} alt={post.data.imageAlt} class="article-card__image" loading="lazy" decoding="async" />
+    )}
+    <ArticleMetadata data={post.data} compact />
+    <Heading id={titleId} class="article-card__title">{post.data.title}</Heading>
+    <p class="article-card__summary">{post.data.description}</p>
+    <span class="article-card__more" aria-hidden="true">{blogCopy.readMore} →</span>
+  </a>
+</article>
+
+<style>
+  .article-card {
+    height: 100%;
+  }
+
+  .article-card__link {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    height: 100%;
+    padding: var(--space-6);
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    color: var(--color-text-body);
+    text-decoration: none;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .article-card__link:hover {
+    border-color: var(--color-brand-teal);
+    box-shadow: var(--shadow-md);
+    color: var(--color-text-body);
+  }
+
+  .article-card__image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+  }
+
+  .article-card__title {
+    font-size: var(--font-size-lg);
+  }
+
+  .article-card__summary {
+    color: var(--color-text-muted);
+  }
+
+  .article-card__more {
+    margin-top: auto;
+    padding-top: var(--space-2);
+    color: var(--color-brand-teal);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-sm);
+  }
+</style>

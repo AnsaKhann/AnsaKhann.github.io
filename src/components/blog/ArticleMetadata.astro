@@ -1,0 +1,42 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { blogCopy } from '../../content/blog';
+import { formatPostDate } from '../../lib/blog-posts';
+
+interface Props {
+  data: CollectionEntry<'blog'>['data'];
+  compact?: boolean;
+}
+
+const { data, compact = false } = Astro.props;
+---
+
+<div class="article-meta">
+  <span class="article-meta__category">{data.category}</span>
+  <span>
+    {blogCopy.published}{' '}
+    <time datetime={data.pubDate.toISOString()}>{formatPostDate(data.pubDate)}</time>
+  </span>
+  {!compact && data.updatedDate && (
+    <span>
+      {blogCopy.updated}{' '}
+      <time datetime={data.updatedDate.toISOString()}>{formatPostDate(data.updatedDate)}</time>
+    </span>
+  )}
+  {!compact && <span>{blogCopy.by} {data.author}</span>}
+</div>
+
+<style>
+  .article-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-4);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+  }
+
+  .article-meta__category {
+    color: var(--color-brand-teal);
+    font-weight: var(--font-weight-bold);
+  }
+</style>
