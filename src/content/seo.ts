@@ -93,6 +93,7 @@ export function generateLlmsText(): string {
 - **Email:** info@askappliancerepairs.com
 - **Website:** https://askappliancerepairs.com/
 - **Starting Price:** From £75 (includes on-site fault diagnosis and labour for approved repairs; parts charged separately if needed)
+- **Offer:** New customers get 10% off their first repair (mention code "NEW10" when booking).
 
 ## Priority Repair Services
 - [Cooker & Oven Repairs](https://askappliancerepairs.com/#services): Diagnostic troubleshooting and repairs for electric ovens, fan elements, thermostats, and cookers.
