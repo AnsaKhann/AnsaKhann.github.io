@@ -57,6 +57,9 @@
 
 .blog-article__image {
   width: 100%;
+  height: auto;
+  max-height: 480px;
+  object-fit: cover;
   border-radius: var(--radius-lg);
   margin-top: var(--space-4);
 }
@@ -103,7 +106,19 @@
 }
 
 .blog-prose img {
+  height: auto;
+  max-height: 640px;
+  width: auto;
+  margin-inline: auto;
   border-radius: var(--radius-md);
+}
+
+/* A paragraph holding only an image, followed by an italic line, reads as a photo with a caption. */
+.blog-prose p:has(> img:only-child) + p:has(> em:only-child) {
+  margin-top: var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  text-align: center;
 }
 
 .blog-prose table {

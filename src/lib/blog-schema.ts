@@ -11,7 +11,6 @@ export const blogFields = z.object({
   author: z.string().trim().min(1),
   category: z.string().trim().min(1),
   tags: z.array(z.string().trim().min(1)).default([]),
-  image: z.string().trim().min(1).optional(),
   imageAlt: z.string().trim().min(1).optional(),
   slug: slugSchema.optional(),
   draft: z.boolean().default(true)

@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { Image, getImage } from 'astro:assets';
 import BaseLayout from './BaseLayout.astro';
 import ArticleMetadata from '../components/blog/ArticleMetadata.astro';
 import BlogCTA from '../components/blog/BlogCTA.astro';
@@ -15,7 +16,11 @@ interface Props {
 const { post } = Astro.props;
 const { data } = post;
 const canonicalUrl = `${siteUrl}${postURL(post)}`;
-const imageUrl = data.image ? new URL(data.image, siteUrl).href : undefined;
+// Social networks handle JPEG most reliably, so the sharing image is exported separately.
+const socialImage = data.image
+  ? await getImage({ src: data.image, width: Math.min(data.image.width, 1200), format: 'jpeg' })
+  : undefined;
+const imageUrl = socialImage ? new URL(socialImage.src, siteUrl).href : undefined;
 
 const seo = {
   title: `${data.seoTitle ?? data.title} | ${businessInfo.name}`,
@@ -68,8 +73,17 @@ const structuredData = [
         <h1 class="blog-article__title">{data.title}</h1>
         <p class="blog-article__lead">{data.description}</p>
         <ArticleMetadata data={data} />
-        {data.image && data.imageAlt && (
-          <img src={data.image} alt={data.imageAlt} class="blog-article__image" loading="eager" decoding="async" />
+        {data.image && (
+          <Image
+            src={data.image}
+            alt={data.imageAlt!}
+            width={Math.min(data.image.width, 1200)}
+            widths={[400, 800, 1200].filter((width) => width <= data.image!.width)}
+            sizes="(max-width: 800px) 100vw, 736px"
+            format="webp"
+            class="blog-article__image"
+            loading="eager"
+          />
         )}
       </header>
 

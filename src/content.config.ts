@@ -9,10 +9,17 @@ const blog = defineCollection({
     base: './src/content/blog',
     generateId: ({ entry }) => entry.replace(/\.md$/, '')
   }),
-  schema: blogFields.refine(validUpdatedDate, {
-    message: 'updatedDate must not precede pubDate',
-    path: ['updatedDate']
-  })
+  schema: ({ image }) =>
+    blogFields
+      .extend({ image: image().optional() })
+      .refine(validUpdatedDate, {
+        message: 'updatedDate must not precede pubDate',
+        path: ['updatedDate']
+      })
+      .refine((data) => Boolean(data.image) === Boolean(data.imageAlt), {
+        message: 'Supply both image and a descriptive imageAlt, or omit both',
+        path: ['imageAlt']
+      })
 });
 
 export const collections = { blog };

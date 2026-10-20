@@ -45,11 +45,13 @@ updatedDate: 2026-11-01 # optional
 author: Ask Appliance Repairs Ltd
 category: Washing Machines
 tags: [Washing machine repair, DIY checks]
-image: /images/blog/example.jpg # optional, served from public/
+image: ../../assets/blog/<post-name>/hero.jpg # optional, relative to the Markdown file
 imageAlt: Description of the image # required when image is set
 draft: false # posts default to drafts and are not published
 ---
 ```
+
+Put a post's photos in `src/assets/blog/<post-name>/` and add them in the body with `![Description](../../assets/blog/<post-name>/photo.webp)`. Astro resizes and compresses them at build time. A line in italics straight after a photo is styled as its caption.
 
 Published posts are added automatically to `/blog`, `/rss.xml`, `/sitemap.xml` and `/llms.txt`. The schema in `src/lib/blog-schema.ts` fails the build on missing fields or duplicate slugs. Pushing to `main` deploys the site.
 

@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
 import ArticleMetadata from './ArticleMetadata.astro';
 import { blogCopy } from '../../content/blog';
 import { postURL } from '../../lib/blog-posts';
@@ -15,8 +16,15 @@ const titleId = `article-${post.id}`;
 
 <article class="article-card">
   <a href={postURL(post)} class="article-card__link" aria-labelledby={titleId}>
-    {post.data.image && post.data.imageAlt && (
-      <img src={post.data.image} alt={post.data.imageAlt} class="article-card__image" loading="lazy" decoding="async" />
+    {post.data.image && (
+      <Image
+        src={post.data.image}
+        alt={post.data.imageAlt!}
+        width={Math.min(post.data.image.width, 640)}
+        format="webp"
+        class="article-card__image"
+        loading="lazy"
+      />
     )}
     <ArticleMetadata data={post.data} compact />
     <Heading id={titleId} class="article-card__title">{post.data.title}</Heading>
