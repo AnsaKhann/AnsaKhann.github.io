@@ -158,3 +158,25 @@
   gap: var(--space-4);
   font-weight: var(--font-weight-semibold);
 }
+
+/* Figures written as HTML in Markdown, used for animated GIFs that are served unprocessed from public/. */
+.blog-prose figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.blog-prose figure img {
+  width: auto;
+  max-width: 100%;
+  max-height: 640px;
+  background-color: var(--color-brand-mist);
+}
+
+.blog-prose figcaption {
+  font-size: var(--font-size-sm);
+  font-style: italic;
+  color: var(--color-text-muted);
+  text-align: center;
+}
