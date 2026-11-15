@@ -24,7 +24,11 @@ jobs:
         uses: withastro/action@3eafd002e65cc31b4f0eae0bb05450d521562247 # v6
         with:
           node-version: '24'
-          build-cmd: pnpm run check && pnpm run build
+          # The action restores node_modules/.astro from the previous run. Its
+          # content data store can be stale after a schema change in a file the
+          # content config imports, which crashes the build. Keep the cached
+          # images, but always rebuild the content data.
+          build-cmd: rm -f node_modules/.astro/data-store.json && pnpm run check && pnpm run build
           out-dir: dist
 
   deploy:
