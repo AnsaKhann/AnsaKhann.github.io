@@ -232,3 +232,13 @@
   padding: var(--space-4) var(--space-5);
   line-height: var(--line-height-loose);
 }
+
+.blog-related {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.blog-related__title {
+  font-size: var(--font-size-2xl);
+}

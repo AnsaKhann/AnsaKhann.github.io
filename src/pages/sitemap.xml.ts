@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import { getPublishedPosts } from '../lib/blog';
-import { postURL, siteUrl } from '../lib/blog-posts';
+import { blogIndexURL, postURL, siteUrl } from '../lib/blog-posts';
 
 const isoDate = (date: Date) => date.toISOString().slice(0, 10);
 
@@ -11,15 +11,15 @@ export const GET: APIRoute = async () => {
 
   const pages = [
     { loc: `${siteUrl}/`, lastmod, changefreq: 'weekly', priority: '1.0' },
-    { loc: `${siteUrl}/blog`, lastmod: blogLastmod, changefreq: 'weekly', priority: '0.7' },
+    { loc: `${siteUrl}${blogIndexURL}`, lastmod: blogLastmod, changefreq: 'weekly', priority: '0.7' },
     ...posts.map((post) => ({
       loc: `${siteUrl}${postURL(post)}`,
       lastmod: isoDate(post.data.updatedDate ?? post.data.pubDate),
       changefreq: 'monthly',
       priority: '0.6'
     })),
-    { loc: `${siteUrl}/privacy`, lastmod, changefreq: 'monthly', priority: '0.3' },
-    { loc: `${siteUrl}/terms`, lastmod, changefreq: 'monthly', priority: '0.3' }
+    { loc: `${siteUrl}/privacy/`, lastmod, changefreq: 'monthly', priority: '0.3' },
+    { loc: `${siteUrl}/terms/`, lastmod, changefreq: 'monthly', priority: '0.3' }
   ];
 
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>

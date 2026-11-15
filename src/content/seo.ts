@@ -13,7 +13,7 @@ export interface PageSeo {
 export const defaultSeo: PageSeo = {
   title: "Ask Appliance Repairs Ltd | Appliance Repairs London & Surrey from £75",
   description: "Prompt, reliable domestic appliance repairs in London & Surrey. Washing machines, cookers, tumble dryers & dishwashers. Transparent pricing from £75. Open 8am–8pm daily.",
-  canonicalUrl: "https://askappliancerepairs.com",
+  canonicalUrl: "https://askappliancerepairs.com/",
   ogType: "website",
   ogImage: "https://askappliancerepairs.com/images/og-image.jpg?v=brand-20261014",
   noindex: false

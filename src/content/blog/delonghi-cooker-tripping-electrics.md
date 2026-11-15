@@ -1,14 +1,29 @@
 ---
 title: "De'Longhi Cooker Tripping the Electrics: How We Found and Fixed the Fault"
-seoTitle: "De'Longhi Oven Tripping the Electrics? A Real Repair Explained"
-description: "A customer's De'Longhi range cooker kept tripping the power whenever the main oven was used. Here's how our engineer traced it to a faulty dual grill element, and what to do if your own oven trips the electrics."
+seoTitle: "De'Longhi Oven Tripping the Electrics? Causes and Fix"
+description: "A De'Longhi range cooker tripped the power whenever the main oven was used. See how we traced it to a faulty grill element, and what to do if yours trips."
+summary: "An oven that trips the electrics is usually leaking current to earth, most often through a heating element whose insulation has broken down. On this De'Longhi range cooker, testing showed the dual grill element was at fault, and replacing it stopped the tripping. Switch the cooker off at its wall isolator and do not keep resetting the power."
 slug: delonghi-cooker-tripping-electrics
 pubDate: 2026-10-20
+updatedDate: 2026-11-15
 author: Ask Appliance Repairs Ltd
 category: Cookers & Ovens
 tags: [Cooker repair, Oven tripping electrics, De'Longhi, Grill element]
 image: ../../assets/blog/delonghi-cooker-tripping-electrics/delonghi-range-cooker.webp
 imageAlt: "A De'Longhi stainless steel range cooker with a gas hob and two electric ovens in a customer's kitchen"
+faqs:
+  - question: 'Can an oven element still heat up and trip the electrics?'
+    answer: 'Yes. An element can glow red and heat normally while its internal insulation is breaking down and letting current leak to earth. That leak is what trips the RCD. It is why an insulation resistance test, not a visual check, is needed to find the faulty part.'
+  - question: 'How do I tell if it is the cooker or the house wiring that is tripping the power?'
+    answer: 'Switch the cooker off at its wall isolator and reset the RCD. If the power stays on and only trips again when the cooker is switched back on and used, the cooker is the likely cause. If it trips with the cooker isolated, the fault is elsewhere in the home.'
+  - question: 'Do I need an electrician or an appliance engineer for an oven that trips the power?'
+    answer: 'If the power only trips when the cooker is in use, you need an appliance engineer to test the oven and replace the faulty part. If it still trips with the cooker switched off at its isolator, the fault is in the household wiring or another appliance, and an electrician is the right person to call.'
+  - question: 'Is it safe to keep resetting the RCD and using the oven?'
+    answer: 'No. An RCD is a safety device, and repeated trips mean current is still leaking somewhere. Switch the cooker off at its wall isolator and leave it off until it has been tested.'
+  - question: 'Why does my oven only trip when it is first switched on, or after a while?'
+    answer: 'Both patterns point to element insulation that is breaking down. Moisture can get into a damaged element while the oven sits unused, which causes a trip at switch-on. An engineer can confirm it with an insulation resistance test.'
+  - question: 'How much does it cost to replace an oven grill element?'
+    answer: 'Ask Appliance Repairs cooker and oven repairs start from £75, which covers the on-site fault diagnosis and labour for the approved repair. The replacement element is charged separately, and we give you a clear quote for the part before any work goes ahead.'
 draft: false
 ---
 
@@ -20,7 +35,7 @@ That's exactly what was happening to one of our customers. Their De'Longhi range
 
 The fault was isolated to the main oven: using it caused the household electrical supply to trip, leaving the oven out of action.
 
-A trip like this is a safety device doing its job. In most homes it's the **RCD** (residual current device), the switch in the consumer unit with a small test button. An RCD watches the current flowing out to an appliance and back again. If some of that current escapes to earth instead, through damaged insulation for example, the RCD cuts the power within a fraction of a second.
+A trip like this is a safety device doing its job. In most homes it's the **RCD** (residual current device), the switch in the consumer unit with a small test button. An RCD watches the current flowing out to an appliance and back again. If some of that current escapes to earth instead, through damaged insulation for example, the RCD cuts the power within a fraction of a second. Electrical Safety First has a plain guide to [how RCDs work](https://www.electricalsafetyfirst.org.uk/guides-and-advice/around-the-home/rcds-explained/).
 
 So a cooker that trips the RCD is usually telling you that electricity is leaking somewhere it shouldn't. The job is to find exactly where.
 

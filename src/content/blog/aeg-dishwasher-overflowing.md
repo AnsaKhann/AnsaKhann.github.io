@@ -1,14 +1,29 @@
 ---
 title: 'AEG Dishwasher Overflowing? How a Blocked Pressure Hose Caused the Fault'
-seoTitle: 'AEG Dishwasher Overflowing? A Blocked Pressure Hose Explained'
-description: "A fairly new AEG dishwasher kept overflowing and setting off its flood protection. Here's how our engineer traced it to a blocked pressure hose, how we fixed it, and what to do if your own dishwasher overflows."
+seoTitle: 'AEG Dishwasher Overflowing? Causes and How We Fixed It'
+description: 'An AEG dishwasher kept overflowing and tripping its flood protection. See how we traced it to a blocked pressure hose, and what to do if yours overflows.'
+summary: 'A dishwasher that keeps overflowing is usually filling past its normal level. On this AEG, a blocked pressure hose stopped the machine sensing how much water it held, so it kept filling until the flood protection cut in. Switch the dishwasher off, turn off its water supply and do not keep restarting it. Clearing the hose fixed the fault.'
 slug: aeg-dishwasher-overflowing
 pubDate: 2026-11-13
+updatedDate: 2026-11-15
 author: Ask Appliance Repairs Ltd
 category: Dishwashers
 tags: [Dishwasher repair, Dishwasher overflowing, AEG, Pressure hose, Flood protection]
 image: ../../assets/blog/aeg-dishwasher-overflowing/aeg-dishwasher-overflowing.jpg
 imageAlt: An AEG integrated dishwasher with its door open in a customer's kitchen, showing the racks and the tub base
+faqs:
+  - question: 'What does error i30 mean on an AEG dishwasher?'
+    answer: 'AEG says i30 means the anti-flood protection has detected water in the base of the dishwasher. The machine stops filling and may run its drain pump constantly. Turn off the water supply to the dishwasher. If the code comes back after a restart, there is a leak or an overfilling fault that needs an engineer.'
+  - question: 'Can I keep using my dishwasher if the flood protection has triggered?'
+    answer: 'No. The flood protection only triggers when water has reached the base of the machine, so there is a fault to find. Restarting it again and again risks more water under your kitchen units. Switch it off, turn off its water supply and have it checked.'
+  - question: 'Is it safe to tilt a dishwasher to drain the water from the base?'
+    answer: 'We do not recommend it. Tilting can push the water in the base onto electrical parts, and it does not fix whatever caused the water to get there. Leave the dishwasher switched off with the water supply closed until an engineer has looked at it.'
+  - question: 'Can washing-up liquid make a dishwasher overflow?'
+    answer: 'Yes. Washing-up liquid and other hand-wash products create far more foam than dishwasher detergent. The foam can spill out of the door and can also set off the flood protection. Only use dishwasher detergent, salt and rinse aid in the machine.'
+  - question: 'Why would a nearly new dishwasher overflow?'
+    answer: 'On a newer machine it usually points to one specific fault rather than general wear. Common causes are a blocked pressure hose, a faulty pressure sensor, an inlet valve that does not close fully, or a leaking hose or seal. An engineer can test each one to find which has failed.'
+  - question: 'How much does a dishwasher repair cost?'
+    answer: 'Ask Appliance Repairs dishwasher repairs start from £75, which covers the on-site fault diagnosis and labour for the approved repair. Any part needed is charged separately, and we give you a clear quote for the part before any work goes ahead.'
 draft: false
 ---
 
@@ -29,7 +44,7 @@ Every time the dishwasher ran, water ended up where it shouldn't, and the machin
 
 Underneath most modern dishwashers is a base tray with a small float inside it. Normally the tray is dry. If water leaks or overflows into it, the water lifts the float, which presses a safety switch.
 
-That switch triggers the dishwasher's flood protection. Depending on the model, the machine will usually stop filling, try to pump water out, and show an error code or warning light. It's designed to stop a small leak turning into a flooded kitchen.
+That switch triggers the dishwasher's flood protection. Depending on the model, the machine will usually stop filling, try to pump water out, and show an error code or warning light. On AEG dishwashers this is usually shown as **i30**, which AEG describes as the [anti-flood protection detecting water in the base](https://support.aeg.co.uk/support-articles/article/dishwasher-displays-error-code-i30). It's designed to stop a small leak turning into a flooded kitchen.
 
 <figure>
   <img src="/images/blog/aeg-dishwasher-overflowing/float-switch-explainer.gif" alt="Animated diagram showing water collecting in the base tray of a dishwasher, lifting the float and activating the safety switch" width="480" height="854" loading="lazy" decoding="async" />

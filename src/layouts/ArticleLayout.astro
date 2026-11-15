@@ -6,7 +6,9 @@ import ArticleMetadata from '../components/blog/ArticleMetadata.astro';
 import BlogCTA from '../components/blog/BlogCTA.astro';
 import { blogCopy } from '../content/blog';
 import { businessInfo } from '../content/site';
-import { postURL, siteUrl } from '../lib/blog-posts';
+import ArticleList from '../components/blog/ArticleList.astro';
+import { getPublishedPosts } from '../lib/blog';
+import { blogIndexURL, postURL, relatedPosts, searchTitle, siteUrl } from '../lib/blog-posts';
 import '../styles/blog.css';
 
 interface Props {
@@ -16,6 +18,7 @@ interface Props {
 const { post } = Astro.props;
 const { data } = post;
 const canonicalUrl = `${siteUrl}${postURL(post)}`;
+const related = relatedPosts(post, await getPublishedPosts());
 // Social networks handle JPEG most reliably, so the sharing image is exported separately.
 const socialImage = data.image
   ? await getImage({ src: data.image, width: Math.min(data.image.width, 1200), format: 'jpeg' })
@@ -23,7 +26,7 @@ const socialImage = data.image
 const imageUrl = socialImage ? new URL(socialImage.src, siteUrl).href : undefined;
 
 const seo = {
-  title: `${data.seoTitle ?? data.title} | ${businessInfo.name}`,
+  title: searchTitle(data.seoTitle ?? data.title, businessInfo.name),
   description: data.description,
   canonicalUrl,
   ogType: 'article',
@@ -66,7 +69,7 @@ const structuredData = [
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
-      { '@type': 'ListItem', position: 2, name: blogCopy.label, item: `${siteUrl}/blog` },
+      { '@type': 'ListItem', position: 2, name: blogCopy.label, item: `${siteUrl}${blogIndexURL}` },
       { '@type': 'ListItem', position: 3, name: data.title, item: canonicalUrl }
     ]
   }
@@ -79,14 +82,15 @@ const structuredData = [
       <nav class="blog-breadcrumbs" aria-label="Breadcrumb">
         <ol>
           <li><a href="/">Home</a></li>
-          <li><a href="/blog">{blogCopy.label}</a></li>
+          <li><a href={blogIndexURL}>{blogCopy.label}</a></li>
           <li aria-current="page">{data.title}</li>
         </ol>
       </nav>
 
       <header class="blog-article__header">
         <h1 class="blog-article__title">{data.title}</h1>
-        <p class="blog-article__lead">{data.description}</p>
+        {/* The quick answer below does the lead's job, so the description is only shown without one. */}
+        {!data.summary && <p class="blog-article__lead">{data.description}</p>}
         <ArticleMetadata data={data} />
         {data.image && (
           <Image
@@ -128,8 +132,14 @@ const structuredData = [
           <p class="blog-article__tags">{blogCopy.tags}: {data.tags.join(' · ')}</p>
         )}
         <BlogCTA />
+        {related.length > 0 && (
+          <section class="blog-related" aria-labelledby="blog-related-title">
+            <h2 id="blog-related-title" class="blog-related__title">{blogCopy.related}</h2>
+            <ArticleList posts={related} heading="h3" />
+          </section>
+        )}
         <nav class="blog-article__nav" aria-label="Blog navigation">
-          <a href="/blog">← {blogCopy.back}</a>
+          <a href={blogIndexURL}>← {blogCopy.back}</a>
           <a href="/rss.xml">{blogCopy.rss}</a>
         </nav>
       </footer>

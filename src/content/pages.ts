@@ -15,9 +15,9 @@ export const routes = {
   about: "/#about",
   reviews: "/#reviews",
   contact: "/#contact",
-  blog: "/blog",
-  privacy: "/privacy",
-  terms: "/terms",
+  blog: "/blog/",
+  privacy: "/privacy/",
+  terms: "/terms/",
   llms: "/llms.txt"
 } as const;
 
