@@ -13,6 +13,8 @@ export const blogCopy = {
   updated: 'Updated',
   by: 'By',
   tags: 'Topics',
+  summary: 'Quick answer',
+  faqs: 'Frequently asked questions',
   cta: {
     title: 'Still not working? Book an engineer.',
     description:

@@ -36,6 +36,8 @@ const structuredData = [
     '@type': 'BlogPosting',
     headline: data.title,
     description: data.description,
+    ...(data.summary && { abstract: data.summary }),
+    inLanguage: 'en-GB',
     datePublished: data.pubDate.toISOString(),
     dateModified: (data.updatedDate ?? data.pubDate).toISOString(),
     mainEntityOfPage: canonicalUrl,
@@ -46,6 +48,19 @@ const structuredData = [
     author: { '@type': 'Organization', name: data.author, url: siteUrl },
     publisher: { '@id': `${siteUrl}/#organization` }
   },
+  ...(data.faqs.length > 0
+    ? [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: data.faqs.map((faq) => ({
+            '@type': 'Question',
+            name: faq.question,
+            acceptedAnswer: { '@type': 'Answer', text: faq.answer }
+          }))
+        }
+      ]
+    : []),
   {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -78,7 +93,7 @@ const structuredData = [
             src={data.image}
             alt={data.imageAlt!}
             width={Math.min(data.image.width, 1200)}
-            widths={[400, 800, 1200].filter((width) => width <= data.image!.width)}
+            widths={[...[400, 800].filter((width) => width < data.image!.width), Math.min(data.image.width, 1200)]}
             sizes="(max-width: 800px) 100vw, 736px"
             format="webp"
             class="blog-article__image"
@@ -87,7 +102,26 @@ const structuredData = [
         )}
       </header>
 
+      {data.summary && (
+        <aside class="blog-summary" aria-labelledby="blog-summary-title">
+          <h2 id="blog-summary-title" class="blog-summary__title">{blogCopy.summary}</h2>
+          <p>{data.summary}</p>
+        </aside>
+      )}
+
       <div class="blog-prose"><slot /></div>
+
+      {data.faqs.length > 0 && (
+        <section class="blog-faqs" aria-labelledby="blog-faqs-title">
+          <h2 id="blog-faqs-title" class="blog-faqs__title">{blogCopy.faqs}</h2>
+          {data.faqs.map((faq) => (
+            <details class="blog-faq">
+              <summary class="blog-faq__question">{faq.question}</summary>
+              <p class="blog-faq__answer">{faq.answer}</p>
+            </details>
+          ))}
+        </section>
+      )}
 
       <footer class="blog-article__footer">
         {data.tags.length > 0 && (
