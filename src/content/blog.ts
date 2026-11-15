@@ -15,6 +15,7 @@ export const blogCopy = {
   tags: 'Topics',
   summary: 'Quick answer',
   faqs: 'Frequently asked questions',
+  related: 'Related articles',
   cta: {
     title: 'Still not working? Book an engineer.',
     description:

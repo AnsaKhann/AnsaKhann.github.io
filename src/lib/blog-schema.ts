@@ -5,7 +5,8 @@ export const slugSchema = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
 export const blogFields = z.object({
   title: z.string().trim().min(1),
   seoTitle: z.string().trim().min(1).optional(),
-  description: z.string().trim().min(20),
+  // Search results cut descriptions off at about 155 characters.
+  description: z.string().trim().min(20).max(155),
   pubDate: z.coerce.date(),
   updatedDate: z.coerce.date().optional(),
   author: z.string().trim().min(1),
@@ -20,6 +21,11 @@ export const blogFields = z.object({
   slug: slugSchema.optional(),
   draft: z.boolean().default(true)
 });
+
+// The title shown in search results (seoTitle, or title when there is none) must fit without being cut off.
+export function validSearchTitle(data: { title: string; seoTitle?: string }) {
+  return (data.seoTitle ?? data.title).length <= 60;
+}
 
 export function validUpdatedDate(data: { pubDate: Date; updatedDate?: Date }) {
   return !data.updatedDate || data.updatedDate >= data.pubDate;

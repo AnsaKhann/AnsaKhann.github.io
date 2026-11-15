@@ -4,14 +4,14 @@ import ArticleList from '../../components/blog/ArticleList.astro';
 import BlogCTA from '../../components/blog/BlogCTA.astro';
 import { blogCopy } from '../../content/blog';
 import { getPublishedPosts } from '../../lib/blog';
-import { postURL, siteUrl } from '../../lib/blog-posts';
+import { blogIndexURL, postURL, siteUrl } from '../../lib/blog-posts';
 
 const posts = await getPublishedPosts();
 
 const blogSeo = {
   title: blogCopy.seoTitle,
   description: blogCopy.description,
-  canonicalUrl: `${siteUrl}/blog`
+  canonicalUrl: `${siteUrl}${blogIndexURL}`
 };
 
 const structuredData = [
@@ -20,7 +20,7 @@ const structuredData = [
     '@type': 'Blog',
     name: blogCopy.feedTitle,
     description: blogCopy.description,
-    url: `${siteUrl}/blog`,
+    url: `${siteUrl}${blogIndexURL}`,
     publisher: { '@id': `${siteUrl}/#organization` },
     blogPost: posts.map((post) => ({
       '@type': 'BlogPosting',

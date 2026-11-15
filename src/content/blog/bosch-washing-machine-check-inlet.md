@@ -1,42 +1,46 @@
 ---
 title: 'Bosch Washing Machine Showing “Check Inlet”? What It Means and How We Fixed It'
-seoTitle: 'Bosch Washing Machine “Check Inlet” Error: Causes and Fix'
-description: 'A Bosch washing machine showing “Check inlet” is not taking in water fast enough. Learn what the warning means, the checks you can do yourself, and how our engineer fixed a slow-filling Bosch by replacing a faulty water inlet valve.'
-summary: '“Check inlet” on a Bosch washing machine means the machine is not taking in enough water, or not fast enough. First check that the tap is fully open, the inlet hose is not kinked and the filter in the hose is clear. If the supply is fine and the warning keeps coming back, the most likely cause is a faulty water inlet valve. On this repair, our engineer replaced the faulty inlet valve and tested the machine, and it filled normally again.'
+seoTitle: 'Bosch “Check Inlet” (E17) Error: Causes and Fixes'
+description: 'Bosch washing machine showing “Check inlet” or E17? See what it means, the safe checks to try, and how our engineer fixed one with a new inlet valve.'
+summary: '“Check inlet” on a Bosch washing machine means it is not taking in water fast enough. Check that the tap is fully open, the inlet hose is not kinked and the hose filter is clear. If the warning comes back, the usual cause is a faulty water inlet valve, which an engineer can test and replace.'
 slug: bosch-washing-machine-check-inlet
 pubDate: 2026-11-15
 author: Ask Appliance Repairs Ltd
 category: Washing Machines
-tags: [Bosch washing machine, Check inlet, Washing machine not filling, Inlet valve, Washing machine repair]
+tags: [Bosch washing machine, Check inlet, E17 error, Washing machine not filling, Inlet valve, Washing machine repair]
 image: ../../assets/blog/bosch-washing-machine-check-inlet/faulty-inlet-valve-bosch-washing-machine.jpg
 imageAlt: Our engineer holding the faulty water inlet valve removed from a white Bosch washing machine, in front of the machine
 faqs:
-  - question: 'What does “Check inlet” mean on a Bosch washing machine?'
-    answer: 'It means the washing machine is not taking in enough water, or is filling too slowly. The machine expects to reach a set water level within a set time. If it does not, it stops and shows “Check inlet”. The cause can be the water supply, such as a closed tap, a kinked hose or a blocked filter, or a fault inside the machine, most often the water inlet valve.'
-  - question: 'Can I fix a Bosch “Check inlet” warning myself?'
-    answer: 'Sometimes. Make sure the cold water tap feeding the machine is fully open, the inlet hose is not kinked or squashed behind the machine, and the small filter where the hose connects is not blocked. Turn the tap off and unplug the machine before removing the hose. If the supply is fine and the warning returns, the fault is likely inside the machine and needs an engineer.'
+  - question: 'What does E17 or F17 mean on a Bosch washing machine?'
+    answer: 'Bosch describes E17 and F17 as “water supply time exceeded”. It is the same type of fault as “Check inlet”: the machine did not take in enough water in the time allowed. The checks are the same too. Make sure the tap is fully open, the inlet hose is not kinked and the hose filter is clear.'
+  - question: 'How do I clear a Bosch “Check inlet” warning?'
+    answer: 'There is no special reset. Fix the cause first: open the tap fully, straighten the inlet hose and clean the hose filter. Then switch the machine off, switch it back on and start the programme again. If the warning returns, the fault is still there and is likely inside the machine.'
+  - question: 'Where is the inlet filter on a Bosch washing machine?'
+    answer: 'It is a small mesh filter where the inlet hose screws onto the back of the machine. Many hoses have a second filter at the tap end. Turn the tap off and unplug the machine before you unscrew the hose, rinse the filter clean, then refit the hose firmly and check for leaks.'
+  - question: 'Can low water pressure cause “Check inlet”?'
+    answer: 'Yes. If water reaches the machine too slowly, it cannot fill in time. Bosch suggests running the tap into a bucket: roughly 10 litres a minute should come out. If the flow is much lower than that, the problem is the water supply, and a plumber is the right person to call.'
   - question: 'How do I know if the water inlet valve is faulty?'
     answer: 'Common signs are a machine that fills very slowly or not at all even though the tap and hose are fine, a repeated inlet warning, or water trickling into the drum when the machine is switched off. An engineer confirms the fault by testing the valve and checking how much water it lets through, rather than guessing.'
-  - question: 'Is it worth repairing a Bosch washing machine with a faulty inlet valve?'
-    answer: 'Usually, yes. An inlet valve is a single, replaceable part. On a machine that is otherwise in good condition, replacing it costs far less than buying a new washing machine. We will always tell you honestly if a repair is not worth it.'
   - question: 'How much does a washing machine inlet valve repair cost?'
-    answer: 'Ask Appliance Repairs washing machine repairs start from £75, which covers the on-site fault diagnosis and labour for the approved repair. The replacement valve is charged separately, and we give you a clear quote for the part before any work goes ahead.'
-  - question: 'Which areas do you cover for Bosch washing machine repairs?'
-    answer: 'We repair washing machines across West London, Slough, Surrey and nearby areas, 8am to 8pm every day. You can check your postcode on our homepage or call 07340 002079.'
+    answer: 'Ask Appliance Repairs washing machine repairs start from £75, which covers the on-site fault diagnosis and labour for the approved repair. The replacement valve is charged separately, and we give you a clear quote for the part before any work goes ahead. On a machine in otherwise good condition, that costs far less than a new washing machine.'
 draft: false
 ---
 
-A Bosch washing machine showing **“Check inlet”** is telling you it can't get enough water in. Sometimes the cause is as simple as a tap that's been knocked half-closed. Other times, the problem is inside the machine.
+We were recently called out to a Bosch washing machine that kept stopping with **“Check inlet”** on the display. Sometimes the cause of that warning is as simple as a tap that's been knocked half-closed. This time the problem was inside the machine: our engineer traced it to the **water inlet valve**.
 
-We were recently called out to a Bosch washing machine with exactly this warning. It was struggling to take in enough water, and our engineer traced the fault to the **water inlet valve**. This article explains what the warning means, the checks you can safely do yourself, and how we fixed it.
+This article covers how the warning works, the E17 and F17 codes some models show instead, the checks you can safely do yourself, and how we fixed it.
 
 ## What does “Check inlet” mean on a Bosch washing machine?
 
 When a wash starts, the washing machine fills with water up to a set level. It expects to reach that level within a certain time. If the water comes in too slowly, or not at all, the machine stops the programme and shows **“Check inlet”**.
 
-On older Bosch models with a numeric display, the same type of fault is often shown as an error code, such as **F17** or **E17**, rather than a text message. Your user manual will confirm the exact code for your model.
-
 The warning doesn't tell you *why* the water isn't coming in. That's what the checks and diagnosis below are for.
+
+## Is “Check inlet” the same as error E17 or F17?
+
+Yes, it's the same type of fault. Some Bosch models, mostly those with a numeric display, show a code instead of a text message, such as **E17** or **F17**. Bosch's own support pages describe that code as [“water supply time exceeded”](https://www.bosch-home.com/ae/en/customer-service/get-support/error-e17-or-f17-washing-machine): the machine waited for water and didn't get enough in time.
+
+The causes and checks in this article apply to E17 and F17 too. Your user manual will confirm the exact code for your model.
 
 ## What causes a Bosch washing machine to fill slowly?
 
@@ -89,7 +93,7 @@ Before you book a repair, these checks are safe to try:
 
 1. **Check the tap.** Make sure the cold water tap or isolation valve feeding the washing machine is fully open. These are easily knocked, especially after other plumbing work.
 2. **Check the inlet hose.** Pull the machine out carefully and make sure the hose isn't kinked, twisted or crushed against the wall.
-3. **Check your water pressure.** If the kitchen cold tap is also running slowly, the problem may be your water supply rather than the washing machine.
+3. **Check your water pressure.** If the kitchen cold tap is also running slowly, the problem may be your water supply rather than the washing machine. Bosch's guide to a [washing machine that isn't filling](https://www.bosch-home.co.uk/customer-service/get-support/washing-machines/not-filling-with-water) suggests running the tap into a bucket: roughly 10 litres a minute should come out.
 4. **Clean the inlet filter.** Turn the tap off and unplug the machine. Unscrew the inlet hose from the back of the machine and look for a small mesh filter in the inlet. If it's blocked with limescale or grit, rinse it clean and refit the hose firmly.
 5. **Restart the programme.** Turn the tap back on, check for leaks around the hose connections, and run a short wash.
 
@@ -101,4 +105,4 @@ Our washing machine repairs start from **£75**, which covers the on-site fault 
 
 If your Bosch washing machine is slow to fill or showing “Check inlet”, call Ask Appliance Repairs on [07340 002079](tel:+447340002079) or [book a repair](/#contact). We cover West London, Slough, Surrey and nearby areas, 8am to 8pm every day, and you can [check your postcode](/#coverage) on our homepage.
 
-For other washing machine problems, read our guide to [what to do when a washing machine won't drain](/blog/washing-machine-not-draining).
+For other washing machine problems, read our guide to [what to do when a washing machine won't drain](/blog/washing-machine-not-draining/).

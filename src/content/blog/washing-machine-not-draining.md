@@ -1,12 +1,25 @@
 ---
 title: 'Washing Machine Not Draining? Safe Checks to Try Before You Call an Engineer'
 seoTitle: 'Washing Machine Not Draining? 6 Safe Checks to Try First'
-description: 'Water left in the drum after a wash? Here are the safe checks you can do yourself, from the pump filter to the drain hose, and the signs that mean it is time to call an engineer.'
+description: 'Water left in the drum after a wash? Try these six safe checks, from the pump filter to the drain hose, and learn the signs that mean you need an engineer.'
+summary: 'A washing machine that will not drain usually has a blocked pump filter, a kinked or blocked drain hose, or a blocked sink trap or standpipe. Unplug the machine, drain it through the filter at the bottom front, clear any debris and check the hose. If it still will not drain, the drain pump is the likely cause and needs an engineer.'
 slug: washing-machine-not-draining
 pubDate: 2026-10-15
+updatedDate: 2026-11-15
 author: Ask Appliance Repairs Ltd
 category: Washing Machines
 tags: [Washing machine repair, Drainage faults, DIY checks]
+faqs:
+  - question: 'How do I drain a washing machine manually?'
+    answer: 'Unplug the machine and let the water cool. Open the flap at the bottom front and put a shallow tray and towels underneath. If there is a small emergency drain hose, uncap it and let the water run into the tray. Otherwise unscrew the pump filter slowly, a little at a time, and empty the tray as it fills.'
+  - question: 'Can I open the door of a washing machine that is full of water?'
+    answer: 'Not straight away, and never by force. The door stays locked while there is water in the drum, and forcing it can break the lock and flood the floor. Drain the water through the pump filter or emergency drain hose first. The lock normally releases a few minutes after the drum is empty.'
+  - question: 'Why does my washing machine drain but not spin?'
+    answer: 'The most common cause is an unbalanced load, such as one heavy item like a bath mat. Spread the load out or add a few towels and run a spin programme. If it still will not spin, the cause may be a worn motor, motor brushes, drive belt or a door lock fault, which need an engineer.'
+  - question: 'How often should I clean the washing machine pump filter?'
+    answer: 'Every couple of months is a good routine, and straight away if the machine drains slowly or smells. Checking pockets before every wash stops most coins, hair grips and tissues reaching the filter in the first place.'
+  - question: 'How much does it cost to fix a washing machine that will not drain?'
+    answer: 'Ask Appliance Repairs washing machine repairs start from £75, which covers the on-site fault diagnosis and labour for the approved repair. If a part such as a drain pump is needed, it is charged separately, and we give you a clear quote for the part before any work goes ahead.'
 draft: false
 ---
 
@@ -71,6 +84,8 @@ If you open the door to a drum full of foam, run a rinse cycle with no detergent
 ## Check 6: Note the error code
 
 Most modern machines display a code when they can't drain. The code alone won't tell you exactly what's broken, but it's very useful to an engineer. Note it down, along with the make and model number (usually on a sticker inside the door rim), before you call anyone.
+
+Not every code is about draining. If your machine is struggling to fill rather than empty, our Bosch repair story explains [what a “Check inlet” or E17 warning means](/blog/bosch-washing-machine-check-inlet/).
 
 ## When to stop and call an engineer
 

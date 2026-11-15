@@ -8,7 +8,7 @@ export async function GET() {
     title: blogCopy.feedTitle,
     description: blogCopy.description,
     site: siteUrl,
-    trailingSlash: false,
+    trailingSlash: true,
     customData: '<language>en-GB</language>',
     items: (await getPublishedPosts()).map((post) => ({
       title: post.data.title,
